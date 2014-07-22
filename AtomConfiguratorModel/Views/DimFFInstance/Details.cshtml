@@ -1,0 +1,162 @@
+﻿@model AtomConfiguratorModel.Models.DimFFInstance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DimFFInstance</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSourceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataSourceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HostName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HostName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatabaseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatabaseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataFilePrefix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataFilePrefix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReplicationDelayMinute)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReplicationDelayMinute)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ITContactName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITContactName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ITPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ITEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QAContactName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QAContactName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QAPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QAPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QAEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QAEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaanCoNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaanCoNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DimModule.ModuleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DimModule.ModuleName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

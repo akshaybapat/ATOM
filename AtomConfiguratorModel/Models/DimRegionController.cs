@@ -1,0 +1,126 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+
+namespace AtomConfiguratorModel.Models
+{
+    public class DimRegionController : Controller
+    {
+        private FFCube2Entities db = new FFCube2Entities();
+
+        // GET: /DimRegion/
+        public ActionResult Index()
+        {
+            return View(db.DimRegions.ToList());
+        }
+
+        // GET: /DimRegion/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DimRegion dimregion = db.DimRegions.Find(id);
+            if (dimregion == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dimregion);
+        }
+
+        // GET: /DimRegion/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: /DimRegion/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include="id,RegionName")] DimRegion dimregion)
+        {
+            if (ModelState.IsValid)
+            {
+                db.DimRegions.Add(dimregion);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(dimregion);
+        }
+
+        // GET: /DimRegion/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DimRegion dimregion = db.DimRegions.Find(id);
+            if (dimregion == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dimregion);
+        }
+
+        // POST: /DimRegion/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include="id,RegionName")] DimRegion dimregion)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(dimregion).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(dimregion);
+        }
+
+        // GET: /DimRegion/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DimRegion dimregion = db.DimRegions.Find(id);
+            if (dimregion == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dimregion);
+        }
+
+        // POST: /DimRegion/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            DimRegion dimregion = db.DimRegions.Find(id);
+            db.DimRegions.Remove(dimregion);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

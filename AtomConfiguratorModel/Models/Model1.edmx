@@ -1,0 +1,1871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FFCube2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FFCube2.dbo.DataPollingExecutionTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DataPollingExecutionTime">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Starttime" Type="datetime" />
+          <Property Name="Program" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoOfRecords" Type="int" />
+          <Property Name="DatabaseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Endtime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DimBucket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BucketName" Type="varchar" MaxLength="255" />
+          <Property Name="KeyProcessType" Type="int" />
+        </EntityType>
+        <EntityType Name="DimBuilding">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildingName" Type="varchar" MaxLength="255" />
+          <Property Name="KeyFacility" Type="int" />
+        </EntityType>
+        <EntityType Name="DimBusinessPartner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessPartnerName" Type="varchar" MaxLength="255" />
+          <Property Name="BPCode" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="DimBusinessUnit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessUnitName" Type="varchar" MaxLength="255" />
+          <Property Name="KeyCostCenter" Type="int" />
+        </EntityType>
+        <EntityType Name="DimCostCenter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CostCenter" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="DimCountry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="255" />
+          <Property Name="KeyRegion" Type="int" />
+        </EntityType>
+        <EntityType Name="DimDatetime">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatetimeName" Type="smalldatetime" />
+          <Property Name="Year" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="Week" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="Day" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="Hour" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="QtrHour" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="Month" Type="nvarchar" MaxLength="30" StoreGeneratedPattern="Computed" />
+          <Property Name="DateName" Type="varchar" MaxLength="10" StoreGeneratedPattern="Computed" />
+          <Property Name="MonthNo" Type="int" />
+        </EntityType>
+        <EntityType Name="DimFacility">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteName" Type="varchar" MaxLength="255" />
+          <Property Name="KeyCountry" Type="int" />
+        </EntityType>
+        <EntityType Name="DimFFInstance">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataSourceName" Type="varchar" MaxLength="255" />
+          <Property Name="HostName" Type="varchar" MaxLength="255" />
+          <Property Name="DatabaseName" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="255" />
+          <Property Name="DataFilePrefix" Type="varchar" MaxLength="255" />
+          <Property Name="ReplicationDelayMinute" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="KeyModule" Type="int" />
+          <Property Name="ITContactName" Type="varchar" MaxLength="255" />
+          <Property Name="ITPhone" Type="varchar" MaxLength="255" />
+          <Property Name="ITEmail" Type="varchar" MaxLength="255" />
+          <Property Name="QAContactName" Type="varchar" MaxLength="255" />
+          <Property Name="QAPhone" Type="varchar" MaxLength="255" />
+          <Property Name="QAEmail" Type="varchar" MaxLength="255" />
+          <Property Name="SiteName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BaanCoNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DimFinancialCompany">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FinancialCompanyName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="DimModule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleName" Type="varchar" MaxLength="255" />
+          <Property Name="KeyBuilding" Type="int" />
+        </EntityType>
+        <EntityType Name="DimPhysicalStation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StationName" Type="varchar" MaxLength="255" />
+          <Property Name="HostAlias" Type="varchar" MaxLength="255" />
+          <Property Name="CPUMegaHertz" Type="varchar" MaxLength="255" />
+          <Property Name="MemorySize" Type="varchar" MaxLength="255" />
+          <Property Name="KeyStationType" Type="int" />
+        </EntityType>
+        <EntityType Name="DimProcessType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessTypeName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="DimProductLine">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductLineName" Type="varchar" MaxLength="255" />
+          <Property Name="KeyBusinessPartner" Type="int" />
+        </EntityType>
+        <EntityType Name="DimProductNumber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductNumber" Type="varchar" MaxLength="255" />
+          <Property Name="ProductRevision" Type="varchar" MaxLength="255" />
+          <Property Name="KeyProductLine" Type="int" />
+          <Property Name="KeyFFInstance" Type="int" />
+          <Property Name="KeySite" Type="int" />
+          <Property Name="KeyBP" Type="int" />
+          <Property Name="KeyPartFamily" Type="int" />
+        </EntityType>
+        <EntityType Name="DimRegion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="DimStationType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StationTypeName" Type="varchar" MaxLength="255" />
+          <Property Name="KeyBucket" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="FFInstanceID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FFCube2.dbo.FactffCompletions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FactffCompletions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyStartTime" Type="int" />
+          <Property Name="KeyFFInstance" Type="int" />
+          <Property Name="OrderTotal" Type="int" />
+          <Property Name="InProgress" Type="int" />
+          <Property Name="Finished" Type="int" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionOrder" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProductionLine" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FFCube2.dbo.FactffDefect' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FactffDefect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyProductNumber" Type="int" />
+          <Property Name="KeyStartTime" Type="int" />
+          <Property Name="KeyStationType" Type="int" />
+          <Property Name="KeyStationName" Type="int" />
+          <Property Name="Revision" Type="nchar" MaxLength="10" />
+          <Property Name="IsUnit" Type="int" />
+          <Property Name="DefectCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerialNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionOrderNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FFInstance" Type="int" />
+          <Property Name="ComponentNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="KeyDefectTime" Type="int" />
+          <Property Name="KeyTestDate" Type="int" />
+          <Property Name="DefectLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="ComponentDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionLine" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FactffFirstPass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyProductNumber" Type="int" />
+          <Property Name="KeyStartTime" Type="int" />
+          <Property Name="KeyEndTime" Type="int" />
+          <Property Name="KeyStationType" Type="int" />
+          <Property Name="KeyStationName" Type="int" />
+          <Property Name="TotalTestCount" Type="int" />
+          <Property Name="FirstPassCount" Type="int" />
+          <Property Name="ProductFPY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductRTY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductionLine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Revision" Type="nchar" MaxLength="10" />
+          <Property Name="ProdAvgFPY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="StationTypeFPY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FFInstanceID" Type="int" />
+          <Property Name="PartIsUnit" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.FlexpertCompletion' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="FlexpertCompletion">
+          <Property Name="UserAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="Site" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="50" />
+          <Property Name="Project" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderTotal" Type="int" />
+          <Property Name="InProgress" Type="int" />
+          <Property Name="Finished" Type="int" />
+          <Property Name="DueDate" Type="date" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Application" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionOrder" Type="nvarchar" MaxLength="250" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.FlexpertDefect' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="FlexpertDefect">
+          <Property Name="UserAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="Site" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="50" />
+          <Property Name="Project" Type="nvarchar" MaxLength="50" />
+          <Property Name="Line" Type="nvarchar" MaxLength="50" />
+          <Property Name="PartNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="int" />
+          <Property Name="Defect" Type="nvarchar" MaxLength="50" />
+          <Property Name="DefectCount" Type="int" />
+          <Property Name="PercentageValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Application" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.FlexpertFPY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="FlexpertFPY">
+          <Property Name="UserAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="Site" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="50" />
+          <Property Name="Project" Type="nvarchar" MaxLength="50" />
+          <Property Name="Line" Type="nvarchar" MaxLength="50" />
+          <Property Name="PartNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="YieldValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Machine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Application" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.FlexpertRTY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="FlexpertRTY">
+          <Property Name="UserAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="Site" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="50" />
+          <Property Name="Project" Type="nvarchar" MaxLength="50" />
+          <Property Name="Line" Type="nvarchar" MaxLength="50" />
+          <Property Name="PartNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="YieldValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Application" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.luPartFamily' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="luPartFamily">
+          <Property Name="luPFID" Type="int" />
+          <Property Name="PartFamilyTypeID" Type="int" />
+          <Property Name="FFInstanceID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.luPartFamilyType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="luPartFamilyType">
+          <Property Name="luPFTID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FFinstanceID" Type="int" />
+          <Property Name="KeyBusinessPartner" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FFCube2.dbo.RTYbyDay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RTYbyDay">
+          <Key>
+            <PropertyRef Name="RTYDate" />
+          </Key>
+          <Property Name="RTYDate" Type="date" Nullable="false" />
+          <Property Name="BusinessPartner" Type="nvarchar" MaxLength="50" />
+          <Property Name="StationBucket" Type="nchar" MaxLength="10" />
+          <Property Name="PartFamilyID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RTY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RTYYear" Type="int" />
+          <Property Name="RTYMonth" Type="nchar" MaxLength="10" />
+          <Property Name="RTYDay" Type="int" />
+          <Property Name="MonthNo" Type="int" />
+          <Property Name="SiteID" Type="nchar" MaxLength="10" />
+          <Property Name="ProdVol" Type="int" />
+          <Property Name="TopFPYStationName5" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY5" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName4" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY4" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName3" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName2" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName1" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY1" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.RTYbyMonth' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="RTYbyMonth">
+          <Property Name="RTYYear" Type="int" />
+          <Property Name="RTYMonth" Type="nchar" MaxLength="10" />
+          <Property Name="BusinessPartner" Type="nvarchar" MaxLength="50" />
+          <Property Name="StationBucket" Type="nchar" MaxLength="10" />
+          <Property Name="PartFamilyID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RTY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SiteID" Type="nchar" MaxLength="10" />
+          <Property Name="MonthNo" Type="int" />
+          <Property Name="ProdVol" Type="int" />
+          <Property Name="TopFPYStationName5" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY5" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName4" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY4" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName3" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName2" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName1" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY1" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.RTYbyWeek' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="RTYbyWeek">
+          <Property Name="RTYYear" Type="int" />
+          <Property Name="RTYMonth" Type="nchar" MaxLength="10" />
+          <Property Name="RTYWeek" Type="int" />
+          <Property Name="BusinessPartner" Type="nvarchar" MaxLength="50" />
+          <Property Name="StationBucket" Type="nchar" MaxLength="10" />
+          <Property Name="PartFamilyID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RTY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SiteID" Type="nchar" MaxLength="10" />
+          <Property Name="ProdVol" Type="int" />
+          <Property Name="TopFPYStationName5" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY5" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName4" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY4" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName3" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName2" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName1" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopFPY1" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FFCube2.dbo.SpeedMeasure' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SpeedMeasure">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Starttime" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Starttime" Type="datetime" Nullable="false" />
+          <Property Name="Endtime" Type="datetime" />
+          <Property Name="NoRecords" Type="int" />
+          <Property Name="FromDate" Type="date" />
+          <Property Name="ToDate" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.Staging.ffCompletions' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Staging_ffCompletions">
+          <Property Name="OrderTotal" Type="int" />
+          <Property Name="ReadyQuantity" Type="int" />
+          <Property Name="RequestedFinishTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionOrderNumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="FFInstanceID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionLine" Type="nvarchar" MaxLength="250" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.Staging.ffDefect' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Staging_ffDefect">
+          <Property Name="StartTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="EndTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="StationType" Type="nvarchar" MaxLength="50" />
+          <Property Name="StationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionLine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Revision" Type="nchar" MaxLength="10" />
+          <Property Name="IsUnit" Type="int" />
+          <Property Name="FailureCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="FFInstance" Type="nvarchar" MaxLength="50" />
+          <Property Name="DefectTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="TestDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="DefectLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="ComponentDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="PartNumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="DefectCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="SerialNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProductionOrderNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="ComponentNo" Type="nvarchar" MaxLength="250" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.Staging.ffFirstPass' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Staging_ffFirstPass">
+          <Property Name="ProductNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="EndTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="StationType" Type="nvarchar" MaxLength="50" />
+          <Property Name="StationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionLine" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalTestCount" Type="int" />
+          <Property Name="FirstPassCount" Type="int" />
+          <Property Name="Revision" Type="nchar" MaxLength="10" />
+          <Property Name="PartIsUnit" Type="int" />
+          <Property Name="FFInstance" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.Staging.PartFamily' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Staging_PartFamily">
+          <Property Name="PartNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="luPFID" Type="int" />
+          <Property Name="luPFTID" Type="int" />
+          <Property Name="PFTName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FFInstanceID" Type="nvarchar" MaxLength="50" />
+          <Property Name="PFDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="PFName" Type="nvarchar" MaxLength="200" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.dbo.Staging.StationType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Staging_StationType">
+          <Property Name="StnDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="StnTypeID" Type="int" />
+          <Property Name="LineID" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="STDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="AppTypeID" Type="int" />
+          <Property Name="FFInstanceID" Type="nvarchar" MaxLength="250" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.staging.CISManufacturingOperation' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CISManufacturingOperation">
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" />
+          <Property Name="BaanCompanyCode" Type="varchar" MaxLength="3" />
+          <Property Name="SiteName" Type="varchar" MaxLength="255" />
+          <Property Name="ProductLine" Type="int" />
+          <Property Name="id" Type="int" />
+          <Property Name="UnitState" Type="varchar" MaxLength="800" />
+          <Property Name="StationType" Type="varchar" MaxLength="200" />
+          <Property Name="PartNumber" Type="varchar" MaxLength="200" />
+          <Property Name="PartRevision" Type="varchar" MaxLength="50" />
+          <Property Name="EnterTime" Type="datetime" />
+          <Property Name="ExitTime" Type="datetime" />
+          <Property Name="DataRecvTime" Type="datetime" />
+          <Property Name="ProcessStatus" Type="tinyint" />
+        </EntityType>-->
+        <EntityType Name="CISTestResultSet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" />
+          <Property Name="SiteName" Type="varchar" MaxLength="255" />
+          <Property Name="BaaNCompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="UnitID" Type="int" />
+          <Property Name="TestID" Type="int" />
+          <Property Name="PartNumber" Type="varchar" MaxLength="200" />
+          <Property Name="PartRevision" Type="varchar" MaxLength="50" />
+          <Property Name="StationName" Type="varchar" MaxLength="200" />
+          <Property Name="StationType" Type="varchar" MaxLength="200" />
+          <Property Name="LineName" Type="varchar" MaxLength="200" />
+          <Property Name="IsPass" Type="bit" />
+          <Property Name="TestGeneration" Type="int" />
+          <Property Name="TestTime" Type="datetime" />
+          <Property Name="DataRecvTime" Type="datetime" />
+          <Property Name="ProcessStatus" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ffPart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteID" Type="int" />
+          <Property Name="PartID" Type="int" />
+          <Property Name="PartNumber" Type="varchar" MaxLength="255" />
+          <Property Name="Revision" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ffStation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteID" Type="int" />
+          <Property Name="StationID" Type="int" />
+          <Property Name="StationTypeID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ffStationType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteID" Type="int" />
+          <Property Name="StationTypeID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.staging.ffTest' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ffTest">
+          <Property Name="SiteID" Type="int" />
+          <Property Name="TestID" Type="int" />
+          <Property Name="StationID" Type="int" />
+          <Property Name="IsPass" Type="bit" />
+          <Property Name="PartID" Type="int" />
+        </EntityType>-->
+        <EntityType Name="fsSite">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="SiteName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FFCube2.staging.rptTestGeneration' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="rptTestGeneration">
+          <Property Name="SiteID" Type="int" />
+          <Property Name="TestID" Type="int" />
+          <Property Name="TestDate" Type="smalldatetime" />
+          <Property Name="Generation" Type="smallint" />
+        </EntityType>-->
+        <Association Name="FK_Bucket">
+          <End Role="DimBucket" Type="Self.DimBucket" Multiplicity="0..1" />
+          <End Role="DimStationType" Type="Self.DimStationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBucket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimStationType">
+              <PropertyRef Name="KeyBucket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessPartner">
+          <End Role="DimBusinessPartner" Type="Self.DimBusinessPartner" Multiplicity="0..1" />
+          <End Role="DimProductLine" Type="Self.DimProductLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBusinessPartner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimProductLine">
+              <PropertyRef Name="KeyBusinessPartner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CostCenter">
+          <End Role="DimCostCenter" Type="Self.DimCostCenter" Multiplicity="0..1" />
+          <End Role="DimBusinessUnit" Type="Self.DimBusinessUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimCostCenter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimBusinessUnit">
+              <PropertyRef Name="KeyCostCenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country">
+          <End Role="DimCountry" Type="Self.DimCountry" Multiplicity="0..1" />
+          <End Role="DimFacility" Type="Self.DimFacility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimCountry">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimFacility">
+              <PropertyRef Name="KeyCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DimBuilding_DimFacility">
+          <End Role="DimFacility" Type="Self.DimFacility" Multiplicity="0..1" />
+          <End Role="DimBuilding" Type="Self.DimBuilding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFacility">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimBuilding">
+              <PropertyRef Name="KeyFacility" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DimModule_DimBuilding">
+          <End Role="DimBuilding" Type="Self.DimBuilding" Multiplicity="0..1" />
+          <End Role="DimModule" Type="Self.DimModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBuilding">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimModule">
+              <PropertyRef Name="KeyBuilding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FFInstance">
+          <End Role="DimFFInstance" Type="Self.DimFFInstance" Multiplicity="0..1" />
+          <End Role="DimProductNumber" Type="Self.DimProductNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFFInstance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimProductNumber">
+              <PropertyRef Name="KeyFFInstance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Module">
+          <End Role="DimModule" Type="Self.DimModule" Multiplicity="0..1" />
+          <End Role="DimFFInstance" Type="Self.DimFFInstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimModule">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimFFInstance">
+              <PropertyRef Name="KeyModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessType">
+          <End Role="DimProcessType" Type="Self.DimProcessType" Multiplicity="0..1" />
+          <End Role="DimBucket" Type="Self.DimBucket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimProcessType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimBucket">
+              <PropertyRef Name="KeyProcessType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductLine">
+          <End Role="DimProductLine" Type="Self.DimProductLine" Multiplicity="0..1" />
+          <End Role="DimProductNumber" Type="Self.DimProductNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimProductLine">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimProductNumber">
+              <PropertyRef Name="KeyProductLine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region">
+          <End Role="DimRegion" Type="Self.DimRegion" Multiplicity="0..1" />
+          <End Role="DimCountry" Type="Self.DimCountry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimRegion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimCountry">
+              <PropertyRef Name="KeyRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_station_name">
+          <End Role="DimPhysicalStation" Type="Self.DimPhysicalStation" Multiplicity="0..1" />
+          <End Role="FactffFirstPass" Type="Self.FactffFirstPass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimPhysicalStation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FactffFirstPass">
+              <PropertyRef Name="KeyStationName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_stationtype">
+          <End Role="DimStationType" Type="Self.DimStationType" Multiplicity="0..1" />
+          <End Role="DimPhysicalStation" Type="Self.DimPhysicalStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimStationType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimPhysicalStation">
+              <PropertyRef Name="KeyStationType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FFCube2ModelStoreContainer">
+          <EntitySet Name="DimBucket" EntityType="Self.DimBucket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimBuilding" EntityType="Self.DimBuilding" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimBusinessPartner" EntityType="Self.DimBusinessPartner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimBusinessUnit" EntityType="Self.DimBusinessUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimCostCenter" EntityType="Self.DimCostCenter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimCountry" EntityType="Self.DimCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimDatetime" EntityType="Self.DimDatetime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimFacility" EntityType="Self.DimFacility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimFFInstance" EntityType="Self.DimFFInstance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimFinancialCompany" EntityType="Self.DimFinancialCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimModule" EntityType="Self.DimModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimPhysicalStation" EntityType="Self.DimPhysicalStation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimProcessType" EntityType="Self.DimProcessType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimProductLine" EntityType="Self.DimProductLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimProductNumber" EntityType="Self.DimProductNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimRegion" EntityType="Self.DimRegion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimStationType" EntityType="Self.DimStationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FactffFirstPass" EntityType="Self.FactffFirstPass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CISTestResultSet" EntityType="Self.CISTestResultSet" Schema="staging" store:Type="Tables" />
+          <EntitySet Name="ffPart" EntityType="Self.ffPart" Schema="staging" store:Type="Tables" />
+          <EntitySet Name="ffStation" EntityType="Self.ffStation" Schema="staging" store:Type="Tables" />
+          <EntitySet Name="ffStationType" EntityType="Self.ffStationType" Schema="staging" store:Type="Tables" />
+          <EntitySet Name="fsSite" EntityType="Self.fsSite" Schema="staging" store:Type="Tables" />
+          <EntitySet Name="DataPollingExecutionTime" EntityType="Self.DataPollingExecutionTime" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[DataPollingExecutionTime].[id] AS [id], 
+[DataPollingExecutionTime].[Starttime] AS [Starttime], 
+[DataPollingExecutionTime].[Program] AS [Program], 
+[DataPollingExecutionTime].[NoOfRecords] AS [NoOfRecords], 
+[DataPollingExecutionTime].[DatabaseName] AS [DatabaseName], 
+[DataPollingExecutionTime].[Endtime] AS [Endtime]
+FROM [dbo].[DataPollingExecutionTime] AS [DataPollingExecutionTime]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FactffCompletions" EntityType="Self.FactffCompletions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[FactffCompletions].[id] AS [id], 
+[FactffCompletions].[KeyStartTime] AS [KeyStartTime], 
+[FactffCompletions].[KeyFFInstance] AS [KeyFFInstance], 
+[FactffCompletions].[OrderTotal] AS [OrderTotal], 
+[FactffCompletions].[InProgress] AS [InProgress], 
+[FactffCompletions].[Finished] AS [Finished], 
+[FactffCompletions].[DueDate] AS [DueDate], 
+[FactffCompletions].[Color] AS [Color], 
+[FactffCompletions].[ProductionOrder] AS [ProductionOrder], 
+[FactffCompletions].[ProductionLine] AS [ProductionLine]
+FROM [dbo].[FactffCompletions] AS [FactffCompletions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FactffDefect" EntityType="Self.FactffDefect" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[FactffDefect].[id] AS [id], 
+[FactffDefect].[KeyProductNumber] AS [KeyProductNumber], 
+[FactffDefect].[KeyStartTime] AS [KeyStartTime], 
+[FactffDefect].[KeyStationType] AS [KeyStationType], 
+[FactffDefect].[KeyStationName] AS [KeyStationName], 
+[FactffDefect].[Revision] AS [Revision], 
+[FactffDefect].[IsUnit] AS [IsUnit], 
+[FactffDefect].[DefectCode] AS [DefectCode], 
+[FactffDefect].[SerialNo] AS [SerialNo], 
+[FactffDefect].[ProductionOrderNo] AS [ProductionOrderNo], 
+[FactffDefect].[FFInstance] AS [FFInstance], 
+[FactffDefect].[ComponentNo] AS [ComponentNo], 
+[FactffDefect].[KeyDefectTime] AS [KeyDefectTime], 
+[FactffDefect].[KeyTestDate] AS [KeyTestDate], 
+[FactffDefect].[DefectLocation] AS [DefectLocation], 
+[FactffDefect].[ComponentDescription] AS [ComponentDescription], 
+[FactffDefect].[ProductionLine] AS [ProductionLine]
+FROM [dbo].[FactffDefect] AS [FactffDefect]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RTYbyDay" EntityType="Self.RTYbyDay" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[RTYbyDay].[RTYDate] AS [RTYDate], 
+[RTYbyDay].[BusinessPartner] AS [BusinessPartner], 
+[RTYbyDay].[StationBucket] AS [StationBucket], 
+[RTYbyDay].[PartFamilyID] AS [PartFamilyID], 
+[RTYbyDay].[RTY] AS [RTY], 
+[RTYbyDay].[RTYYear] AS [RTYYear], 
+[RTYbyDay].[RTYMonth] AS [RTYMonth], 
+[RTYbyDay].[RTYDay] AS [RTYDay], 
+[RTYbyDay].[MonthNo] AS [MonthNo], 
+[RTYbyDay].[SiteID] AS [SiteID], 
+[RTYbyDay].[ProdVol] AS [ProdVol], 
+[RTYbyDay].[TopFPYStationName5] AS [TopFPYStationName5], 
+[RTYbyDay].[TopFPY5] AS [TopFPY5], 
+[RTYbyDay].[TopFPYStationName4] AS [TopFPYStationName4], 
+[RTYbyDay].[TopFPY4] AS [TopFPY4], 
+[RTYbyDay].[TopFPYStationName3] AS [TopFPYStationName3], 
+[RTYbyDay].[TopFPY3] AS [TopFPY3], 
+[RTYbyDay].[TopFPYStationName2] AS [TopFPYStationName2], 
+[RTYbyDay].[TopFPY2] AS [TopFPY2], 
+[RTYbyDay].[TopFPYStationName1] AS [TopFPYStationName1], 
+[RTYbyDay].[TopFPY1] AS [TopFPY1]
+FROM [dbo].[RTYbyDay] AS [RTYbyDay]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SpeedMeasure" EntityType="Self.SpeedMeasure" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SpeedMeasure].[id] AS [id], 
+[SpeedMeasure].[Starttime] AS [Starttime], 
+[SpeedMeasure].[Endtime] AS [Endtime], 
+[SpeedMeasure].[NoRecords] AS [NoRecords], 
+[SpeedMeasure].[FromDate] AS [FromDate], 
+[SpeedMeasure].[ToDate] AS [ToDate]
+FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Bucket" Association="Self.FK_Bucket">
+            <End Role="DimBucket" EntitySet="DimBucket" />
+            <End Role="DimStationType" EntitySet="DimStationType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessPartner" Association="Self.FK_BusinessPartner">
+            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartner" />
+            <End Role="DimProductLine" EntitySet="DimProductLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CostCenter" Association="Self.FK_CostCenter">
+            <End Role="DimCostCenter" EntitySet="DimCostCenter" />
+            <End Role="DimBusinessUnit" EntitySet="DimBusinessUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country" Association="Self.FK_Country">
+            <End Role="DimCountry" EntitySet="DimCountry" />
+            <End Role="DimFacility" EntitySet="DimFacility" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DimBuilding_DimFacility" Association="Self.FK_DimBuilding_DimFacility">
+            <End Role="DimFacility" EntitySet="DimFacility" />
+            <End Role="DimBuilding" EntitySet="DimBuilding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DimModule_DimBuilding" Association="Self.FK_DimModule_DimBuilding">
+            <End Role="DimBuilding" EntitySet="DimBuilding" />
+            <End Role="DimModule" EntitySet="DimModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FFInstance" Association="Self.FK_FFInstance">
+            <End Role="DimFFInstance" EntitySet="DimFFInstance" />
+            <End Role="DimProductNumber" EntitySet="DimProductNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Module" Association="Self.FK_Module">
+            <End Role="DimModule" EntitySet="DimModule" />
+            <End Role="DimFFInstance" EntitySet="DimFFInstance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessType" Association="Self.FK_ProcessType">
+            <End Role="DimProcessType" EntitySet="DimProcessType" />
+            <End Role="DimBucket" EntitySet="DimBucket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductLine" Association="Self.FK_ProductLine">
+            <End Role="DimProductLine" EntitySet="DimProductLine" />
+            <End Role="DimProductNumber" EntitySet="DimProductNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region" Association="Self.FK_Region">
+            <End Role="DimRegion" EntitySet="DimRegion" />
+            <End Role="DimCountry" EntitySet="DimCountry" />
+          </AssociationSet>
+          <AssociationSet Name="fk_station_name" Association="Self.fk_station_name">
+            <End Role="DimPhysicalStation" EntitySet="DimPhysicalStation" />
+            <End Role="FactffFirstPass" EntitySet="FactffFirstPass" />
+          </AssociationSet>
+          <AssociationSet Name="fk_stationtype" Association="Self.fk_stationtype">
+            <End Role="DimStationType" EntitySet="DimStationType" />
+            <End Role="DimPhysicalStation" EntitySet="DimPhysicalStation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FFCube2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DimBucket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BucketName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyProcessType" Type="Int32" />
+          <NavigationProperty Name="DimStationTypes" Relationship="Self.FK_Bucket" FromRole="DimBucket" ToRole="DimStationType" />
+          <NavigationProperty Name="DimProcessType" Relationship="Self.FK_ProcessType" FromRole="DimBucket" ToRole="DimProcessType" />
+        </EntityType>
+        <EntityType Name="DimBuilding">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyFacility" Type="Int32" />
+          <NavigationProperty Name="DimFacility" Relationship="Self.FK_DimBuilding_DimFacility" FromRole="DimBuilding" ToRole="DimFacility" />
+          <NavigationProperty Name="DimModules" Relationship="Self.FK_DimModule_DimBuilding" FromRole="DimBuilding" ToRole="DimModule" />
+        </EntityType>
+        <EntityType Name="DimBusinessPartner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessPartnerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BPCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DimProductLines" Relationship="Self.FK_BusinessPartner" FromRole="DimBusinessPartner" ToRole="DimProductLine" />
+        </EntityType>
+        <EntityType Name="DimBusinessUnit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessUnitName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyCostCenter" Type="Int32" />
+          <NavigationProperty Name="DimCostCenter" Relationship="Self.FK_CostCenter" FromRole="DimBusinessUnit" ToRole="DimCostCenter" />
+        </EntityType>
+        <EntityType Name="DimCostCenter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CostCenter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DimBusinessUnits" Relationship="Self.FK_CostCenter" FromRole="DimCostCenter" ToRole="DimBusinessUnit" />
+        </EntityType>
+        <EntityType Name="DimCountry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyRegion" Type="Int32" />
+          <NavigationProperty Name="DimFacilities" Relationship="Self.FK_Country" FromRole="DimCountry" ToRole="DimFacility" />
+          <NavigationProperty Name="DimRegion" Relationship="Self.FK_Region" FromRole="DimCountry" ToRole="DimRegion" />
+        </EntityType>
+        <EntityType Name="DimDatetime">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatetimeName" Type="DateTime" Precision="0" />
+          <Property Name="Year" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Week" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Day" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Hour" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="QtrHour" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Month" Type="String" MaxLength="30" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DateName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="MonthNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DimFacility">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyCountry" Type="Int32" />
+          <NavigationProperty Name="DimBuildings" Relationship="Self.FK_DimBuilding_DimFacility" FromRole="DimFacility" ToRole="DimBuilding" />
+          <NavigationProperty Name="DimCountry" Relationship="Self.FK_Country" FromRole="DimFacility" ToRole="DimCountry" />
+        </EntityType>
+        <EntityType Name="DimFFInstance">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataSourceName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HostName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DatabaseName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DataFilePrefix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ReplicationDelayMinute" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="KeyModule" Type="Int32" />
+          <Property Name="ITContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ITPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ITEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="QAContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="QAPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="QAEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SiteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BaanCoNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DimProductNumbers" Relationship="Self.FK_FFInstance" FromRole="DimFFInstance" ToRole="DimProductNumber" />
+          <NavigationProperty Name="DimModule" Relationship="Self.FK_Module" FromRole="DimFFInstance" ToRole="DimModule" />
+        </EntityType>
+        <EntityType Name="DimFinancialCompany">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FinancialCompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DimModule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyBuilding" Type="Int32" />
+          <NavigationProperty Name="DimBuilding" Relationship="Self.FK_DimModule_DimBuilding" FromRole="DimModule" ToRole="DimBuilding" />
+          <NavigationProperty Name="DimFFInstances" Relationship="Self.FK_Module" FromRole="DimModule" ToRole="DimFFInstance" />
+        </EntityType>
+        <EntityType Name="DimPhysicalStation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HostAlias" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CPUMegaHertz" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MemorySize" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyStationType" Type="Int32" />
+          <NavigationProperty Name="FactffFirstPasses" Relationship="Self.fk_station_name" FromRole="DimPhysicalStation" ToRole="FactffFirstPass" />
+          <NavigationProperty Name="DimStationType" Relationship="Self.fk_stationtype" FromRole="DimPhysicalStation" ToRole="DimStationType" />
+        </EntityType>
+        <EntityType Name="DimProcessType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DimBuckets" Relationship="Self.FK_ProcessType" FromRole="DimProcessType" ToRole="DimBucket" />
+        </EntityType>
+        <EntityType Name="DimProductLine">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductLineName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyBusinessPartner" Type="Int32" />
+          <NavigationProperty Name="DimBusinessPartner" Relationship="Self.FK_BusinessPartner" FromRole="DimProductLine" ToRole="DimBusinessPartner" />
+          <NavigationProperty Name="DimProductNumbers" Relationship="Self.FK_ProductLine" FromRole="DimProductLine" ToRole="DimProductNumber" />
+        </EntityType>
+        <EntityType Name="DimProductNumber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProductRevision" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyProductLine" Type="Int32" />
+          <Property Name="KeyFFInstance" Type="Int32" />
+          <Property Name="KeySite" Type="Int32" />
+          <Property Name="KeyBP" Type="Int32" />
+          <Property Name="KeyPartFamily" Type="Int32" />
+          <NavigationProperty Name="DimFFInstance" Relationship="Self.FK_FFInstance" FromRole="DimProductNumber" ToRole="DimFFInstance" />
+          <NavigationProperty Name="DimProductLine" Relationship="Self.FK_ProductLine" FromRole="DimProductNumber" ToRole="DimProductLine" />
+        </EntityType>
+        <EntityType Name="DimRegion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DimCountries" Relationship="Self.FK_Region" FromRole="DimRegion" ToRole="DimCountry" />
+        </EntityType>
+        <EntityType Name="DimStationType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StationTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyBucket" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="FFInstanceID" Type="Int32" />
+          <NavigationProperty Name="DimBucket" Relationship="Self.FK_Bucket" FromRole="DimStationType" ToRole="DimBucket" />
+          <NavigationProperty Name="DimPhysicalStations" Relationship="Self.fk_stationtype" FromRole="DimStationType" ToRole="DimPhysicalStation" />
+        </EntityType>
+        <EntityType Name="FactffFirstPass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyProductNumber" Type="Int32" />
+          <Property Name="KeyStartTime" Type="Int32" />
+          <Property Name="KeyEndTime" Type="Int32" />
+          <Property Name="KeyStationType" Type="Int32" />
+          <Property Name="KeyStationName" Type="Int32" />
+          <Property Name="TotalTestCount" Type="Int32" />
+          <Property Name="FirstPassCount" Type="Int32" />
+          <Property Name="ProductFPY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductRTY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductionLine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Revision" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProdAvgFPY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StationTypeFPY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FFInstanceID" Type="Int32" />
+          <Property Name="PartIsUnit" Type="Int32" />
+          <NavigationProperty Name="DimPhysicalStation" Relationship="Self.fk_station_name" FromRole="FactffFirstPass" ToRole="DimPhysicalStation" />
+        </EntityType>
+        <EntityType Name="CISTestResultSet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SiteName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BaaNCompanyCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UnitID" Type="Int32" />
+          <Property Name="TestID" Type="Int32" />
+          <Property Name="PartNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PartRevision" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StationName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StationType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LineName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsPass" Type="Boolean" />
+          <Property Name="TestGeneration" Type="Int32" />
+          <Property Name="TestTime" Type="DateTime" Precision="3" />
+          <Property Name="DataRecvTime" Type="DateTime" Precision="3" />
+          <Property Name="ProcessStatus" Type="Byte" />
+        </EntityType>
+        <EntityType Name="ffPart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteID" Type="Int32" />
+          <Property Name="PartID" Type="Int32" />
+          <Property Name="PartNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Revision" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ffStation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteID" Type="Int32" />
+          <Property Name="StationID" Type="Int32" />
+          <Property Name="StationTypeID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ffStationType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteID" Type="Int32" />
+          <Property Name="StationTypeID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="fsSite">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="SiteName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DataPollingExecutionTime">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Starttime" Type="DateTime" Precision="3" />
+          <Property Name="Program" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoOfRecords" Type="Int32" />
+          <Property Name="DatabaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Endtime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FactffCompletion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyStartTime" Type="Int32" />
+          <Property Name="KeyFFInstance" Type="Int32" />
+          <Property Name="OrderTotal" Type="Int32" />
+          <Property Name="InProgress" Type="Int32" />
+          <Property Name="Finished" Type="Int32" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductionOrder" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProductionLine" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FactffDefect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyProductNumber" Type="Int32" />
+          <Property Name="KeyStartTime" Type="Int32" />
+          <Property Name="KeyStationType" Type="Int32" />
+          <Property Name="KeyStationName" Type="Int32" />
+          <Property Name="Revision" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsUnit" Type="Int32" />
+          <Property Name="DefectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductionOrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FFInstance" Type="Int32" />
+          <Property Name="ComponentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KeyDefectTime" Type="Int32" />
+          <Property Name="KeyTestDate" Type="Int32" />
+          <Property Name="DefectLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ComponentDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductionLine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RTYbyDay">
+          <Key>
+            <PropertyRef Name="RTYDate" />
+          </Key>
+          <Property Name="RTYDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BusinessPartner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StationBucket" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PartFamilyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RTY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RTYYear" Type="Int32" />
+          <Property Name="RTYMonth" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RTYDay" Type="Int32" />
+          <Property Name="MonthNo" Type="Int32" />
+          <Property Name="SiteID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProdVol" Type="Int32" />
+          <Property Name="TopFPYStationName5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TopFPY5" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TopFPY4" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TopFPY3" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TopFPY2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TopFPYStationName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TopFPY1" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="SpeedMeasure">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Starttime" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Starttime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Endtime" Type="DateTime" Precision="3" />
+          <Property Name="NoRecords" Type="Int32" />
+          <Property Name="FromDate" Type="DateTime" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_Bucket">
+          <End Role="DimBucket" Type="Self.DimBucket" Multiplicity="0..1" />
+          <End Role="DimStationType" Type="Self.DimStationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBucket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimStationType">
+              <PropertyRef Name="KeyBucket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessType">
+          <End Role="DimProcessType" Type="Self.DimProcessType" Multiplicity="0..1" />
+          <End Role="DimBucket" Type="Self.DimBucket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimProcessType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimBucket">
+              <PropertyRef Name="KeyProcessType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DimBuilding_DimFacility">
+          <End Role="DimFacility" Type="Self.DimFacility" Multiplicity="0..1" />
+          <End Role="DimBuilding" Type="Self.DimBuilding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFacility">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimBuilding">
+              <PropertyRef Name="KeyFacility" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DimModule_DimBuilding">
+          <End Role="DimBuilding" Type="Self.DimBuilding" Multiplicity="0..1" />
+          <End Role="DimModule" Type="Self.DimModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBuilding">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimModule">
+              <PropertyRef Name="KeyBuilding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessPartner">
+          <End Role="DimBusinessPartner" Type="Self.DimBusinessPartner" Multiplicity="0..1" />
+          <End Role="DimProductLine" Type="Self.DimProductLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBusinessPartner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimProductLine">
+              <PropertyRef Name="KeyBusinessPartner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CostCenter">
+          <End Role="DimCostCenter" Type="Self.DimCostCenter" Multiplicity="0..1" />
+          <End Role="DimBusinessUnit" Type="Self.DimBusinessUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimCostCenter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimBusinessUnit">
+              <PropertyRef Name="KeyCostCenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country">
+          <End Role="DimCountry" Type="Self.DimCountry" Multiplicity="0..1" />
+          <End Role="DimFacility" Type="Self.DimFacility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimCountry">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimFacility">
+              <PropertyRef Name="KeyCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region">
+          <End Role="DimRegion" Type="Self.DimRegion" Multiplicity="0..1" />
+          <End Role="DimCountry" Type="Self.DimCountry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimRegion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimCountry">
+              <PropertyRef Name="KeyRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FFInstance">
+          <End Role="DimFFInstance" Type="Self.DimFFInstance" Multiplicity="0..1" />
+          <End Role="DimProductNumber" Type="Self.DimProductNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFFInstance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimProductNumber">
+              <PropertyRef Name="KeyFFInstance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Module">
+          <End Role="DimModule" Type="Self.DimModule" Multiplicity="0..1" />
+          <End Role="DimFFInstance" Type="Self.DimFFInstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimModule">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimFFInstance">
+              <PropertyRef Name="KeyModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_station_name">
+          <End Role="DimPhysicalStation" Type="Self.DimPhysicalStation" Multiplicity="0..1" />
+          <End Role="FactffFirstPass" Type="Self.FactffFirstPass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimPhysicalStation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FactffFirstPass">
+              <PropertyRef Name="KeyStationName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_stationtype">
+          <End Role="DimStationType" Type="Self.DimStationType" Multiplicity="0..1" />
+          <End Role="DimPhysicalStation" Type="Self.DimPhysicalStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimStationType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimPhysicalStation">
+              <PropertyRef Name="KeyStationType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductLine">
+          <End Role="DimProductLine" Type="Self.DimProductLine" Multiplicity="0..1" />
+          <End Role="DimProductNumber" Type="Self.DimProductNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimProductLine">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimProductNumber">
+              <PropertyRef Name="KeyProductLine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FFCube2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DimBuckets" EntityType="Self.DimBucket" />
+          <EntitySet Name="DimBuildings" EntityType="Self.DimBuilding" />
+          <EntitySet Name="DimBusinessPartners" EntityType="Self.DimBusinessPartner" />
+          <EntitySet Name="DimBusinessUnits" EntityType="Self.DimBusinessUnit" />
+          <EntitySet Name="DimCostCenters" EntityType="Self.DimCostCenter" />
+          <EntitySet Name="DimCountries" EntityType="Self.DimCountry" />
+          <EntitySet Name="DimDatetimes" EntityType="Self.DimDatetime" />
+          <EntitySet Name="DimFacilities" EntityType="Self.DimFacility" />
+          <EntitySet Name="DimFFInstances" EntityType="Self.DimFFInstance" />
+          <EntitySet Name="DimFinancialCompanies" EntityType="Self.DimFinancialCompany" />
+          <EntitySet Name="DimModules" EntityType="Self.DimModule" />
+          <EntitySet Name="DimPhysicalStations" EntityType="Self.DimPhysicalStation" />
+          <EntitySet Name="DimProcessTypes" EntityType="Self.DimProcessType" />
+          <EntitySet Name="DimProductLines" EntityType="Self.DimProductLine" />
+          <EntitySet Name="DimProductNumbers" EntityType="Self.DimProductNumber" />
+          <EntitySet Name="DimRegions" EntityType="Self.DimRegion" />
+          <EntitySet Name="DimStationTypes" EntityType="Self.DimStationType" />
+          <EntitySet Name="FactffFirstPasses" EntityType="Self.FactffFirstPass" />
+          <EntitySet Name="CISTestResultSets" EntityType="Self.CISTestResultSet" />
+          <EntitySet Name="ffParts" EntityType="Self.ffPart" />
+          <EntitySet Name="ffStations" EntityType="Self.ffStation" />
+          <EntitySet Name="ffStationTypes" EntityType="Self.ffStationType" />
+          <EntitySet Name="fsSites" EntityType="Self.fsSite" />
+          <EntitySet Name="DataPollingExecutionTimes" EntityType="Self.DataPollingExecutionTime" />
+          <EntitySet Name="FactffCompletions" EntityType="Self.FactffCompletion" />
+          <EntitySet Name="FactffDefects" EntityType="Self.FactffDefect" />
+          <EntitySet Name="RTYbyDays" EntityType="Self.RTYbyDay" />
+          <EntitySet Name="SpeedMeasures" EntityType="Self.SpeedMeasure" />
+          <AssociationSet Name="FK_Bucket" Association="Self.FK_Bucket">
+            <End Role="DimBucket" EntitySet="DimBuckets" />
+            <End Role="DimStationType" EntitySet="DimStationTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessType" Association="Self.FK_ProcessType">
+            <End Role="DimProcessType" EntitySet="DimProcessTypes" />
+            <End Role="DimBucket" EntitySet="DimBuckets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DimBuilding_DimFacility" Association="Self.FK_DimBuilding_DimFacility">
+            <End Role="DimFacility" EntitySet="DimFacilities" />
+            <End Role="DimBuilding" EntitySet="DimBuildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DimModule_DimBuilding" Association="Self.FK_DimModule_DimBuilding">
+            <End Role="DimBuilding" EntitySet="DimBuildings" />
+            <End Role="DimModule" EntitySet="DimModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessPartner" Association="Self.FK_BusinessPartner">
+            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartners" />
+            <End Role="DimProductLine" EntitySet="DimProductLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CostCenter" Association="Self.FK_CostCenter">
+            <End Role="DimCostCenter" EntitySet="DimCostCenters" />
+            <End Role="DimBusinessUnit" EntitySet="DimBusinessUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country" Association="Self.FK_Country">
+            <End Role="DimCountry" EntitySet="DimCountries" />
+            <End Role="DimFacility" EntitySet="DimFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region" Association="Self.FK_Region">
+            <End Role="DimRegion" EntitySet="DimRegions" />
+            <End Role="DimCountry" EntitySet="DimCountries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FFInstance" Association="Self.FK_FFInstance">
+            <End Role="DimFFInstance" EntitySet="DimFFInstances" />
+            <End Role="DimProductNumber" EntitySet="DimProductNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Module" Association="Self.FK_Module">
+            <End Role="DimModule" EntitySet="DimModules" />
+            <End Role="DimFFInstance" EntitySet="DimFFInstances" />
+          </AssociationSet>
+          <AssociationSet Name="fk_station_name" Association="Self.fk_station_name">
+            <End Role="DimPhysicalStation" EntitySet="DimPhysicalStations" />
+            <End Role="FactffFirstPass" EntitySet="FactffFirstPasses" />
+          </AssociationSet>
+          <AssociationSet Name="fk_stationtype" Association="Self.fk_stationtype">
+            <End Role="DimStationType" EntitySet="DimStationTypes" />
+            <End Role="DimPhysicalStation" EntitySet="DimPhysicalStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductLine" Association="Self.FK_ProductLine">
+            <End Role="DimProductLine" EntitySet="DimProductLines" />
+            <End Role="DimProductNumber" EntitySet="DimProductNumbers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FFCube2ModelStoreContainer" CdmEntityContainer="FFCube2Entities">
+          <EntitySetMapping Name="DimBuckets">
+            <EntityTypeMapping TypeName="FFCube2Model.DimBucket">
+              <MappingFragment StoreEntitySet="DimBucket">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BucketName" ColumnName="BucketName" />
+                <ScalarProperty Name="KeyProcessType" ColumnName="KeyProcessType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimBuildings">
+            <EntityTypeMapping TypeName="FFCube2Model.DimBuilding">
+              <MappingFragment StoreEntitySet="DimBuilding">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="KeyFacility" ColumnName="KeyFacility" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimBusinessPartners">
+            <EntityTypeMapping TypeName="FFCube2Model.DimBusinessPartner">
+              <MappingFragment StoreEntitySet="DimBusinessPartner">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BusinessPartnerName" ColumnName="BusinessPartnerName" />
+                <ScalarProperty Name="BPCode" ColumnName="BPCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimBusinessUnits">
+            <EntityTypeMapping TypeName="FFCube2Model.DimBusinessUnit">
+              <MappingFragment StoreEntitySet="DimBusinessUnit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BusinessUnitName" ColumnName="BusinessUnitName" />
+                <ScalarProperty Name="KeyCostCenter" ColumnName="KeyCostCenter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimCostCenters">
+            <EntityTypeMapping TypeName="FFCube2Model.DimCostCenter">
+              <MappingFragment StoreEntitySet="DimCostCenter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimCountries">
+            <EntityTypeMapping TypeName="FFCube2Model.DimCountry">
+              <MappingFragment StoreEntitySet="DimCountry">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="KeyRegion" ColumnName="KeyRegion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimDatetimes">
+            <EntityTypeMapping TypeName="FFCube2Model.DimDatetime">
+              <MappingFragment StoreEntitySet="DimDatetime">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="DatetimeName" ColumnName="DatetimeName" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Hour" ColumnName="Hour" />
+                <ScalarProperty Name="QtrHour" ColumnName="QtrHour" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="DateName" ColumnName="DateName" />
+                <ScalarProperty Name="MonthNo" ColumnName="MonthNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimFacilities">
+            <EntityTypeMapping TypeName="FFCube2Model.DimFacility">
+              <MappingFragment StoreEntitySet="DimFacility">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="KeyCountry" ColumnName="KeyCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimFFInstances">
+            <EntityTypeMapping TypeName="FFCube2Model.DimFFInstance">
+              <MappingFragment StoreEntitySet="DimFFInstance">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="DataSourceName" ColumnName="DataSourceName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="DataFilePrefix" ColumnName="DataFilePrefix" />
+                <ScalarProperty Name="ReplicationDelayMinute" ColumnName="ReplicationDelayMinute" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="KeyModule" ColumnName="KeyModule" />
+                <ScalarProperty Name="ITContactName" ColumnName="ITContactName" />
+                <ScalarProperty Name="ITPhone" ColumnName="ITPhone" />
+                <ScalarProperty Name="ITEmail" ColumnName="ITEmail" />
+                <ScalarProperty Name="QAContactName" ColumnName="QAContactName" />
+                <ScalarProperty Name="QAPhone" ColumnName="QAPhone" />
+                <ScalarProperty Name="QAEmail" ColumnName="QAEmail" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="BaanCoNo" ColumnName="BaanCoNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimFinancialCompanies">
+            <EntityTypeMapping TypeName="FFCube2Model.DimFinancialCompany">
+              <MappingFragment StoreEntitySet="DimFinancialCompany">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FinancialCompanyName" ColumnName="FinancialCompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimModules">
+            <EntityTypeMapping TypeName="FFCube2Model.DimModule">
+              <MappingFragment StoreEntitySet="DimModule">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="KeyBuilding" ColumnName="KeyBuilding" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimPhysicalStations">
+            <EntityTypeMapping TypeName="FFCube2Model.DimPhysicalStation">
+              <MappingFragment StoreEntitySet="DimPhysicalStation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StationName" ColumnName="StationName" />
+                <ScalarProperty Name="HostAlias" ColumnName="HostAlias" />
+                <ScalarProperty Name="CPUMegaHertz" ColumnName="CPUMegaHertz" />
+                <ScalarProperty Name="MemorySize" ColumnName="MemorySize" />
+                <ScalarProperty Name="KeyStationType" ColumnName="KeyStationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimProcessTypes">
+            <EntityTypeMapping TypeName="FFCube2Model.DimProcessType">
+              <MappingFragment StoreEntitySet="DimProcessType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ProcessTypeName" ColumnName="ProcessTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimProductLines">
+            <EntityTypeMapping TypeName="FFCube2Model.DimProductLine">
+              <MappingFragment StoreEntitySet="DimProductLine">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ProductLineName" ColumnName="ProductLineName" />
+                <ScalarProperty Name="KeyBusinessPartner" ColumnName="KeyBusinessPartner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimProductNumbers">
+            <EntityTypeMapping TypeName="FFCube2Model.DimProductNumber">
+              <MappingFragment StoreEntitySet="DimProductNumber">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+                <ScalarProperty Name="ProductRevision" ColumnName="ProductRevision" />
+                <ScalarProperty Name="KeyProductLine" ColumnName="KeyProductLine" />
+                <ScalarProperty Name="KeyFFInstance" ColumnName="KeyFFInstance" />
+                <ScalarProperty Name="KeySite" ColumnName="KeySite" />
+                <ScalarProperty Name="KeyBP" ColumnName="KeyBP" />
+                <ScalarProperty Name="KeyPartFamily" ColumnName="KeyPartFamily" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimRegions">
+            <EntityTypeMapping TypeName="FFCube2Model.DimRegion">
+              <MappingFragment StoreEntitySet="DimRegion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimStationTypes">
+            <EntityTypeMapping TypeName="FFCube2Model.DimStationType">
+              <MappingFragment StoreEntitySet="DimStationType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StationTypeName" ColumnName="StationTypeName" />
+                <ScalarProperty Name="KeyBucket" ColumnName="KeyBucket" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FFInstanceID" ColumnName="FFInstanceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactffFirstPasses">
+            <EntityTypeMapping TypeName="FFCube2Model.FactffFirstPass">
+              <MappingFragment StoreEntitySet="FactffFirstPass">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="KeyProductNumber" ColumnName="KeyProductNumber" />
+                <ScalarProperty Name="KeyStartTime" ColumnName="KeyStartTime" />
+                <ScalarProperty Name="KeyEndTime" ColumnName="KeyEndTime" />
+                <ScalarProperty Name="KeyStationType" ColumnName="KeyStationType" />
+                <ScalarProperty Name="KeyStationName" ColumnName="KeyStationName" />
+                <ScalarProperty Name="TotalTestCount" ColumnName="TotalTestCount" />
+                <ScalarProperty Name="FirstPassCount" ColumnName="FirstPassCount" />
+                <ScalarProperty Name="ProductFPY" ColumnName="ProductFPY" />
+                <ScalarProperty Name="ProductRTY" ColumnName="ProductRTY" />
+                <ScalarProperty Name="ProductionLine" ColumnName="ProductionLine" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+                <ScalarProperty Name="ProdAvgFPY" ColumnName="ProdAvgFPY" />
+                <ScalarProperty Name="StationTypeFPY" ColumnName="StationTypeFPY" />
+                <ScalarProperty Name="FFInstanceID" ColumnName="FFInstanceID" />
+                <ScalarProperty Name="PartIsUnit" ColumnName="PartIsUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CISTestResultSets">
+            <EntityTypeMapping TypeName="FFCube2Model.CISTestResultSet">
+              <MappingFragment StoreEntitySet="CISTestResultSet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="BaaNCompanyCode" ColumnName="BaaNCompanyCode" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="TestID" ColumnName="TestID" />
+                <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+                <ScalarProperty Name="PartRevision" ColumnName="PartRevision" />
+                <ScalarProperty Name="StationName" ColumnName="StationName" />
+                <ScalarProperty Name="StationType" ColumnName="StationType" />
+                <ScalarProperty Name="LineName" ColumnName="LineName" />
+                <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+                <ScalarProperty Name="TestGeneration" ColumnName="TestGeneration" />
+                <ScalarProperty Name="TestTime" ColumnName="TestTime" />
+                <ScalarProperty Name="DataRecvTime" ColumnName="DataRecvTime" />
+                <ScalarProperty Name="ProcessStatus" ColumnName="ProcessStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ffParts">
+            <EntityTypeMapping TypeName="FFCube2Model.ffPart">
+              <MappingFragment StoreEntitySet="ffPart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="PartID" ColumnName="PartID" />
+                <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ffStations">
+            <EntityTypeMapping TypeName="FFCube2Model.ffStation">
+              <MappingFragment StoreEntitySet="ffStation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="StationTypeID" ColumnName="StationTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ffStationTypes">
+            <EntityTypeMapping TypeName="FFCube2Model.ffStationType">
+              <MappingFragment StoreEntitySet="ffStationType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="StationTypeID" ColumnName="StationTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fsSites">
+            <EntityTypeMapping TypeName="FFCube2Model.fsSite">
+              <MappingFragment StoreEntitySet="fsSite">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataPollingExecutionTimes">
+            <EntityTypeMapping TypeName="FFCube2Model.DataPollingExecutionTime">
+              <MappingFragment StoreEntitySet="DataPollingExecutionTime">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="NoOfRecords" ColumnName="NoOfRecords" />
+                <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
+                <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactffCompletions">
+            <EntityTypeMapping TypeName="FFCube2Model.FactffCompletion">
+              <MappingFragment StoreEntitySet="FactffCompletions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="KeyStartTime" ColumnName="KeyStartTime" />
+                <ScalarProperty Name="KeyFFInstance" ColumnName="KeyFFInstance" />
+                <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+                <ScalarProperty Name="InProgress" ColumnName="InProgress" />
+                <ScalarProperty Name="Finished" ColumnName="Finished" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="ProductionOrder" ColumnName="ProductionOrder" />
+                <ScalarProperty Name="ProductionLine" ColumnName="ProductionLine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactffDefects">
+            <EntityTypeMapping TypeName="FFCube2Model.FactffDefect">
+              <MappingFragment StoreEntitySet="FactffDefect">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="KeyProductNumber" ColumnName="KeyProductNumber" />
+                <ScalarProperty Name="KeyStartTime" ColumnName="KeyStartTime" />
+                <ScalarProperty Name="KeyStationType" ColumnName="KeyStationType" />
+                <ScalarProperty Name="KeyStationName" ColumnName="KeyStationName" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+                <ScalarProperty Name="IsUnit" ColumnName="IsUnit" />
+                <ScalarProperty Name="DefectCode" ColumnName="DefectCode" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="ProductionOrderNo" ColumnName="ProductionOrderNo" />
+                <ScalarProperty Name="FFInstance" ColumnName="FFInstance" />
+                <ScalarProperty Name="ComponentNo" ColumnName="ComponentNo" />
+                <ScalarProperty Name="KeyDefectTime" ColumnName="KeyDefectTime" />
+                <ScalarProperty Name="KeyTestDate" ColumnName="KeyTestDate" />
+                <ScalarProperty Name="DefectLocation" ColumnName="DefectLocation" />
+                <ScalarProperty Name="ComponentDescription" ColumnName="ComponentDescription" />
+                <ScalarProperty Name="ProductionLine" ColumnName="ProductionLine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RTYbyDays">
+            <EntityTypeMapping TypeName="FFCube2Model.RTYbyDay">
+              <MappingFragment StoreEntitySet="RTYbyDay">
+                <ScalarProperty Name="RTYDate" ColumnName="RTYDate" />
+                <ScalarProperty Name="BusinessPartner" ColumnName="BusinessPartner" />
+                <ScalarProperty Name="StationBucket" ColumnName="StationBucket" />
+                <ScalarProperty Name="PartFamilyID" ColumnName="PartFamilyID" />
+                <ScalarProperty Name="RTY" ColumnName="RTY" />
+                <ScalarProperty Name="RTYYear" ColumnName="RTYYear" />
+                <ScalarProperty Name="RTYMonth" ColumnName="RTYMonth" />
+                <ScalarProperty Name="RTYDay" ColumnName="RTYDay" />
+                <ScalarProperty Name="MonthNo" ColumnName="MonthNo" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="ProdVol" ColumnName="ProdVol" />
+                <ScalarProperty Name="TopFPYStationName5" ColumnName="TopFPYStationName5" />
+                <ScalarProperty Name="TopFPY5" ColumnName="TopFPY5" />
+                <ScalarProperty Name="TopFPYStationName4" ColumnName="TopFPYStationName4" />
+                <ScalarProperty Name="TopFPY4" ColumnName="TopFPY4" />
+                <ScalarProperty Name="TopFPYStationName3" ColumnName="TopFPYStationName3" />
+                <ScalarProperty Name="TopFPY3" ColumnName="TopFPY3" />
+                <ScalarProperty Name="TopFPYStationName2" ColumnName="TopFPYStationName2" />
+                <ScalarProperty Name="TopFPY2" ColumnName="TopFPY2" />
+                <ScalarProperty Name="TopFPYStationName1" ColumnName="TopFPYStationName1" />
+                <ScalarProperty Name="TopFPY1" ColumnName="TopFPY1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpeedMeasures">
+            <EntityTypeMapping TypeName="FFCube2Model.SpeedMeasure">
+              <MappingFragment StoreEntitySet="SpeedMeasure">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+                <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+                <ScalarProperty Name="NoRecords" ColumnName="NoRecords" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

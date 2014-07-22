@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86a7909adfca46ecafcab9ddb898ca8e" Name="Diagram1">
+        <EntityTypeShape EntityType="FFCube2Model.DimBucket" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimBuilding" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimBusinessPartner" Width="1.75" PointX="18.875" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimBusinessUnit" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimCostCenter" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimCountry" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimDatetime" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimFacility" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimFFInstance" Width="1.5" PointX="12" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimFinancialCompany" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimModule" Width="1.5" PointX="9.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimPhysicalStation" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimProcessType" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimProductLine" Width="1.625" PointX="16.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimProductNumber" Width="1.875" PointX="14.125" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimRegion" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DimStationType" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.FactffFirstPass" Width="1.5" PointX="9.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.CISTestResultSet" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.ffPart" Width="1.5" PointX="0.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.ffStation" Width="1.5" PointX="2" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.ffStationType" Width="1.375" PointX="3.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.fsSite" Width="1.5" PointX="3.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.DataPollingExecutionTime" Width="1.5" PointX="0.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.FactffCompletion" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.FactffDefect" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.RTYbyDay" Width="1.5" PointX="15.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FFCube2Model.SpeedMeasure" Width="1.5" PointX="2.125" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="FFCube2Model.FK_Bucket" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_ProcessType" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_DimBuilding_DimFacility" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_DimModule_DimBuilding" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_BusinessPartner" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_CostCenter" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_Region" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_FFInstance" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_Module" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.fk_station_name" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.fk_stationtype" ManuallyRouted="false" />
+        <AssociationConnector Association="FFCube2Model.FK_ProductLine" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
