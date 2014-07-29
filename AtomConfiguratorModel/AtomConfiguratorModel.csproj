@@ -143,10 +143,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BuildingController.cs" />
+    <Compile Include="Models\BuildingsController.cs" />
     <Compile Include="Models\CISTestResultSet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModulesController.cs" />
+    <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\DataPollingExecutionTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -295,6 +297,11 @@
     <Content Include="Scripts\DropDown.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -350,8 +357,16 @@
     <Content Include="Views\DimFFInstance\Edit.cshtml" />
     <Content Include="Views\DimFFInstance\Index.cshtml" />
     <Content Include="Views\DimFacility\FacilityForm.cshtml" />
-    <Content Include="Views\Building\Details.cshtml" />
-    <Content Include="Views\Building\Index.cshtml" />
+    <Content Include="Views\Modules\Create.cshtml" />
+    <Content Include="Views\Modules\Delete.cshtml" />
+    <Content Include="Views\Modules\Details.cshtml" />
+    <Content Include="Views\Modules\Edit.cshtml" />
+    <Content Include="Views\Modules\Index.cshtml" />
+    <Content Include="Views\Buildings\Create.cshtml" />
+    <Content Include="Views\Buildings\Delete.cshtml" />
+    <Content Include="Views\Buildings\Details.cshtml" />
+    <Content Include="Views\Buildings\Edit.cshtml" />
+    <Content Include="Views\Buildings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

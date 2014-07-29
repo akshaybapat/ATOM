@@ -19,9 +19,10 @@ namespace AtomConfiguratorModel.Models
         {
             this.DimBuildings = new HashSet<DimBuilding>();
         }
-    
+      
         public int id { get; set; }
         [Display(Name = "Site")]
+        [MustBeSelectedAttribute(ErrorMessage = "Please Select Facility")] 
         public string SiteName { get; set; }
         [Display(Name = "Country")]
         public Nullable<int> KeyCountry { get; set; }

@@ -20,9 +20,10 @@ namespace AtomConfiguratorModel.Models
         {
             this.DimCountries = new HashSet<DimCountry>();
         }
-    
-        public int id { get; set; }
 
+       
+        public int id { get; set; }
+          [MustBeSelectedAttribute(ErrorMessage = "Please Select Region")] 
          [Display(Name = "Region")]
         public string RegionName { get; set; }
     

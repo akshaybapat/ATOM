@@ -9,112 +9,112 @@ using System.Web.Mvc;
 
 namespace AtomConfiguratorModel.Models
 {
-    public class DimCountryController : Controller
+    public class ModulesController : Controller
     {
         private FFCube2Entities db = new FFCube2Entities();
 
-        // GET: /DimCountry/
+        // GET: Modules
         public ActionResult Index()
         {
-            var dimcountries = db.DimCountries.Include(d => d.DimRegion);
-            return View(dimcountries.ToList());
+            var dimModules = db.DimModules.Include(d => d.DimBuilding);
+            return View(dimModules.ToList());
         }
 
-        // GET: /DimCountry/Details/5
+        // GET: Modules/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DimCountry dimcountry = db.DimCountries.Find(id);
-            if (dimcountry == null)
+            DimModule dimModule = db.DimModules.Find(id);
+            if (dimModule == null)
             {
                 return HttpNotFound();
             }
-            return View(dimcountry);
+            return View(dimModule);
         }
 
-        // GET: /DimCountry/Create
+        // GET: Modules/Create
         public ActionResult Create()
         {
-            ViewBag.KeyRegion = new SelectList(db.DimRegions, "id", "RegionName");
+            ViewBag.KeyBuilding = new SelectList(db.DimBuildings, "id", "BuildingName");
             return View();
         }
 
-        // POST: /DimCountry/Create
+        // POST: Modules/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="id,CountryName,KeyRegion")] DimCountry dimcountry)
+        public ActionResult Create([Bind(Include = "id,ModuleName,KeyBuilding")] DimModule dimModule)
         {
             if (ModelState.IsValid)
             {
-                db.DimCountries.Add(dimcountry);
+                db.DimModules.Add(dimModule);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.KeyRegion = new SelectList(db.DimRegions, "id", "RegionName", dimcountry.KeyRegion);
-            return View(dimcountry);
+            ViewBag.KeyBuilding = new SelectList(db.DimBuildings, "id", "BuildingName", dimModule.KeyBuilding);
+            return View(dimModule);
         }
 
-        // GET: /DimCountry/Edit/5
+        // GET: Modules/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DimCountry dimcountry = db.DimCountries.Find(id);
-            if (dimcountry == null)
+            DimModule dimModule = db.DimModules.Find(id);
+            if (dimModule == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.KeyRegion = new SelectList(db.DimRegions, "id", "RegionName", dimcountry.KeyRegion);
-            return View(dimcountry);
+            ViewBag.KeyBuilding = new SelectList(db.DimBuildings, "id", "BuildingName", dimModule.KeyBuilding);
+            return View(dimModule);
         }
 
-        // POST: /DimCountry/Edit/5
+        // POST: Modules/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="id,CountryName,KeyRegion")] DimCountry dimcountry)
+        public ActionResult Edit([Bind(Include = "id,ModuleName,KeyBuilding")] DimModule dimModule)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dimcountry).State = EntityState.Modified;
+                db.Entry(dimModule).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.KeyRegion = new SelectList(db.DimRegions, "id", "RegionName", dimcountry.KeyRegion);
-            return View(dimcountry);
+            ViewBag.KeyBuilding = new SelectList(db.DimBuildings, "id", "BuildingName", dimModule.KeyBuilding);
+            return View(dimModule);
         }
 
-        // GET: /DimCountry/Delete/5
+        // GET: Modules/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DimCountry dimcountry = db.DimCountries.Find(id);
-            if (dimcountry == null)
+            DimModule dimModule = db.DimModules.Find(id);
+            if (dimModule == null)
             {
                 return HttpNotFound();
             }
-            return View(dimcountry);
+            return View(dimModule);
         }
 
-        // POST: /DimCountry/Delete/5
+        // POST: Modules/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DimCountry dimcountry = db.DimCountries.Find(id);
-            db.DimCountries.Remove(dimcountry);
+            DimModule dimModule = db.DimModules.Find(id);
+            db.DimModules.Remove(dimModule);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -128,28 +128,33 @@ namespace AtomConfiguratorModel.Models
             base.Dispose(disposing);
         }
 
-        // GET: /DimCountry/CountryList
-        public ActionResult CountryList(String id)
+
+        // GET: /Modules/ModulesList
+        public ActionResult ModulesList(String id)
         {
-            String RegionName = id;
 
-            var RegionID = from r in db.DimRegions
-                           where r.RegionName.Equals(RegionName)
-                           select r.id;
+            IEnumerable<DimModule> modules = new List<DimModule>();
 
-            var countries = from r in db.DimCountries
-                            where r.KeyRegion == RegionID.FirstOrDefault()
-                            select r.CountryName;
+            String BuildingName = id;
+
+            var BuildingID = from r in db.DimBuildings where r.BuildingName.Equals(BuildingName) select r.id;
+
+            var query = db.DimModules.Where(x => x.KeyBuilding == BuildingID.FirstOrDefault()).ToList();
+
+            modules = query.Select(x =>
+                        new DimModule()
+                        {
+                            ModuleName = x.ModuleName,
+                        });
 
             if (HttpContext.Request.IsAjaxRequest())
+            {
+                return Json(modules, JsonRequestBehavior.AllowGet);
+            }
 
-                return Json(new SelectList(
-                                countries.ToList())
-                           , JsonRequestBehavior.AllowGet);
 
             return RedirectToAction("Index");
         }
-
 
     }
 }

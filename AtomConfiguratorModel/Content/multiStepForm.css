@@ -35,7 +35,7 @@ body {
 	
 	box-sizing: border-box;
 	width: 80%;
-	margin: 0 10%;
+	margin: 50px 10%;
 	
 	/*stacking fieldsets above each other*/
 	position: absolute;
@@ -45,6 +45,7 @@ body {
 	display: none;
 }
 /*inputs*/
+/*
 #msform input, #msform textarea {
 	padding: 15px;
 	border: 1px solid #ccc;
@@ -56,6 +57,7 @@ body {
 	color: #2C3E50;
 	font-size: 13px;
 }
+    */
 /*buttons*/
 #msform .action-button {
 	width: 100px;
@@ -69,8 +71,26 @@ body {
 	margin: 10px 5px;
 }
 #msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #0099FF;
 }
+
+.form-crud
+{
+width: 480px; 
+margin-top: 50px; 
+margin-left: auto; 
+margin-right: auto; 
+text-align: center; 
+position: relative; 
+background: white; 	
+border: 0 none; 
+border-radius: 3px; 
+box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
+padding: 20px 30px; 
+box-sizing: border-box;
+}
+
+
 /*headings*/
 .fs-title {
 	font-size: 15px;

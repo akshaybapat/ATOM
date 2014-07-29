@@ -12,7 +12,7 @@ namespace AtomConfiguratorModel.Models
     public class DimFacilityController : Controller
     {
         private FFCube2Entities db = new FFCube2Entities();
-
+        
         // GET: /DimFacility/
         public ActionResult Index()
         {
@@ -131,47 +131,14 @@ namespace AtomConfiguratorModel.Models
         // GET: /DimFacility/FacilityForm
         public ActionResult FacilityForm()
         {
-            //var dimfacilities = db.DimFacilities.Include(d => d.DimCountry);
-            /*
-            ViewBag.KeyRegion = new SelectList(db.DimRegions, "id", "RegionName");
-            ViewBag.KeyCountry = new SelectList(db.DimCountries, "id", "CountryName");
-            ViewBag.KeyFacility = new SelectList(db.DimFacilities, "id", "SiteName");
-             
-            */
+       
+            ViewBag.KeyRegion = (from r in db.DimRegions
+            select r.RegionName).Distinct();
+                                   
+            SiteModel site = new SiteModel();
 
-                        ViewBag.KeyRegion = (from r in db.DimRegions
-                                 select r.RegionName).Distinct();
-
-                        ViewBag.KeyCountry = (from r in db.DimCountries
-                                 select r.CountryName).Distinct();
-                                 
-                        ViewBag.KeyFacility = (from r in db.DimFacilities
-                                 select r.SiteName).Distinct();
-                
-            return View();
+            return View(site);
         }
-
-        // GET: /DimFacility/CountryList
-        public ActionResult CountryList(String id) {
-            String RegionName = id;
-
-                     var RegionID = from r in db.DimRegions
-                           where r.RegionName.Equals(RegionName)
-                          select r.id;
-
-                     var countries = from r in db.DimCountries
-                            where r.KeyRegion == RegionID.FirstOrDefault()
-                            select r.CountryName ;
-
-                        if (HttpContext.Request.IsAjaxRequest()) ;
-                
-                return Json(new SelectList(
-                                countries.ToList())
-                           , JsonRequestBehavior.AllowGet); 
-
-                 return RedirectToAction("Index");
-        }
-
 
         // GET: /DimFacility/FacilityList
         public ActionResult FacilityList(String id)
@@ -186,7 +153,7 @@ namespace AtomConfiguratorModel.Models
                             where r.KeyCountry == CountryID.FirstOrDefault()
                             select r.SiteName;
 
-            if (HttpContext.Request.IsAjaxRequest()) ;
+            if (HttpContext.Request.IsAjaxRequest()) 
 
             return Json(new SelectList(
                             facilities.ToList())
@@ -194,7 +161,7 @@ namespace AtomConfiguratorModel.Models
 
             return RedirectToAction("Index");
         }
-
+        
 
     }
 }

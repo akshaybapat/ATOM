@@ -7,18 +7,18 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "DimCountry", FormMethod.Post, new { @class = "form-crud" })) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    <div>
         <h4>DimCountry</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
             @Html.LabelFor(model => model.CountryName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div>
                 @Html.EditorFor(model => model.CountryName)
                 @Html.ValidationMessageFor(model => model.CountryName)
             </div>
@@ -26,7 +26,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.KeyRegion, "KeyRegion", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div>
                 @Html.DropDownList("KeyRegion", String.Empty)
                 @Html.ValidationMessageFor(model => model.KeyRegion)
             </div>
@@ -34,15 +34,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
     </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

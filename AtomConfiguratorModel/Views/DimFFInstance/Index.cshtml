@@ -4,132 +4,135 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="form-crud">
+    <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DataSourceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HostName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DatabaseName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProjectName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataFilePrefix)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReplicationDelayMinute)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ITContactName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ITPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ITEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QAContactName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QAPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QAEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SiteName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BaanCoNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DimModule.ModuleName)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataSourceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HostName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatabaseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFilePrefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReplicationDelayMinute)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QAContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QAPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QAEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaanCoNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DimModule.ModuleName)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataSourceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HostName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatabaseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataFilePrefix)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReplicationDelayMinute)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ITContactName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ITPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ITEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QAContactName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QAPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QAEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SiteName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BaanCoNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DimModule.ModuleName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataSourceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HostName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatabaseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataFilePrefix)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReplicationDelayMinute)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QAContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QAPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QAEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaanCoNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DimModule.ModuleName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
