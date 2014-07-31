@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html style="background: url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG');">
+<html style="height: 100%; background: linear-gradient(rgba(36, 175, 255, 0.3), rgba(0, 15, 36, 0.3)),url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG');">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -9,28 +9,61 @@
     <link rel=StyleSheet href="../Content/multiStepForm.css" type="text/css">
     <style>
         .form-crud {
-            width: 480px; margin-top: 50px; margin-left: auto; margin-right: auto; text-align: center; position: relative; background: white; 	border: 0 none; border-radius: 3px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box;
+            width: 480px; margin-top: 50px; margin-left: auto; margin-right: auto; text-align: center; position: relative; background: white; 	border: 0 none; border-radius: 5px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; opacity: 0.9; filter: alpha(opacity=90); 
         }
+        tr,th,tr
+        {
+            text-align:center;
+        }
+        .list-large
+        {
+            width: auto; width: 90%; margin-top:100px;
+        }
+         .list-medium
+        {
+            width: auto; width: 60%; margin-top:100px;
+        }
+         .list-small
+        {
+            width: auto; width: 30%; margin-top:100px;
+        }
+         /* 
+         input, textarea, select {
+	            /*padding: 15px;
+	            border: 1px solid #ccc;
+	            border-radius: 3px;
+	            margin-bottom: 10px;
+	            width: 100%;
+	            box-sizing: border-box;
+                color: #2C3E50;
+	            font-size: 14px;
+            }
+             */
+
+        input, textarea, select {
+            padding: 3px;
+            }
+
     </style>
 </head>
 <body style="margin:0; padding:0; height:0;">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Flextronics ATOM", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
-            </div>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(#04519b, #044687 60%, #033769);">
+        <div class=" container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Flextronics ATOM", "Index", "Home", null, new { @class = "navbar-brand" })
         </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+            </ul>
+        </div>
+    </div>
     </div>
     <div>
     <!--<div id="msform" class="form-horizontal">-->

@@ -4,38 +4,39 @@
     ViewBag.Title = "Index";
 }
 
-<div class="form-crud">
-<h2>Index</h2>
+<div class="form-crud list-large">
+<h2>List of Business Units</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BusinessUnitName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DimCostCenter.CostCenter)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table table table-hover table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessUnitName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DimCostCenter.CostCenter)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BusinessUnitName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DimCostCenter.CostCenter)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessUnitName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DimCostCenter.CostCenter)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
 </div>

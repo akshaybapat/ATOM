@@ -14,5 +14,10 @@ namespace AtomConfiguratorModel.Controllers
 
             return View();
         }
+
+        public ActionResult Front()
+        {
+            return View();
+        }
     }
 }

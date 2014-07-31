@@ -4,18 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<div class="form-crud">
-    <h2>Index</h2>
+<div class="form-crud list-small">
+    <h2>List of Financial Companies</h2>
 
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
+    <table class="table table table-hover table-bordered table-condensed">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FinancialCompanyName)
             </th>
-            <th></th>
+            <th>
+                Functions
+            </th>
         </tr>
 
         @foreach (var item in Model)

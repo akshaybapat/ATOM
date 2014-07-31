@@ -1,0 +1,47 @@
+﻿@model AtomConfiguratorModel.Models.DimBuilding
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "DimBuilding", FormMethod.Post, new { @class = "form-crud" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>DimBuilding</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BuildingName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.EditorFor(model => model.BuildingName)
+                @Html.ValidationMessageFor(model => model.BuildingName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KeyFacility, "KeyFacility", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.DropDownList("KeyFacility", String.Empty)
+                @Html.ValidationMessageFor(model => model.KeyFacility)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+
+
