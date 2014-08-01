@@ -148,7 +148,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DimBuildingsController.cs" />
-    <Compile Include="Models\ModulesController.cs" />
+    <Compile Include="Models\DimModulesController.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\DataPollingExecutionTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -365,11 +365,11 @@
     <Content Include="Views\DimFFInstance\Edit.cshtml" />
     <Content Include="Views\DimFFInstance\Index.cshtml" />
     <Content Include="Views\DimFacility\FacilityForm.cshtml" />
-    <Content Include="Views\Modules\Create.cshtml" />
-    <Content Include="Views\Modules\Delete.cshtml" />
-    <Content Include="Views\Modules\Details.cshtml" />
-    <Content Include="Views\Modules\Edit.cshtml" />
-    <Content Include="Views\Modules\Index.cshtml" />
+    <Content Include="Views\DimModules\Create.cshtml" />
+    <Content Include="Views\DimModules\Delete.cshtml" />
+    <Content Include="Views\DimModules\Details.cshtml" />
+    <Content Include="Views\DimModules\Edit.cshtml" />
+    <Content Include="Views\DimModules\Index.cshtml" />
     <Content Include="Views\Buildings\Create.cshtml" />
     <Content Include="Views\Buildings\Delete.cshtml" />
     <Content Include="Views\Buildings\Details.cshtml" />

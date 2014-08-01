@@ -14,9 +14,17 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimBusinessUnit/
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var dimbusinessunits = db.DimBusinessUnits.Include(d => d.DimCostCenter);
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dimbusinessunits = dimbusinessunits.Where(s => s.BusinessUnitName.Contains(searchString));
+               
+            } 
+
             return View(dimbusinessunits.ToList());
         }
 

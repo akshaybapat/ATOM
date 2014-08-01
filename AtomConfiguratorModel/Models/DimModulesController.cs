@@ -9,14 +9,21 @@ using System.Web.Mvc;
 
 namespace AtomConfiguratorModel.Models
 {
-    public class ModulesController : Controller
+    public class DimModulesController : Controller
     {
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: Modules
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var dimModules = db.DimModules.Include(d => d.DimBuilding);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dimModules = dimModules.Where(s => s.ModuleName.Contains(searchString));
+               
+            } 
+
             return View(dimModules.ToList());
         }
 

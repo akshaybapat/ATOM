@@ -4,11 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<div class="form-crud list-large">
-<h2>List of Business Units</h2>
+<div class="form-crud list-medium">
+<h2>Business Units</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.TextBox("SearchString") <br /><br />
+        <input class="btn btn-success" type="submit" value="Filter" />
+
+    }
+
 </p>
     <table class="table table table-hover table-bordered table-condensed">
         <tr>

@@ -14,9 +14,16 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
         
         // GET: /DimFacility/
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var dimfacilities = db.DimFacilities.Include(d => d.DimCountry);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dimfacilities = dimfacilities.Where(s => s.SiteName.Contains(searchString));
+                
+            } 
+
             return View(dimfacilities.ToList());
         }
 

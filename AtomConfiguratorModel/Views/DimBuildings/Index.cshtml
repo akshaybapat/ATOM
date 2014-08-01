@@ -9,20 +9,24 @@
 
     <p >
         @Html.ActionLink("Create New", "Create")
+        <a style="color:#00ff21" href="@Url.Action("Create")">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="sr-only">Create</span>
+        </a>
 
         @using (Html.BeginForm())
         {
         
-            @Html.TextBox("SearchString") <br /><br />
-            <input class="btn btn-success" type="submit" value="Filter" />
-        
+            @Html.TextBox("SearchString", "", new { placeholder = "Search Building Name", value = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; font-color:#ccc" }) <br /><br />
+            <input id="search" class="btn btn-success" type="submit" value="Filter" />
+            <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
         }
 
 
     </p>
 
-<table class="table table-hover table-bordered table-condensed">
-    <tr>
+<table class="table table-hover table-bordered table-condensed" style="border-radius:5px">
+    <tr id="heading">
         <th>
             @Html.DisplayNameFor(model => model.BuildingName)
         </th>
@@ -42,13 +46,32 @@
         <td>
             @Html.DisplayFor(modelItem => item.DimFacility.SiteName)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
+        <td style="font-size:12px">
+
+            <a href="@Url.Action("Edit", new { id = item.id })">
+                <i style="color:black" class="glyphicon glyphicon-pencil"></i>
+                Edit
+                <span class="sr-only">Edit</span>
+            </a>
+              
+            |
+            <a href="@Url.Action("Details", new { id = item.id })">
+                <i style="color:black" class="glyphicon glyphicon-fullscreen"></i>
+                Details
+                <span class="sr-only">Details</span>
+             
+ 
+            </a>|
+            <a href="@Url.Action("Delete", new { id = item.id })">
+                <i style="color:black" class="glyphicon glyphicon-trash"></i>
+                Delete
+                <span class="sr-only">Delete</span>
+            </a>
+        
+            </td>
     </tr>
 }
 
 </table>
 </div>
+

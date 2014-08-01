@@ -14,8 +14,14 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimBusinessPartner/
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                return View(db.DimBusinessPartners.Where(s => s.BusinessPartnerName.Contains(searchString)));
+            } 
+
             return View(db.DimBusinessPartners.ToList());
         }
 

@@ -9,6 +9,19 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    <a style="color:#00ff21" href="@Url.Action("Create")">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span class="sr-only">Create</span>
+    </a>
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.TextBox("SearchString") <br /><br />
+        <input class="btn btn-success" type="submit" value="Filter" />
+
+    }
+
 </p>
     <table class="table table table-hover table-bordered">
         <tr>
@@ -26,10 +39,23 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.RegionName)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                <td style="font-size:12px">
+                    
+                    <a style="color:#5500ff" href="@Url.Action("Edit", new { id = item.id })">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <span class="sr-only">Edit</span>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                    </a>|
+                    <a style="color:#ff9000" href="@Url.Action("Details", new { id = item.id })">
+                        <i class="glyphicon glyphicon-fullscreen"></i>
+                        <span class="sr-only">Details</span>
+                        @Html.ActionLink("Details", "Details", new { id = item.id })
+                    </a>|
+                    <a style="color:#ff0000"href="@Url.Action("Delete", new { id = item.id })">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        <span class="sr-only">Delete</span></a>
                     @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                        
                 </td>
             </tr>
         }

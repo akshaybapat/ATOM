@@ -9,9 +9,13 @@
     <link rel=StyleSheet href="../Content/multiStepForm.css" type="text/css">
     <style>
         .form-crud {
-            width: 480px; margin-top: 50px; margin-left: auto; margin-right: auto; text-align: center; position: relative; background: white; 	border: 0 none; border-radius: 5px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; opacity: 0.9; filter: alpha(opacity=90); 
+            width: 480px; margin-top: 50px; margin-left: auto; margin-right: auto; text-align: center; position: relative; background: white; 	border: 0 none; border-radius: 15px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; opacity: 0.9; filter: alpha(opacity=90); 
         }
-        tr,th,tr
+        table 
+        {
+        border-radius: 10px;
+        }
+        tr,th,td
         {
             text-align:center;
         }
@@ -27,6 +31,19 @@
         {
             width: auto; width: 30%; margin-top:100px;
         }
+        #heading 
+        {
+            background-color:#dfdfdf; 
+        }
+        #heading:hover
+        {
+            background-color: #dfdfdf;
+        }
+
+        .btn {
+             border-radius: 15px;
+            }
+
          /* 
          input, textarea, select {
 	            /*padding: 15px;
@@ -41,7 +58,11 @@
              */
 
         input, textarea, select {
-            padding: 3px;
+            border: 1px solid rgba(0, 15, 36, 0.3);
+            padding: 3px; 
+            padding-left: 1.5em;
+            padding-right: 0.5em;
+            border-radius: 15px;
             }
 
     </style>
