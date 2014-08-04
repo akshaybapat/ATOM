@@ -13,19 +13,42 @@
         @using (Html.BeginForm())
         {
 
-            @Html.TextBox("SearchString") <br /><br />
-            <input class="btn btn-success" type="submit" value="Filter" />
+            @Html.TextBox("SearchString", "", new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
+            <input id="search" class="btn btn-success" type="submit" value="Filter" />
+            <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
 
         }
 
     </p>
     <table class="table table table-hover table-bordered table-condensed">
-        <tr>
+        <tr id="heading">
             <th>
                 @Html.DisplayNameFor(model => model.CountryName)
+
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Country_Desc" })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "" })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DimRegion.RegionName)
+
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Region_Desc" })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "Region" })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+
             </th>
             <th>
                 Functions
@@ -41,10 +64,28 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DimRegion.RegionName)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                <td style="font-size:12px">
+
+                    <a href="@Url.Action("Edit", new { id = item.id })">
+                        <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
+                        Edit
+                        <span class="sr-only">Edit</span>
+                    </a>
+
+                    |
+                    <a href="@Url.Action("Details", new { id = item.id })">
+                        <i style="color:#ff9000" class="glyphicon glyphicon-fullscreen"></i>
+                        Details
+                        <span class="sr-only">Details</span>
+
+
+                    </a>|
+                    <a href="@Url.Action("Delete", new { id = item.id })">
+                        <i style="color:#ff0000" class="glyphicon glyphicon-trash"></i>
+                        Delete
+                        <span class="sr-only">Delete</span>
+                    </a>
+
                 </td>
             </tr>
         }

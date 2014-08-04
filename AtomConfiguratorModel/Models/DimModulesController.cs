@@ -14,15 +14,35 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: Modules
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var dimModules = db.DimModules.Include(d => d.DimBuilding);
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                dimModules = dimModules.Where(s => s.ModuleName.Contains(searchString));
+                dimModules = dimModules.Where(s => s.ModuleName.ToUpper().Contains(searchString.ToUpper()) || s.DimBuilding.BuildingName.ToUpper().Contains(searchString.ToUpper()));
                
-            } 
+            }
+
+            switch (sortOrder)
+            {
+
+                case "Module_Desc":
+                    dimModules = dimModules.OrderByDescending(s => s.ModuleName);
+                    break;
+
+                case "Building_Desc":
+                    dimModules = dimModules.OrderByDescending(s => s.DimBuilding.BuildingName);
+                    break;
+
+                case "Building":
+                    dimModules = dimModules.OrderBy(s => s.DimBuilding.BuildingName);
+                    break;
+
+                default:
+                    dimModules = dimModules.OrderBy(s => s.ModuleName);
+                    break;
+            }
 
             return View(dimModules.ToList());
         }

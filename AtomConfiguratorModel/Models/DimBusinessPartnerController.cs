@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -14,15 +15,53 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimBusinessPartner/
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var dimBusinessPartners = db.DimBusinessPartners.AsQueryable();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                return View(db.DimBusinessPartners.Where(s => s.BusinessPartnerName.Contains(searchString)));
-            } 
+                dimBusinessPartners = dimBusinessPartners.Where(s => s.BusinessPartnerName.ToUpper().Contains(searchString.ToUpper()) || s.BPCode.ToUpper().Contains(searchString.ToUpper()));
+            }
 
-            return View(db.DimBusinessPartners.ToList());
+            switch (sortOrder)
+            {
+
+                case "BPName_Desc":
+                    dimBusinessPartners = dimBusinessPartners.OrderByDescending(s => s.BusinessPartnerName);
+                    break;
+
+                case "BPCode_Desc":
+                    dimBusinessPartners = dimBusinessPartners.OrderByDescending(s => s.BPCode);
+                    break;
+
+                case "BPCode":
+                    dimBusinessPartners = dimBusinessPartners.OrderBy(s => s.BPCode);
+                    break;
+
+                default:
+                    dimBusinessPartners = dimBusinessPartners.OrderBy(s => s.BusinessPartnerName);
+                    break;
+            }
+
+            //return View(dimBusinessPartners.ToList());
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(dimBusinessPartners.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /DimBusinessPartner/Details/5

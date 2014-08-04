@@ -1,53 +1,104 @@
-﻿@model IEnumerable<AtomConfiguratorModel.Models.DimBusinessPartner>
+﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimBusinessPartner>*@
+@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimBusinessPartner>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-@{
-    ViewBag.Title = "Index";
-}
+    @{
+        ViewBag.Title = "Business Partners";
+    }
 
-<div class="form-crud list-large">
-    <h2>Business Partners</h2>
+    <div class="form-crud list-medium">
+        <h2>Business Partners</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
+        <p>
+            @Html.ActionLink("Create New", "Create")
 
-        @using (Html.BeginForm())
-        {
+            @using (Html.BeginForm("Index", "DimBusinessPartner", FormMethod.Get))
+            {
 
-            @Html.TextBox("SearchString") <br /><br />
-            <input class="btn btn-success" type="submit" value="Filter" />
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
+                <input id="search" class="btn btn-success" type="submit" value="Filter" />
+                <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
 
-        }
+            }
 
-    </p>
-    <table class="table table table-hover table-bordered table-condensed">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessPartnerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BPCode)
-            </th>
-            <th>
-                Functions
-            </th>
-        </tr>
+        </p>
+        <table class="table table table-hover table-bordered table-condensed">
+            <tr id="heading">
+                <th>
+                    @Html.DisplayNameFor(model => model.First().BusinessPartnerName)
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BusinessPartnerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BPCode)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                </td>
+                    <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPName_Desc" })">
+                        <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                        <span class="sr-only">Descending</span>
+                    </a>
+
+                    <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "" })">
+                        <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                        <span class="sr-only">Ascending</span>
+                    </a>
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().BPCode)
+
+                    <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPCode_Desc" })">
+                        <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                        <span class="sr-only">Descending</span>
+                    </a>
+
+                    <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "BPCode" })">
+                        <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                        <span class="sr-only">Ascending</span>
+                    </a>
+
+                </th>
+                <th>
+                    Functions
+                </th>
             </tr>
-        }
 
-    </table>
-</div>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BusinessPartnerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BPCode)
+                    </td>
+                    <td style="font-size:12px">
+
+                        <a href="@Url.Action("Edit", new { id = item.id })">
+                            <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
+                            Edit
+                            <span class="sr-only">Edit</span>
+                        </a>
+
+                        |
+                        <a href="@Url.Action("Details", new { id = item.id })">
+                            <i style="color:#ff9000" class="glyphicon glyphicon-fullscreen"></i>
+                            Details
+                            <span class="sr-only">Details</span>
+
+
+                        </a>|
+                        <a href="@Url.Action("Delete", new { id = item.id })">
+                            <i style="color:#ff0000" class="glyphicon glyphicon-trash"></i>
+                            Delete
+                            <span class="sr-only">Delete</span>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+    </div>

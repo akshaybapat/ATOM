@@ -14,14 +14,29 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimFinancialCompany/
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString)
         {
+
+            var dimFinancialCompanies = db.DimFinancialCompanies.AsQueryable();
+
             if (!String.IsNullOrEmpty(searchString))
             {
-                return View(db.DimFinancialCompanies.Where(s => s.FinancialCompanyName.Contains(searchString)));
-            } 
-            
-            return View(db.DimFinancialCompanies.ToList());
+                dimFinancialCompanies = dimFinancialCompanies.Where(s => s.FinancialCompanyName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch (sortOrder)
+            {
+
+                case "FCName_Desc":
+                    dimFinancialCompanies = dimFinancialCompanies.OrderByDescending(s => s.FinancialCompanyName);
+                    break;
+
+                default:
+                    dimFinancialCompanies = dimFinancialCompanies.OrderBy(s => s.FinancialCompanyName);
+                    break;
+            }
+
+            return View(dimFinancialCompanies.ToList());
         }
 
         // GET: /DimFinancialCompany/Details/5

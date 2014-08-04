@@ -17,8 +17,9 @@
     @using (Html.BeginForm())
     {
 
-        @Html.TextBox("SearchString") <br /><br />
-        <input class="btn btn-success" type="submit" value="Filter" />
+        @Html.TextBox("SearchString", "", new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center;  font-color:#ccc" }) <br /><br />
+        <input id="search" class="btn btn-success" type="submit" value="Filter" />
+        <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
 
     }
 
@@ -27,6 +28,17 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.RegionName)
+
+                <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "Region_Desc" })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "" })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+
             </th>
             <th>
                 Functions

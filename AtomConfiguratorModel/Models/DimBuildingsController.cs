@@ -16,61 +16,33 @@ namespace AtomConfiguratorModel.Models
         // GET: DimBuildings
         public ActionResult Index(string sortOrder,string searchString)
         {
-            DimFacilityController facContr = new DimFacilityController();
-            //facContr.Index()
+            
             var dimBuildings = db.DimBuildings.Include(d => d.DimFacility);
 
-            
             if (!String.IsNullOrEmpty(searchString))
 
             {
-                dimBuildings = dimBuildings.Where(s => s.BuildingName.Contains(searchString));
-               // return View(dimBuildings);
+                dimBuildings = dimBuildings.Where(s => s.BuildingName.ToUpper().Contains(searchString.ToUpper()) || s.DimFacility.SiteName.ToUpper().Contains(searchString.ToUpper()));
             }
 
             switch (sortOrder)
             {
+
                 case "Building_Desc":
                     dimBuildings = dimBuildings.OrderByDescending(s => s.BuildingName);
                     break;
-                case "Facility":
-                    //dimBuildings = dimBuildings.OrderBy(s => s.KeyFacility);
 
-                  var query = from b in dimBuildings
-                              join f in db.DimFacilities on b.KeyFacility equals f.id 
-                              orderby f.SiteName
-                              select b ;
-                                                 
-                               
-                        dimBuildings = query.Select(x =>
-                        new DimBuilding()
-                        {
-                            BuildingName = x.BuildingName,
-                            KeyFacility = x.KeyFacility,
-
-                        });
-                                      
-                    /*
-                    IQueryable<DimFacility> facilities = from building in dimBuildings
-                                 join facility in db.DimFacilities on building.KeyFacility equals facility.id
-                                 orderby building.KeyFacility
-                                 select facility;
-
-                    //dimBuildings = dimBuildings.Where(s => s.BuildingName.Contains(sortOrder));
-                    foreach(var f in facilities)
-                    {
-                        dimBuildings = dimBuildings.Where(s => s.KeyFacility.Equals(f.id)).AsQueryable();
-                    }                           
-                   */
-
+                case "Facility_Desc":
+                    dimBuildings = dimBuildings.OrderByDescending(s => s.DimFacility.SiteName);
                     break;
 
-                   case "Facility_Desc":
-                    dimBuildings = dimBuildings.OrderByDescending(s => s.KeyFacility);
-                    ; break;
+                case "Facility":
+                    dimBuildings = dimBuildings.OrderBy(s => s.DimFacility.SiteName);
+                    break;
+
                 default:
                     dimBuildings = dimBuildings.OrderBy(s => s.BuildingName);
-                    ; break;
+                    break;
             }
 
             return View(dimBuildings.ToList());

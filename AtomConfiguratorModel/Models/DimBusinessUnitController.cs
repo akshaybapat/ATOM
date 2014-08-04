@@ -14,16 +14,36 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimBusinessUnit/
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var dimbusinessunits = db.DimBusinessUnits.Include(d => d.DimCostCenter);
 
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                dimbusinessunits = dimbusinessunits.Where(s => s.BusinessUnitName.Contains(searchString));
+                dimbusinessunits = dimbusinessunits.Where(s => s.BusinessUnitName.ToUpper().Contains(searchString.ToUpper()) || s.DimCostCenter.CostCenter.ToUpper().Contains(searchString.ToUpper()));
                
-            } 
+            }
+
+            switch (sortOrder)
+            {
+
+                case "BUName_Desc":
+                    dimbusinessunits = dimbusinessunits.OrderByDescending(s => s.BusinessUnitName);
+                    break;
+
+                case "CostCenter_Desc":
+                    dimbusinessunits = dimbusinessunits.OrderByDescending(s => s.DimCostCenter.CostCenter);
+                    break;
+
+                case "CostCenter":
+                    dimbusinessunits = dimbusinessunits.OrderBy(s => s.DimCostCenter.CostCenter);
+                    break;
+
+                default:
+                    dimbusinessunits = dimbusinessunits.OrderBy(s => s.BusinessUnitName);
+                    break;
+            }
 
             return View(dimbusinessunits.ToList());
         }

@@ -14,15 +14,35 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
         
         // GET: /DimFacility/
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var dimfacilities = db.DimFacilities.Include(d => d.DimCountry);
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                dimfacilities = dimfacilities.Where(s => s.SiteName.Contains(searchString));
+                dimfacilities = dimfacilities.Where(s => s.SiteName.ToUpper().Contains(searchString.ToUpper()) || s.DimCountry.CountryName.ToUpper().Contains(searchString.ToUpper()));
                 
-            } 
+            }
+
+            switch (sortOrder)
+            {
+
+                case "Facility_Desc":
+                    dimfacilities = dimfacilities.OrderByDescending(s => s.SiteName);
+                    break;
+
+                case "Country_Desc":
+                    dimfacilities = dimfacilities.OrderByDescending(s => s.DimCountry.CountryName);
+                    break;
+
+                case "Country":
+                    dimfacilities = dimfacilities.OrderBy(s => s.DimCountry.CountryName);
+                    break;
+
+                default:
+                    dimfacilities = dimfacilities.OrderBy(s => s.SiteName);
+                    break;
+            }
 
             return View(dimfacilities.ToList());
         }

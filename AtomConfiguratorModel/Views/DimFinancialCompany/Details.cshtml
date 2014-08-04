@@ -20,8 +20,12 @@
 
     </dl>
 
+    <div class="form-actions no-color">
+        <input type="button" class="btn btn-info " value="Edit" onclick="location.href='@Url.Action("Edit", new { id = Model.id })'" />
+    </div>
+    <br />
+
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 
