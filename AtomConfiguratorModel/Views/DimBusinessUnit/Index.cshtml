@@ -1,4 +1,7 @@
-﻿@model IEnumerable<AtomConfiguratorModel.Models.DimBusinessUnit>
+﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimBusinessUnit>*@
+@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimBusinessUnit>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -10,10 +13,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(Html.BeginForm("Index", "DimBusinessUnit", FormMethod.Get)))
     {
 
-        @Html.TextBox("SearchString", "", new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
         <input id="search" class="btn btn-success" type="submit" value="Filter" />
         <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
 
@@ -23,7 +26,7 @@
     <table class="table table table-hover table-bordered table-condensed">
         <tr id="heading">
             <th>
-                @Html.DisplayNameFor(model => model.BusinessUnitName)
+                @Html.DisplayNameFor(model => model.First().BusinessUnitName)
 
                 <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BUName_Desc" })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
@@ -37,7 +40,7 @@
 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DimCostCenter.CostCenter)
+                @Html.DisplayNameFor(model => model.First().DimCostCenter.CostCenter)
 
                 <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "CostCenter_Desc" })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
@@ -89,4 +92,11 @@
         }
 
     </table>
+
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
 </div>

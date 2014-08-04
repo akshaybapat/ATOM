@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -14,8 +15,22 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimBusinessUnit/
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var dimbusinessunits = db.DimBusinessUnits.Include(d => d.DimCostCenter);
 
 
@@ -45,7 +60,10 @@ namespace AtomConfiguratorModel.Models
                     break;
             }
 
-            return View(dimbusinessunits.ToList());
+            //return View(dimbusinessunits.ToList());
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(dimbusinessunits.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /DimBusinessUnit/Details/5

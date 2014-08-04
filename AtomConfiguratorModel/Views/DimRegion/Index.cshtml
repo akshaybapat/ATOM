@@ -1,4 +1,7 @@
-﻿@model IEnumerable<AtomConfiguratorModel.Models.DimRegion>
+﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimRegion>*@
+@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimRegion>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -14,10 +17,10 @@
         <span class="sr-only">Create</span>
     </a>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(Html.BeginForm("Index", "DimRegion", FormMethod.Get)))
     {
 
-        @Html.TextBox("SearchString", "", new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center;  font-color:#ccc" }) <br /><br />
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center;  font-color:#ccc" }) <br /><br />
         <input id="search" class="btn btn-success" type="submit" value="Filter" />
         <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
 
@@ -27,7 +30,7 @@
     <table class="table table table-hover table-bordered">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RegionName)
+                @Html.DisplayNameFor(model => model.First().RegionName)
 
                 <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "Region_Desc" })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
@@ -73,4 +76,11 @@
         }
 
     </table>
+
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
 </div>
