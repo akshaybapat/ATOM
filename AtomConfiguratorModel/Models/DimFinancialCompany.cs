@@ -11,10 +11,12 @@ namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class DimFinancialCompany
     {
         public int id { get; set; }
+        [Display(Name="Financial Company")]
         public string FinancialCompanyName { get; set; }
     }
 }

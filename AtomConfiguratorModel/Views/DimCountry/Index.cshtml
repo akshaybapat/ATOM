@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimCountry>*@
-@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimCountry>
+﻿@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimCountry>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -7,11 +6,15 @@
     ViewBag.Title = "Index";
 }
 
-<div class="form-crud list-medium">
+<div class="form-crud list-small">
     <h2>Countries</h2>
 
     <p>
         @Html.ActionLink("Create New", "Create")
+        <a style="color:#00ff21" href="@Url.Action("Create")">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="sr-only">Create</span>
+        </a>
 
         @using (Html.BeginForm(Html.BeginForm("Index", "DimCountry", FormMethod.Get)))
         {
@@ -28,12 +31,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.First().CountryName)
 
-                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Country_Desc" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Country_Desc", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
                     <span class="sr-only">Descending</span>
                 </a>
 
-                <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet"></i>
                     <span class="sr-only">Ascending</span>
                 </a>
@@ -42,12 +45,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.First().DimRegion.RegionName)
 
-                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Region_Desc" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Region_Desc" , currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
                     <span class="sr-only">Descending</span>
                 </a>
 
-                <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "Region" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Region", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet"></i>
                     <span class="sr-only">Ascending</span>
                 </a>

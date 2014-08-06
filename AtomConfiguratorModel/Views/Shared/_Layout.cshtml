@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html style="height: 100%; background: linear-gradient(rgba(36, 175, 255, 0.3), rgba(0, 15, 36, 0.3)),url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG');">
+<html style="height: 100%; background: url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG');">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -9,12 +9,12 @@
     <link rel=StyleSheet href="../Content/multiStepForm.css" type="text/css">
     <style>
         .form-crud {
-            width: 480px; margin-top: 50px; margin-left: auto; margin-right: auto; text-align: center; position: relative; background: white; 	border: 0 none; border-radius: 15px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; opacity: 0.9; filter: alpha(opacity=90); 
+            min-width:360px; width:480px; margin-top: 50px; margin-left: auto; margin-right: auto; text-align: center; position: relative; background: white; 	border: 0 none; border-radius: 15px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; opacity: 0.9; filter: alpha(opacity=90); 
         }
         table 
         {
-        border-radius: 10px;
-        }
+            border-radius: 10px;
+         }
         tr,th,td
         {
             text-align:center;
@@ -87,15 +87,7 @@
     </div>
     </div>
     <div>
-    <!--<div id="msform" class="form-horizontal">-->
-       <!-- <fieldset> -->
-           <!--  <div class="container body-content"> -->
-            @RenderBody()
-            <!--<hr />-->
-       <!-- </fieldset> -->
-                
-          <!--  </div> -->
-  <!--</div>--> 
+         @RenderBody()
     </div>
     <footer>
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

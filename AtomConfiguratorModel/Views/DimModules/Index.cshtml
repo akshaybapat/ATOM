@@ -1,9 +1,8 @@
-﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimModule>*@
-@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimModule>
+﻿@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimModule>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Modules";
 }
 
 <div class="form-crud list-medium">
@@ -11,8 +10,12 @@
 
     <p>
         @Html.ActionLink("Create New", "Create")
+        <a style="color:#00ff21" href="@Url.Action("Create")">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="sr-only">Create</span>
+        </a>
 
-        @using (Html.BeginForm(Html.BeginForm("Index", "DimModule", FormMethod.Get)))
+        @using (Html.BeginForm(Html.BeginForm("Index", "DimModules", FormMethod.Get)))
         {
 
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = ";border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc;" }) <br /><br />
@@ -27,12 +30,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.First().ModuleName)
 
-                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Module_Desc" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Module_Desc", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
                     <span class="sr-only">Descending</span>
                 </a>
                 
-                <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet"></i>
                     <span class="sr-only">Ascending</span>
                 </a>
@@ -41,12 +44,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.First().DimBuilding.BuildingName)
 
-                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Building_Desc" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Building_Desc", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt">|</i>
                     <span class="sr-only">Descending</span>
                 </a>
 
-                <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "Building" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Building", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet"></i>
                     <span class="sr-only">Ascending</span>
                 </a>

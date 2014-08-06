@@ -9,24 +9,43 @@
     <title>Flextronics ATOM | Home :: w3layouts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
     <link href="../Content/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="../Content/slider.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" type="text/css" href="../Content/magnific-popup.css">
+    <link href="../Content/default.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../Content/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../Content/fonts.css" rel="stylesheet" type="text/css" media="all" />
     <script src="../Scripts/jquery.min.js"></script>
+    <style>
+        .form-crud {
+            width: 80%;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            position: relative;
+            background: white;
+            border: 0 none;
+            border-radius: 15px;
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+            padding: 20px 30px;
+            box-sizing: border-box;
+            opacity: 0.9;
+            filter: alpha(opacity=90);
+        } </style>
 </head>
 <body>
 
     <div class="content" id="home">
-        <div class="header">
+        <!--<div class="header">
             <div class="wrap">
                 <header id="topnav">
                     <nav>
                         <ul>
                             <li class="active"><a href="#home" class="scroll">Home</a></li>
-                            <li><a href="#team" class="scroll">Team</a></li>
-                            <li><a href="#ourstory" class="scroll">Our story</a></li>
-                            <li><a href="#blog" class="scroll">Blog</a></li>
+                            <li><a href="#ourstory" class="scroll">Console</a></li>
                             <li><a href="#contact" class="scroll">Contact</a></li>
                             <div class="clear"> </div>
                         </ul>
@@ -35,6 +54,25 @@
                     <a href="#" id="navbtn">Nav Menu</a>
                     <div class="clear"> </div>
                 </header>
+            </div>
+        </div>-->
+
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(#04519b, #044687 60%, #033769);">
+            <div class=" container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Flextronics ATOM", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                        <li><a href="#ourstory" class="scroll">Console</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-----script------------->
@@ -47,17 +85,17 @@
                     <div class="da-slide">
                         <h2>What is ATOM?</h2>
                         <p>An Enterprise Solution to provide the right data, with the right quality, at the right time, presented in a consistent and flexible way.</p>
-                        <a href="#" class="da-link">Find Out More</a>
+                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
                     </div>
                     <div class="da-slide">
                         <h2>What kind of Data?</h2>
                         <p>KPI data, Operational Reports From Baan, FlexFlow, RPMDSS and other legacy systems.</p>
-                        <a href="#" class="da-link">Find Out More</a>
+                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
                     </div>
                     <div class="da-slide">
                         <h2>Who will consume & maintain the Data?</h2>
-                        <p> Executive Management – KPI’s, Regional / Site Management – KPI’s / Reports, Site Operational staff (including Gold Factory users) – Reports / On-Boarding / Data Maintenance / Data verification </p>
-                        <a href="#" class="da-link">Find Out More</a>
+                        <p> Executive Management – KPI’s, Regional / Site Management – KPI’s / Reports, Site Operational staff (including Gold Factory users) – Reports</p>
+                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
 
                     </div>
 
@@ -87,8 +125,8 @@
         <div class="wrap">
             <div class="section group">
                 <div class="col_1_of_1 span_1_of_1">
-                    <h3>Start proto typing your next project </h3>
-                    <p>Terry Rechardson cardigan whatever gentrify Tumblr,gluten-free shorts craysechlitz solvage DIY sutainable Helvetila sriracha.Benh mi ethical.put abird on it VHS irony bisicle rights slow-card iterally retro-sktebord ugh 90'Helvetic hash tag.Next ketfiyeah cornhole park belly,slow-card schilitz.</p>
+                    <h3>Global Data Configurator </h3>
+                    <p>FlexFlow is a project based application, so each customer-project has its own database where all the data is collected; the data is stored into the production database. Based on this, report database server can contain multiple FF databases.  After the production data is replicated into the reporting database where all the calculations for yield, work in progress, defects, and completions are obtained to avoid impact production performance.</p>
                 </div>
                 <div class="pen">
                     <img src="../Content/images/pen.png">
@@ -100,227 +138,70 @@
     <!---start-our story----->
     <div class="ourstory" id="ourstory">
         <div class="our-story">
-            <h3>Works in any browser </h3>
-            <p>Revolvationary notebook with eco-friendly paper,advanced surface technology and degital sharing integration.</p>
+            <br /><br />
+            <h3>ATOM Functions </h3>
+            <p>Select the task that you wish to perform based on your roles</p>
         </div>
-        <div class="group_2" id="Portfolio">
-            <div class="group_2_items">
-                <div class="wrap">
-                    <div id="owl-demo1" class="owl-carousel">
 
-                        <div class="item">
-                            <div class="carousel">
-                                <div class="group_2_img1">
-                                    <img src="../Content/images/slider2.jpg" alt="">
+        <div  id="Portfolio">
+            <div class=" form-crud wrap">
+                <div >
+
+                    <div id="wrapper">
+                        <div id="featured-wrapper">
+                            <div id="featured" class="extra2 margin-btm container">
+                                <div class="main-title">
+                                    <h2>Task Console</h2>
+                                    <span class="byline"></span>
+                                </div>
+
+                                <div class="ebox1">
+                                    <span class="fa fa-cubes"></span>
+                                    <div>
+                                        <h2>FF Dimension Data Administration</h2>
+                                        <span class="byline">Maintain FFInstance Data</span>
+                                    </div>
+
+                                    <a href="#" class="button">SELECT</a>
+                                </div>
+                                <div class="ebox2">
+                                    <span class="fa fa-bar-chart-o"></span>
+                                    <div>
+                                        <h2>FF Site Adminitration</h2>
+                                        <span class="byline">Maintain Site Data</span>
+                                    </div>
+
+                                    <a href="#" class="button">SELECT</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="carousel">
-                                <div class="group_2_img1">
-                                    <img src="../Content/images/slider3.jpg" alt="">
+                            <div class="extra2 container">
+                                <div class="ebox1">
+                                    <span class="fa fa-tachometer"></span>
+                                    <div>
+                                        <h2>Metrics Management</h2>
+                                        <span class="byline">Create, Update, Define Metrics</span>
+                                    </div>
+
+                                    <a href="#" class="button">SELECT</a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="carousel">
-                                <div class="group_2_img1">
-                                    <img src="../Content/images/slider1.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="carousel">
-                                <div class="group_2_img1">
-                                    <img src="../Content/images/slider4.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="carousel">
-                                <div class="group_2_img1">
-                                    <img src="../Content/images/slider5.jpg" alt="">
+                                <div class="ebox2">
+                                    <span class="fa fa-thumbs-up"></span>
+                                    <div>
+                                        <h2>Metric Sign Off</h2>
+                                        <span class="byline">Approve/Reject Metrics Access</span>
+                                    </div>
+
+                                    <a href="#" class="button">SELECT</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    <!-- Owl Carousel Assets -->
-    <link href="../Content/owl.carousel.css" rel="stylesheet">
-    <!-- Owl Carousel Assets -->
-    <!-- Prettify -->
-    <script src="../Scripts/owl.carousel.js"></script>
-    <script>
-		    $(document).ready(function() {
-
-		      $("#owl-demo").owlCarousel({
-		        items : 1,
-		        lazyLoad : true,
-		        autoPlay : true,
-		        navigation : true,
-			    navigationText : ["",""],
-			    rewindNav :true,
-			    scrollPerPage :true,
-			    pagination : true,
-    			paginationNumbers: false,
-		      });
-
-		    });
-		    $(document).ready(function() {
-
-		      $("#owl-demo1").owlCarousel({
-		        items : 1,
-		        lazyLoad : true,
-		        autoPlay : true,
-		        navigation : true,
-			    navigationText : ["",""],
-			    rewindNav : true,
-			    scrollPerPage :true,
-			    pagination : false,
-    			paginationNumbers: false,
-		      });
-
-		    });
-
-    </script>
-    <!----start-pricingplans---->
-    <div class="blog" id="blog">
-        <div class="wrap">
-            <div class="pricing-plans">
-                <h5>Flexible pricing plans to fulfill your needs and solve your problems</h5>
-                <p>Revolvationary notebook with eco-friendly paper,advanced surface technology and degital sharing integration.</p>
-                <div class="pricing-grids">
-                    <div class="pricing-grid black">
-                        <h3><a href="#">Forever Free</a></h3>
-                        <div class="price-value">
-                            <a href="#">$0/month</a>
-                        </div>
-                        <ul>
-                            <li><a href="#">1 Notebook</a></li>
-                            <li><a href="#">3 Users</a></li>
-                            <li><a href="#">100 Shares</a></li>
-                        </ul>
-                        <div class="cart">
-                            <a class="popup-with-zoom-anim" href="#small-dialog">Sign Up</a>
-                        </div>
-                    </div>
-                    <div class="pricing-grid green">
-                        <h3><a href="#">Profesional<h4>Most Popular </h4></a></h3>
-
-                        <div class="price-value">
-                            <a href="#">$20/1month</a>
-                        </div>
-                        <ul>
-                            <li><a href="#">20 Notebook</a></li>
-                            <li><a href="#">100 Users</a></li>
-                            <li><a href="#">Unlimited Shares</a></li>
-                        </ul>
-                        <div class="cart">
-                            <a class="popup-with-zoom-anim" href="#small-dialog">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="pricing-grid blue">
-                        <h3><a href="#">Enterprise</a></h3>
-                        <div class="price-value">
-                            <a href="#">$100/month</a>
-                        </div>
-                        <ul>
-                            <li><a href="#">100 Notebook</a></li>
-                            <li><a href="#">Unlimited Users</a></li>
-                            <li><a href="#">Ulimited Shares</a></li>
-                        </ul>
-                        <div class="cart">
-                            <a class="popup-with-zoom-anim" href="#small-dialog">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="clear"> </div>
-                    <!-----pop-up-grid---->
-                    <div id="small-dialog" class="mfp-hide">
-                        <div class="pop_up">
-                            <div class="payment-online-form-left">
-                                <form>
-                                    <h4><span class="shipping"> </span>Shipping</h4>
-                                    <ul>
-                                        <li><input class="text-box-dark" type="text" value="Frist Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Frist Name';}"></li>
-                                        <li><input class="text-box-dark" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
-                                    </ul>
-                                    <ul>
-                                        <li><input class="text-box-dark" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
-                                        <li><input class="text-box-dark" type="text" value="Company Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Company Name';}"></li>
-                                    </ul>
-                                    <ul>
-                                        <li><input class="text-box-dark" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
-                                        <li><input class="text-box-dark" type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></li>
-                                        <div class="clear"> </div>
-                                    </ul>
-                                    <div class="clear"> </div>
-                                    <ul class="payment-type">
-                                        <h4><span class="payment"> </span> Payments</h4>
-                                        <li>
-                                            <span class="col_checkbox">
-                                                <input id="3" class="css-checkbox1" type="checkbox">
-                                                <label for="3" name="demo_lbl_1" class="css-label1"> </label>
-                                                <a class="visa" href="#"> </a>
-                                            </span>
-
-                                        </li>
-                                        <li>
-                                            <span class="col_checkbox">
-                                                <input id="4" class="css-checkbox2" type="checkbox">
-                                                <label for="4" name="demo_lbl_2" class="css-label2"> </label>
-                                                <a class="paypal" href="#"> </a>
-                                            </span>
-                                        </li>
-                                        <div class="clear"> </div>
-                                    </ul>
-                                    <ul>
-                                        <li><input class="text-box-dark" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
-                                        <li><input class="text-box-dark" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
-                                        <div class="clear"> </div>
-                                    </ul>
-                                    <ul>
-                                        <li><input class="text-box-light hasDatepicker" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
-                                        <li><input class="text-box-dark" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
-                                        <div class="clear"> </div>
-                                    </ul>
-                                    <ul class="payment-sendbtns">
-                                        <li><input type="reset" value="Cancel"></li>
-                                        <li><input type="submit" value="Process order"></li>
-                                    </ul>
-                                    <div class="clear"> </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-----pop-up-grid---->
-                </div>
-                <div class="clear"> </div>
-                <h6>If you have got any quations related to pricing please get, in touch with us using the form bellow.</h6>
-            </div>
-        </div>
-    </div>
-    <!-- Add fancyBox light-box -->
-    <script src="../Scripts/jquery.magnific-popup.js" type="text/javascript"></script>
-
-    <script>
-					$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-					});
-				});
-    </script>
-    <!----End-pricingplans---->
+   
     <!----start-contact---->
     <div class="contact" id="contact">
         <div class="contact">

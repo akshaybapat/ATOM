@@ -266,6 +266,10 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\default.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\arrow_up.png" />
     <Content Include="Content\images\arrow_up1.png" />
     <Content Include="Content\images\divice.jpg" />
@@ -280,8 +284,12 @@
     <Content Include="Content\images\slider5.jpg" />
     <Content Include="Content\images\sliderbg.jpg" />
     <Content Include="Content\images\sprite.png" />
+    <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\multiStepForm.css" />
+    <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\slider.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -315,6 +323,36 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\less\bordered-pulled.less" />
+    <Content Include="Content\less\core.less" />
+    <Content Include="Content\less\fixed-width.less" />
+    <Content Include="Content\less\font-awesome.less" />
+    <Content Include="Content\less\icons.less" />
+    <Content Include="Content\less\larger.less" />
+    <Content Include="Content\less\list.less" />
+    <Content Include="Content\less\mixins.less" />
+    <Content Include="Content\less\path.less" />
+    <Content Include="Content\less\rotated-flipped.less" />
+    <Content Include="Content\less\spinning.less" />
+    <Content Include="Content\less\stacked.less" />
+    <Content Include="Content\less\variables.less" />
+    <Content Include="Content\scss\font-awesome.scss" />
+    <Content Include="Content\scss\_bordered-pulled.scss" />
+    <Content Include="Content\scss\_core.scss" />
+    <Content Include="Content\scss\_fixed-width.scss" />
+    <Content Include="Content\scss\_icons.scss" />
+    <Content Include="Content\scss\_larger.scss" />
+    <Content Include="Content\scss\_list.scss" />
+    <Content Include="Content\scss\_mixins.scss" />
+    <Content Include="Content\scss\_path.scss" />
+    <Content Include="Content\scss\_rotated-flipped.scss" />
+    <Content Include="Content\scss\_spinning.scss" />
+    <Content Include="Content\scss\_stacked.scss" />
+    <Content Include="Content\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DropDown.js" />
     <Content Include="Scripts\easing.js" />
@@ -394,11 +432,6 @@
     <Content Include="Views\DimModules\Details.cshtml" />
     <Content Include="Views\DimModules\Edit.cshtml" />
     <Content Include="Views\DimModules\Index.cshtml" />
-    <Content Include="Views\Buildings\Create.cshtml" />
-    <Content Include="Views\Buildings\Delete.cshtml" />
-    <Content Include="Views\Buildings\Details.cshtml" />
-    <Content Include="Views\Buildings\Edit.cshtml" />
-    <Content Include="Views\Buildings\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\DimBuildings\Create.cshtml" />
     <Content Include="Views\DimBuildings\Delete.cshtml" />

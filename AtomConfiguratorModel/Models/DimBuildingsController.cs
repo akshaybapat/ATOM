@@ -36,7 +36,9 @@ namespace AtomConfiguratorModel.Models
             if (!String.IsNullOrEmpty(searchString))
 
             {
+                
                 dimBuildings = dimBuildings.Where(s => s.BuildingName.ToUpper().Contains(searchString.ToUpper()) || s.DimFacility.SiteName.ToUpper().Contains(searchString.ToUpper()));
+               
             }
 
             switch (sortOrder)
@@ -59,7 +61,6 @@ namespace AtomConfiguratorModel.Models
                     break;
             }
 
-            //return View(dimBuildings.ToList());
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(dimBuildings.ToPagedList(pageNumber, pageSize));

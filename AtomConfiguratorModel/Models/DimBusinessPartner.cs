@@ -11,6 +11,7 @@ namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class DimBusinessPartner
     {
@@ -20,7 +21,9 @@ namespace AtomConfiguratorModel.Models
         }
     
         public int id { get; set; }
+         [Display(Name = "Name")]
         public string BusinessPartnerName { get; set; }
+         [Display(Name = "BPCode")]
         public string BPCode { get; set; }
     
         public virtual ICollection<DimProductLine> DimProductLines { get; set; }

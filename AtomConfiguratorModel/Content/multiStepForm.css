@@ -8,7 +8,7 @@ html {
 	height: 100%;
 	/*Image only BG fallback*/
 	/*background: url('http://thecodeplayer.com/uploads/media/gs.png'); */
-	background: linear-gradient(rgba(36, 175, 255, 0.3), rgba(0, 15, 36, 0.3)),url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG') no-repeat;
+	background: url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG') no-repeat;
 	/*background = gradient + image pattern combo*/
 	/* background: 
 		linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)), 

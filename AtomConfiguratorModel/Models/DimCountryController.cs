@@ -59,7 +59,6 @@ namespace AtomConfiguratorModel.Models
                     break;
             }
 
-            //return View(dimcountries.ToList());
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(dimcountries.ToPagedList(pageNumber, pageSize));

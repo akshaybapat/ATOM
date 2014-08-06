@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimBusinessPartner>*@
-@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimBusinessPartner>
+﻿@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimBusinessPartner>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -12,6 +11,10 @@
 
         <p>
             @Html.ActionLink("Create New", "Create")
+            <a style="color:#00ff21" href="@Url.Action("Create")">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span class="sr-only">Create</span>
+            </a>
 
             @using (Html.BeginForm("Index", "DimBusinessPartner", FormMethod.Get))
             {
@@ -23,77 +26,79 @@
             }
 
         </p>
-        <table class="table table table-hover table-bordered table-condensed">
-            <tr id="heading">
-                <th>
-                    @Html.DisplayNameFor(model => model.First().BusinessPartnerName)
+        <p>
+            <table class="table table table-hover table-bordered table-condensed">
+                <tr id="heading">
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().BusinessPartnerName)
 
-                    <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPName_Desc" })">
-                        <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
-                        <span class="sr-only">Descending</span>
-                    </a>
-
-                    <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "" })">
-                        <i class="glyphicon glyphicon-sort-by-alphabet"></i>
-                        <span class="sr-only">Ascending</span>
-                    </a>
-
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.First().BPCode)
-
-                    <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPCode_Desc" })">
-                        <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
-                        <span class="sr-only">Descending</span>
-                    </a>
-
-                    <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "BPCode" })">
-                        <i class="glyphicon glyphicon-sort-by-alphabet"></i>
-                        <span class="sr-only">Ascending</span>
-                    </a>
-
-                </th>
-                <th>
-                    Functions
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BusinessPartnerName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BPCode)
-                    </td>
-                    <td style="font-size:12px">
-
-                        <a href="@Url.Action("Edit", new { id = item.id })">
-                            <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
-                            Edit
-                            <span class="sr-only">Edit</span>
+                        <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPName_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
                         </a>
 
-                        |
-                        <a href="@Url.Action("Details", new { id = item.id })">
-                            <i style="color:#ff9000" class="glyphicon glyphicon-fullscreen"></i>
-                            Details
-                            <span class="sr-only">Details</span>
-
-
-                        </a>|
-                        <a href="@Url.Action("Delete", new { id = item.id })">
-                            <i style="color:#ff0000" class="glyphicon glyphicon-trash"></i>
-                            Delete
-                            <span class="sr-only">Delete</span>
+                        <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
                         </a>
 
-                    </td>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().BPCode)
+
+                        <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPCode_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPCode", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+
+                    </th>
+                    <th>
+                        Functions
+                    </th>
                 </tr>
-            }
 
-        </table>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BusinessPartnerName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BPCode)
+                        </td>
+                        <td style="font-size:12px">
+
+                            <a href="@Url.Action("Edit", new { id = item.id })">
+                                <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
+                                Edit
+                                <span class="sr-only">Edit</span>
+                            </a>
+
+                            |
+                            <a href="@Url.Action("Details", new { id = item.id })">
+                                <i style="color:#ff9000" class="glyphicon glyphicon-fullscreen"></i>
+                                Details
+                                <span class="sr-only">Details</span>
+
+
+                            </a>|
+                            <a href="@Url.Action("Delete", new { id = item.id })">
+                                <i style="color:#ff0000" class="glyphicon glyphicon-trash"></i>
+                                Delete
+                                <span class="sr-only">Delete</span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </p>
 
         <br />
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount

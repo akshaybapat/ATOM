@@ -11,6 +11,7 @@ namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class DimCostCenter
     {
@@ -20,6 +21,7 @@ namespace AtomConfiguratorModel.Models
         }
     
         public int id { get; set; }
+        [Display(Name = "Cost Center")]
         public string CostCenter { get; set; }
     
         public virtual ICollection<DimBusinessUnit> DimBusinessUnits { get; set; }

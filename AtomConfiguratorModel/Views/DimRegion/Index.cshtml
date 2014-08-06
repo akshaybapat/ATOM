@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimRegion>*@
-@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimRegion>
+﻿@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimRegion>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -32,12 +31,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.First().RegionName)
 
-                <a style="float: right; " href="@Url.Action("Index", new { sortOrder = "Region_Desc" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Region_Desc", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
                     <span class="sr-only">Descending</span>
                 </a>
 
-                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "" })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet"></i>
                     <span class="sr-only">Ascending</span>
                 </a>
@@ -66,7 +65,7 @@
                         <span class="sr-only">Details</span>
                         @Html.ActionLink("Details", "Details", new { id = item.id })
                     </a>|
-                    <a style="color:#ff0000"href="@Url.Action("Delete", new { id = item.id })">
+                    <a style="color:#ff0000" href="@Url.Action("Delete", new { id = item.id })">
                         <i class="glyphicon glyphicon-trash"></i>
                         <span class="sr-only">Delete</span></a>
                     @Html.ActionLink("Delete", "Delete", new { id = item.id })

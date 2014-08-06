@@ -43,7 +43,7 @@ body{
 	/*background: url(../images/sliderbg.jpg) no-repeat;*/
 	/*background: linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)), url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG');*/
 	/*background: linear-gradient(to bottom, #FFFFFF 0%, #00253B 100%), url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG');*/
-	background: linear-gradient(rgba(36, 175, 255, 0.3), rgba(0, 15, 36, 0.3)), url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG') no-repeat;
+	background:  url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG') no-repeat;
 	background-size: 100%;
 	background-size:cover;
 }
