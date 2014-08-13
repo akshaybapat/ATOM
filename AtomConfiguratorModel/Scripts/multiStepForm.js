@@ -3,59 +3,20 @@ var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
+
 $(".next").click(function () {
 
-    if ($(!'#RegionID option:selected').text()) {
-        alert("Please select all values before proceeding further");
-          }
-    else {
         if (animating) return false;
         animating = true;
 
         current_fs = $(this).parent();
         next_fs = $(this).parent().next();
-
+          
+     
+         //de-activate current step on progressbar
+        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
         //activate next step on progressbar using the index of next_fs
         $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-
-        $.getJSON('/DimBuildings/BuildingList', { id: $('#FacilitiesID option:selected').text() }, function (data) {
-            var insert = '';
-            var editUrl = '<%: Url.Action("~/DimBuildings/Edit") %>';
-            var deleteUrl = '<%: Url.Action("~/DimBuildings/Delete") %>';
-
-            var items = '<option>Select a Building</option>';
-            $('#resultset').empty();
-            $('#resultset').append('<tr><td> Building </td><td> Site </td>');
-            $.each(data, function (i, item) {
-
-                //insert += '<tr><td>' + item.BuildingName + '</td><td>' + item.KeyFacility + '</td>';
-
-
-                $('#resultset').last().append(
-                                         $(document.createElement('tr'))
-                                                    .append($(document.createElement('td'))
-                                                    .text(item.BuildingName))
-                                                    .append($(document.createElement('td'))
-                                                    .append($(document.createElement('a'))
-                                                    .attr('href', editUrl + '/' + item.Value)
-                                                    .text('Edit')
-                                                    )
-                                                    .append('|')
-                                                    .append($(document.createElement('a'))
-                                                    .attr('href', deleteUrl + '/' + item.Value)
-                                                    .text('Delete')
-                                                    )
-                                                    )
-                                            );
-
-
-
-                items += "<option value='" + item.Value + "'>" + item.BuildingName + "</option>";
-            });
-            //$('#resultset').append(insert);
-            $('#BuildingsID').html(items);
-        });
 
         //show the next fieldset
         next_fs.show();
@@ -80,7 +41,8 @@ $(".next").click(function () {
             //this comes from the custom easing plugin
             easing: 'easeInOutBack'
         });
-    }
+
+          
 });
 
 $(".previous").click(function(){
@@ -89,7 +51,8 @@ $(".previous").click(function(){
 	
 	current_fs = $(this).parent();
 	previous_fs = $(this).parent().prev();
-	
+
+		
 	//de-activate current step on progressbar
 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 	

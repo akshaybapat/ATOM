@@ -173,11 +173,32 @@ namespace AtomConfiguratorModel.Models
         }
 
         // GET: /DimFacility/FacilityForm
-        public ActionResult FacilityForm()
+        public ActionResult FacilityForm(string buildingsbycountry)
         {
        
             ViewBag.KeyRegion = (from r in db.DimRegions
             select r.RegionName).Distinct();
+
+            var Facilities = from r in db.DimFacilities
+                          select r;
+
+            if (!string.IsNullOrEmpty(buildingsbycountry))
+            {
+                Facilities = Facilities.Where(x => x.DimCountry.CountryName.Equals(buildingsbycountry));
+            }
+
+
+            var RegLst = new List<string>();
+
+            RegLst.AddRange(Facilities.Select(s => s.SiteName).Distinct());
+
+            if (HttpContext.Request.IsAjaxRequest())
+
+                return Json(new SelectList(
+                             RegLst)
+                           , JsonRequestBehavior.AllowGet);
+
+            ViewBag.buildingsbycountry = new SelectList(RegLst);
                                    
             SiteModel site = new SiteModel();
 

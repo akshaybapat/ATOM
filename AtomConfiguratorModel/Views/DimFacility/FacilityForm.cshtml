@@ -59,18 +59,18 @@
 
                 @*@Html.LabelFor(model => model.Region, new { })*@
                 <div class="col-md-12" style="align-self:center">
-                    @Html.DropDownListFor(model => model.Region.ID, new SelectList(ViewBag.KeyRegion), "Select a Region", new { id = "RegionID" })
-                    @Html.ValidationMessageFor(model => model.Region.ID)
+                    @Html.DropDownListFor(model => model.SelectedRegion.id, new SelectList(ViewBag.KeyRegion), "Select a Region", new { id = "RegionID" })
+                    @Html.ValidationMessageFor(model => model.SelectedRegion.id)
                 </div>
 
                 <div id="CountriesDivID" class="col-md-12" style="align-self:center">
-                    @Html.DropDownListFor(model => model.Country.ID, new SelectList(ViewBag.KeyRegion), "Select a Country", new { id = "CountriesID" })
-                    @Html.ValidationMessageFor(model => model.Country.ID)
+                    @Html.DropDownListFor(model => model.SelectedCountry.id, new SelectList(ViewBag.KeyRegion), "Select a Country", new { id = "CountriesID" })
+                    @Html.ValidationMessageFor(model => model.SelectedCountry.id)
                 </div>
 
                 <div id="FacilitiesDivID" class="col-md-12" style="align-self:center">
-                    @Html.DropDownListFor(model => model.Facility.ID, new SelectList(ViewBag.KeyRegion), "Select a Site", new { id = "FacilitiesID" })
-                    @Html.ValidationMessageFor(model => model.Facility.ID)
+                    @Html.DropDownListFor(model => model.SelectedFacility.id, new SelectList(ViewBag.KeyRegion), "Select a Site", new { id = "FacilitiesID" })
+                    @Html.ValidationMessageFor(model => model.SelectedFacility.id)
                 </div>
 
                 <input id="NextButton" type="button" name="next" class="next action-button" value="Next" />
@@ -131,7 +131,45 @@
         <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
         <script src="../Scripts/multiStepForm.js" type="text/javascript"></script>
         <script src="@Url.Content("~/Scripts/DropDown.js")"> </script>
+        <script>
+            $(function () {
 
+                /* Get all rows from your 'table' but not the first one 
+                 * that includes headers. */
+                var rows = $('tr').not(':first');
+
+                /* Create 'click' event handler for rows */
+                rows.on('click', function (e) {
+
+                    /* Get current row */
+                    var row = $(this);
+
+                    /* Check if 'Ctrl', 'cmd' or 'Shift' keyboard key was pressed
+                     * 'Ctrl' => is represented by 'e.ctrlKey' or 'e.metaKey'
+                     * 'Shift' => is represented by 'e.shiftKey' */
+                    if ((e.ctrlKey || e.metaKey) || e.shiftKey) {
+                        /* If pressed highlight the other row that was clicked */
+                        row.addClass('highlight');
+                    } else {
+                        /* Otherwise just highlight one row and clean others */
+                        rows.removeClass('highlight');
+                        row.addClass('highlight');
+                    }
+
+                });
+
+                /* This 'event' is used just to avoid that the table text 
+                 * gets selected (just for styling). 
+                 * For example, when pressing 'Shift' keyboard key and clicking 
+                 * (without this 'event') the text of the 'table' will be selected.
+                 * You can remove it if you want, I just tested this in 
+                 * Chrome v30.0.1599.69 */
+                $(document).bind('selectstart dragstart', function (e) {
+                    e.preventDefault(); return false;
+                });
+
+            });
+        </script>
         @Scripts.Render("~/bundles/bootstrap")
         @* @RenderSection("scripts", required: false) *@
 </body>

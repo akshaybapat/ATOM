@@ -182,13 +182,13 @@ namespace AtomConfiguratorModel.Models
 
             String SiteName = id;
 
-            var SiteID = from r in db.DimFacilities where r.SiteName.Equals(SiteName) select r.id;
-
-            var query = db.DimBuildings.Where(x => x.KeyFacility == SiteID.FirstOrDefault()).ToList();
+            var query = db.DimBuildings.Where(x => x.DimFacility.SiteName.Equals(SiteName)).ToList();
 
             buildings = query.Select(x =>
                         new DimBuilding()
+
                         {
+                            id = x.id,
                             BuildingName = x.BuildingName,
                             KeyFacility = x.KeyFacility,
                         });
