@@ -8,6 +8,27 @@ jQuery.validator.unobtrusive.adapters.add("dropdown", function (options) {
     }
 });
 
+function gotoURL(url) {
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+
+            $('#bigblue').show();
+          
+            window.location.href = url;
+        }
+       
+
+    }
+
+    xhr.open('head', url);
+    xhr.send(null);
+    $('#bigblue').hide();
+
+}
+
 $(function () {
 
     $('#CountriesDivID').hide();
@@ -77,7 +98,11 @@ $(function () {
     });
 
 
-            $('#Next-ToBuildingSelection').on('click',function(){
+    $('#Next-ToBuildingSelection').on('click', function () {
+
+        $('#Next-ToModuleSelection').hide();
+        
+
                 $.getJSON('/FFSite/GetDropDownData', { typeofData: "BuildingList", filter: $('#FacilitiesID option:selected').text() }, function (data) {
                 var items = '<option>Select a Building</option>';
                 var result = '';
@@ -86,40 +111,45 @@ $(function () {
                 result += '<tr style="width:50%;"><td id="selectedBuildingName" style="border-radius:15px;font-weight: bold">' + building.BuildingName + '</td><td id="selectedBuildingID" style="display:none;">' + building.id + '</tr>';
                 });
 
-                   // $('#BuildingsID').html(items);
+                if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid Site</b></h4></td></tr>';
+                
+                    // $('#BuildingsID').html(items);
                     $('#buildingsresultset').html(result);
 
 
                  /* Get all rows from your 'table' but not the first one 
                  * that includes headers. */
                 var row = '';
-                var selectedID = '';
                 var rows = $('#buildingsresultset tr');
-                var highligthed = 'false';
-
+                
                 /* Create 'click' event handler for rows */
                 rows.on('click', function (e) {
 
-                    /* Get current row */
-                    row = $(this);
-                    /* Get index of column for Building id*/
-                    var column = $('#selectedBuildingID').index();
+                    var state = $(this).hasClass('highlight');
 
-                    /* Get value of Building id of the current row*/
-                    selectedBuildingID = row.find('td').eq(column).html();
- 
-                    if (highligthed == false)
-                        /* Highlight one row and clean others */ {
-                        rows.removeClass('highlight');
-                        row.addClass('highlight');
-                        highligthed = true;
-                    }
-                    else
-                    {
-                        rows.removeClass('highlight');
-                        highligthed = false;
-                    }
+                    /*Reset field values and Next Button*/
+                    $('.highlight').removeClass('highlight');
+                    $('#Next-ToModuleSelection').hide();
+                    selectedBuildingID = '';
 
+                    if (!state) {
+
+                        $(this).addClass('highlight');
+
+                        /* Get current row */
+                        row = $(this);
+
+                        /* Get index of column for Building id*/
+                        var column = $('#selectedBuildingID').index();
+
+                        /* Get value of Building id of the current row*/
+                        selectedBuildingID = row.find('td').eq(column).html();
+
+                        /*Display Next Button */
+                        $('#Next-ToModuleSelection').show();
+                    }
+                    
+                     
                 }); 
 
                  /* This 'event' is used just to avoid that the table text 
@@ -135,12 +165,16 @@ $(function () {
                       
                 $('#EditBuildingButton').click(function () {
                     var url = '/DimBuildings/Edit?id=' + selectedBuildingID;
-                    window.location.href = url;
+                    //window.location.href = url;
+                    gotoURL(url);
+
                 });
 
                 $('#DeleteBuildingButton').click(function () {
                     var url = '/DimBuildings/Delete?id=' + selectedBuildingID;
-                    window.location.href = url;
+                    //window.location.href = url;
+                    gotoURL(url);
+
                 });
 
           
@@ -176,29 +210,30 @@ $(function () {
                             var row = '';
                             var selectedModuleID = '';
                             var rows = $('#modulesresultset tr');
-                            var highligthed = 'false';
-
+                            
                             /* Create 'click' event handler for rows */
                             rows.on('click', function (e) {
+                                
+                                var state = $(this).hasClass('highlight');
 
-                                /* Get current row */
-                                row = $(this);
-                                /* Get index of column for Module id*/
-                                var column = $('#selectedModuleID').index();
-                                /* Get value of Module id of the current row*/
-                                selectedModuleID = row.find('td').eq(column).html();
+                            /*Reset field values*/
+                            $('.highlight').removeClass('highlight');
+                            selectedModuleID = '';
 
-                                if (highligthed == false)
-                                    /* Highlight one row and clean others */ {
-                                    rows.removeClass('highlight');
-                                    row.addClass('highlight');
-                                    highligthed = true;
-                                }
-                                else {
-                                    rows.removeClass('highlight');
-                                    highligthed = false;
-                                }
+                                if (!state) {
 
+                                    $(this).addClass('highlight');
+
+                                    /* Get current row */
+                                    row = $(this);
+
+                                    /* Get index of column for Module id*/
+                                    var column = $('#selectedModuleID').index();
+
+                                    /* Get value of Module id of the current row*/
+                                    selectedModuleID = row.find('td').eq(column).html();
+
+                                };
                             });
 
                             /* This 'event' is used just to avoid that the table text 
@@ -214,12 +249,14 @@ $(function () {
 
                             $('#EditModuleButton').click(function () {
                                 var url = '/DimModules/Edit?id=' + selectedModuleID;
-                                window.location.href = url;
+                                //window.location.href = url;
+                                gotoURL(url);
                             });
 
                             $('#DeleteModuleButton').click(function () {
                                 var url = '/DimModules/Delete?id=' + selectedModuleID;
-                                window.location.href = url;
+                                //window.location.href = url;
+                                gotoURL(url);
                             });
 
 

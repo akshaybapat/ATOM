@@ -287,9 +287,10 @@
     <Content Include="Content\images\sliderbg.jpg" />
     <Content Include="Content\images\sprite.png" />
     <Content Include="Content\magnific-popup.css" />
-    <Content Include="Content\multiStepForm.css" />
+    <Content Include="Content\atomStyles.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\responsive-tables.css" />
     <Content Include="Content\slider.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
@@ -444,6 +445,8 @@
     <Content Include="Views\DimBuildings\Edit.cshtml" />
     <Content Include="Views\DimBuildings\Index.cshtml" />
     <Content Include="Views\FFSite\Index.cshtml" />
+    <Content Include="Views\DimFFInstance\Index - Copy.cshtml" />
+    <Content Include="Views\FFSite\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

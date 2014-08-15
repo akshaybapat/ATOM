@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -14,10 +15,41 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimFFInstance/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var dimffinstances = db.DimFFInstances.Include(d => d.DimModule);
-            return View(dimffinstances.ToList());
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+
+                dimffinstances = dimffinstances.Where(s => s.HostName.ToUpper().Contains(searchString.ToUpper()) || s.DatabaseName.ToUpper().Contains(searchString.ToUpper()) || s.DataSourceName.ToUpper().Contains(searchString.ToUpper()) || s.ProjectName.ToUpper().Contains(searchString.ToUpper()) || s.DataFilePrefix.ToUpper().Contains(searchString.ToUpper()) || s.DimModule.ModuleName.ToUpper().Contains(searchString.ToUpper()) || s.DimProductNumbers.FirstOrDefault().ProductNumber.ToUpper().Contains(searchString.ToUpper()) || s.SiteName.ToUpper().Contains(searchString.ToUpper()) || s.QAContactName.ToUpper().Contains(searchString.ToUpper()) || s.ITContactName.ToUpper().Contains(searchString.ToUpper()) || s.UserName.ToUpper().Contains(searchString.ToUpper()) || s.BaanCoNo.ToUpper().Contains(searchString.ToUpper()));
+            }
+                switch (sortOrder)
+                {
+
+                    default:
+                        dimffinstances = dimffinstances.OrderBy(s => s.HostName);
+                        break;
+                }
+
+            
+                //return View(dimffinstances.ToList());
+                int pageSize = 15;
+                int pageNumber = (page ?? 1);
+                return View(dimffinstances.ToPagedList(pageNumber, pageSize));
+            
         }
 
         // GET: /DimFFInstance/Details/5

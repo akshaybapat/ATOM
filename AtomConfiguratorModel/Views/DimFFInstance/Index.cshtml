@@ -1,70 +1,85 @@
-﻿@model IEnumerable<AtomConfiguratorModel.Models.DimFFInstance>
+﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimFFInstance>*@
+@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimFFInstance>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="form-crud">
-    <h2>Index</h2>
+<div id="ffinstance" class="form-crud" style="width:200% ;height:150%; background-color:#ffffff">
+    <div style="float:left; margin-left:25%">
+        <h2>FlexFlow Instances</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        
+        @using (Html.BeginForm(Html.BeginForm("Index", "DimFFInstance", FormMethod.Get)))
+        {
+
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
+            <input id="search" class="btn btn-success" type="submit" value="Filter" />
+            <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
+
+        }
+      
+    </div>
+    <table class="responsive">
+        <tr></tr>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DataSourceName)
+                @Html.DisplayNameFor(model => model.First().DataSourceName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HostName)
+                @Html.DisplayNameFor(model => model.First().HostName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DatabaseName)
+                @Html.DisplayNameFor(model => model.First().DatabaseName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                @Html.DisplayNameFor(model => model.First().UserName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
+                @Html.DisplayNameFor(model => model.First().Password)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProjectName)
+                @Html.DisplayNameFor(model => model.First().ProjectName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataFilePrefix)
+                @Html.DisplayNameFor(model => model.First().DataFilePrefix)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReplicationDelayMinute)
+                @Html.DisplayNameFor(model => model.First().ReplicationDelayMinute)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsActive)
+                @Html.DisplayNameFor(model => model.First().IsActive)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ITContactName)
+                @Html.DisplayNameFor(model => model.First().ITContactName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ITPhone)
+                @Html.DisplayNameFor(model => model.First().ITPhone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ITEmail)
+                @Html.DisplayNameFor(model => model.First().ITEmail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QAContactName)
+                @Html.DisplayNameFor(model => model.First().QAContactName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QAPhone)
+                @Html.DisplayNameFor(model => model.First().QAPhone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QAEmail)
+                @Html.DisplayNameFor(model => model.First().QAEmail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SiteName)
+                @Html.DisplayNameFor(model => model.First().SiteName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BaanCoNo)
+                @Html.DisplayNameFor(model => model.First().BaanCoNo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DimModule.ModuleName)
+                @Html.DisplayNameFor(model => model.First().DimModule.ModuleName)
             </th>
             <th></th>
         </tr>
@@ -135,4 +150,12 @@
         }
 
     </table>
-</div>
+
+    <div style="float:left; margin-left:25%">
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+    </div>

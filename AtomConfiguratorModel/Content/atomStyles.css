@@ -1,0 +1,283 @@
+/*custom font*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {margin: 0; padding: 0;}
+
+html {
+	height: 100%;
+	/*Image only BG fallback*/
+	/*background: url('http://thecodeplayer.com/uploads/media/gs.png'); */
+	background: url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG') no-repeat;
+	/*background = gradient + image pattern combo*/
+	/* background: 
+		linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)), 
+		url('http://thecodeplayer.com/uploads/media/gs.png');
+		url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG'); */
+}
+
+body {
+	font-family: montserrat, arial, verdana;
+}
+/*form styles */
+/*-----START OF MULTISTEP FORM CSS STYLES-------*/
+
+    #msform {
+	width: 600px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+    
+    }
+
+    #msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 15px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	
+	box-sizing: border-box;
+	width: 80%;
+	margin: 50px 10%;
+	
+	/*stacking fieldsets above each other*/
+	position: absolute;
+
+    }
+    /*Hide all except first fieldset*/
+    #msform fieldset:not(:first-of-type) {
+	display: none;
+    }
+    /*inputs*/
+
+    #msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+    }
+    
+    /*buttons*/
+    #msform .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 10px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+    }
+    #msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #0099FF;
+    }
+
+    /*headings*/
+    .fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+    }
+    .fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+    }
+
+    /*progressbar*/
+    #progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+    }
+
+    #progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+    }
+
+    #progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 10px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+    }
+
+/*progressbar connectors*/
+    #progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+    }
+    #progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+    }
+
+    /*marking active/completed steps green*/
+    /*The number of the step and the connector before it = green*/
+    #progressbar li.active:before,  #progressbar li.active:after{
+	background: #27AE60;
+	color: white;
+    }
+    /*-----END OF MULTISTEP FORM CSS STYLES-------*/
+
+    /*CRUD Form - For All Dimension Data*/
+    .form-crud {
+            min-width:360px; width:480px; margin-top: 50px; margin-left: auto; margin-right: auto; text-align: center; position: relative; background: white; 	border: 0 none; border-radius: 15px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; opacity: 0.9; filter: alpha(opacity=90); 
+        }
+
+    
+    /*Global Class properties*/   
+     table 
+        {
+            border-radius: 10px;
+         }
+        tr,th,td
+        {
+            text-align:center;
+        }
+        .list-large
+        {
+            width: auto; width: 90%; margin-top:100px;
+        }
+         .list-medium
+        {
+            width: auto; width: 60%; margin-top:100px;
+        }
+         .list-small
+        {
+            width: auto; width: 40%; margin-top:100px;
+        }
+        #heading 
+        {
+            background-color:#dfdfdf; 
+        }
+        #heading:hover
+        {
+            background-color: #dfdfdf;
+        }
+
+        .btn {
+             border-radius: 15px;
+            }
+
+        input, textarea, select {
+            border: 1px solid rgba(0, 15, 36, 0.3);
+            padding: 3px; 
+            padding-left: 1.5em;
+            padding-right: 0.5em;
+            border-radius: 15px;
+            }
+
+           .action-button {
+	        width: 100px;
+	        background: #27AE60;
+	        font-weight: bold;
+	        color: white;
+	        border: 0 none;
+	        border-radius: 10px;
+	        cursor: pointer;
+	        padding: 10px 5px;
+	        margin: 10px 5px;
+            }
+
+            .action-button:hover, .action-button:focus {
+	        box-shadow: 0 0 0 2px white, 0 0 0 3px #0099FF;
+            }
+
+            .highlight { background-color: #b0c9ff; border-radius: 15px; }
+
+            .modal {
+                display:    none;
+                position:   fixed;
+                z-index:    1000;
+                top:        0;
+                left:       0;
+                height:     100%;
+                width:      100%;
+                
+                }
+
+           #bigblue
+             {
+                background: rgba( 255, 255, 255, .8 ) 
+                url('../../Content/images/big-blue-loading.gif') 
+                50% 50% 
+                no-repeat;
+             }   
+
+           #smallblue
+             {
+                background: rgba( 255, 255, 255, .8 ) 
+                url('../../Content/images/blue-circle-loading.gif') 
+                50% 50% 
+                no-repeat;
+             }   
+
+           .formbutton {
+            width: 100px;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 25px;
+            background-color: #217dbb;
+            border-color: white;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px;
+             }
+
+    /*FF Instance Specific properties*/
+    #ffinstance table td.fill {
+                width:9999em;
+                text-align:right;
+                }
+    #ffinstance table {
+                table-layout:fixed;
+                width:100%;
+                border-collapse:collapse;
+                overflow:hidden;
+                    }
+    #ffinstance table td,th {
+               font-size: smaller;
+               border:solid 1px #000;
+
+                  }
+
+    #ffinstance .sliding-window {
+                width:100%; /* Total width of all columns in sliding-window + border widths */
+                overflow:hidden;
+                }
+
+    #ffinstance .sliding-window div {
+             float:left;
+             width:50%;
+            }
