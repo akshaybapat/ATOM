@@ -1,141 +1,162 @@
-﻿@model IEnumerable<AtomConfiguratorModel.Models.DimFFInstance>
+﻿@*@model IEnumerable<AtomConfiguratorModel.Models.DimFFInstance>*@
+@model PagedList.IPagedList<AtomConfiguratorModel.Models.DimFFInstance>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div id="ffinstance" class="form-crud" style="width:200% ;height:100%;">
-    <div style="float:left; margin-left:25%">
-        <h2>Index</h2>
+<div id="ffinstance" class="form-crud" style="width:200% ;height:150%; background-color:#ffffff; overflow:auto">
+    <div style="float:left; margin-left:20%">
+        <h2>FlexFlow Instances</h2>
 
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-        <a id="previous-column" href="#">Previous</a>
-        <a id="next-column" href="#">Next</a>
-      
+
+
+        @using (Html.BeginForm(Html.BeginForm("Index", "DimFFInstance", FormMethod.Get)))
+        {
+
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
+            <input id="search" class="btn btn-success" type="submit" value="Filter" />
+            <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
+
+        }
+
     </div>
-    <div>
-        <div class="column">
-            @Html.DisplayNameFor(model => model.DataSourceName)
-        </div>        
-        <div class="column">
-            @Html.DisplayNameFor(model => model.DataSourceName)
-        </div>   
-        <div class="column">
-            @Html.DisplayNameFor(model => model.HostName)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.DatabaseName)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.UserName)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.Password)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.ProjectName)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.DataFilePrefix)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.ReplicationDelayMinute)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.ITContactName)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.ITPhone)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.ITEmail)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.QAContactName)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.QAPhone)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.QAEmail)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.SiteName)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.BaanCoNo)
-        </div>  
-        <div class="column">
-            @Html.DisplayNameFor(model => model.DimModule.ModuleName)
-        </div>  
-                                                                            
+    <table class="responsive table-bordered table-hover">
+        <tr></tr>
+        <tr id="heading">
+            <th>
+                @Html.DisplayNameFor(model => model.First().DataSourceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().HostName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DatabaseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DataFilePrefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ReplicationDelayMinute)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ITContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ITPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ITEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().QAContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().QAPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().QAEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().SiteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BaanCoNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DimModule.ModuleName)
+            </th>
+            <th></th>
+        </tr>
 
         @foreach (var item in Model)
         {
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.DataSourceName)
-        </div>
-    <div class="row">
-        @Html.DisplayFor(modelItem => item.HostName)
-    </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.DatabaseName)
-         </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.UserName)
-        </div>
-       <div class="row">
-        @Html.DisplayFor(modelItem => item.Password)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.ProjectName)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.DataFilePrefix)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.ReplicationDelayMinute)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.IsActive)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.ITContactName)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.ITPhone)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.ITEmail)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.QAContactName)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.QAPhone)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.QAEmail)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.SiteName)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.BaanCoNo)
-        </div>
-        <div class="row">
-        @Html.DisplayFor(modelItem => item.DimModule.ModuleName)
-        </div>
-        <div class="row">
-        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.id })
-        </div>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataSourceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HostName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatabaseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataFilePrefix)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReplicationDelayMinute)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QAContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QAPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QAEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaanCoNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DimModule.ModuleName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
         }
-     </div>
+
+    </table>
+
+    <div style="float:left; margin-left:20%">
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
 </div>

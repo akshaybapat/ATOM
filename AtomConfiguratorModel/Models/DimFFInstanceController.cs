@@ -38,7 +38,25 @@ namespace AtomConfiguratorModel.Models
             }
                 switch (sortOrder)
                 {
-
+                    case "Hostname": dimffinstances = dimffinstances.OrderBy(s => s.HostName); break;
+                    case "Hostname_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.HostName); break;
+                    case "Database": dimffinstances = dimffinstances.OrderBy(s => s.DatabaseName); break;
+                    case "Database_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.DatabaseName); break;
+                    case "DataSourceName": dimffinstances = dimffinstances.OrderBy(s => s.DataSourceName); break;
+                    case "DataSourceName_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.DataSourceName); break;
+                    case "ProjectName": dimffinstances = dimffinstances.OrderBy(s => s.ProjectName); break;
+                    case "ProjectName_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.ProjectName); break;
+                    case "SiteName": dimffinstances = dimffinstances.OrderBy(s => s.SiteName); break;
+                    case "SiteName_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.SiteName); break;
+                    case "QAContactName": dimffinstances = dimffinstances.OrderBy(s => s.QAContactName); break;
+                    case "QAContactName_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.QAContactName); break;
+                    case "ITContactName": dimffinstances = dimffinstances.OrderBy(s => s.ITContactName); break;
+                    case "ITContactName_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.ITContactName); break;
+                    case "UserName": dimffinstances = dimffinstances.OrderBy(s => s.UserName); break;
+                    case "UserName_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.UserName); break;
+                    case "BaanCoNo": dimffinstances = dimffinstances.OrderBy(s => s.BaanCoNo); break;
+                    case "BaanCoNo_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.BaanCoNo); break;
+                    
                     default:
                         dimffinstances = dimffinstances.OrderBy(s => s.HostName);
                         break;
@@ -46,7 +64,7 @@ namespace AtomConfiguratorModel.Models
 
             
                 //return View(dimffinstances.ToList());
-                int pageSize = 15;
+                int pageSize = 10;
                 int pageNumber = (page ?? 1);
                 return View(dimffinstances.ToPagedList(pageNumber, pageSize));
             

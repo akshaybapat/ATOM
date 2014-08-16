@@ -5,153 +5,274 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="form-crud" style="width:80%;margin-top:0; margin-left:10%;position:fixed;background-position-x:center;z-index:3">
+    <h2>FlexFlow Instances</h2>
 
-<div id="ffinstance" class="form-crud" style="width:200% ;height:150%; background-color:#ffffff">
-    <div style="float:left; margin-left:25%">
-        <h2>FlexFlow Instances</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
-        
-        @using (Html.BeginForm(Html.BeginForm("Index", "DimFFInstance", FormMethod.Get)))
-        {
 
-            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
-            <input id="search" class="btn btn-success" type="submit" value="Filter" />
-            <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
+    @using (Html.BeginForm(Html.BeginForm("Index", "DimFFInstance", FormMethod.Get)))
+    {
 
-        }
-      
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br/><br/>
+        <span id="leftnavigation" class="fa fa-3x fa-arrow-circle-o-left" style="color:#0094ff;opacity:1;float:left;"></span>
+        <input id="search" class="btn btn-success" type="submit" value="Filter" style="float:none;"/>
+        <input id="reset" type="button" class="btn btn-primary " value="Reset" style="float:none;" onclick="location.href='@Url.Action("Index")' " />
+        <span id="rightnavigation" class="fa fa-3x fa-arrow-circle-o-right" style="color:#0094ff;opacity:1;float:right;"></span>
+
+
+    }
+
     </div>
-    <table class="responsive">
-        <tr></tr>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.First().DataSourceName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().HostName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().DatabaseName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().ProjectName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().DataFilePrefix)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().ReplicationDelayMinute)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().IsActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().ITContactName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().ITPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().ITEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().QAContactName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().QAPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().QAEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().SiteName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().BaanCoNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().DimModule.ModuleName)
-            </th>
-            <th></th>
-        </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataSourceName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HostName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DatabaseName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataFilePrefix)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReplicationDelayMinute)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ITContactName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ITPhone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ITEmail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QAContactName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QAPhone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QAEmail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SiteName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BaanCoNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DimModule.ModuleName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                </td>
-            </tr>
-        }
+<div id="ffinstance" class="form-crud" style="width:80% ; background-color:#ffffff; overflow:auto;">
+        
+            <table class="responsive table-condensed table-bordered" style="margin-top:15%">
+                    <tr id="heading">
+                    <th id="left">
+                        <br />
+                        @Html.DisplayNameFor(model => model.First().DataSourceName)
+                        <br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DataSourceName_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
 
-    </table>
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DataSourceName", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th>
+                        <br />
+                        @Html.DisplayNameFor(model => model.First().HostName)
+                        <br /><br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Hostname_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
 
-    <div style="float:left; margin-left:25%">
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Hostname", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th>
+                        <br />
+                        @Html.DisplayNameFor(model => model.First().DatabaseName)
+                        <br /><br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Database_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Database", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th>
+                        <br />
+                        @Html.DisplayNameFor(model => model.First().UserName)
+                        <br /><br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "UserName_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "UserName", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Password)
+                    </th>
+                    <th>
+                        <br />
+                        @Html.DisplayNameFor(model => model.First().ProjectName)
+                        <br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "ProjectName_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "ProjectName", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().DataFilePrefix)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().ReplicationDelayMinute)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().IsActive)
+                    </th>
+                    <th>
+                        <br />
+                        @Html.DisplayNameFor(model => model.First().ITContactName)
+                        <br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "ITContactName_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "ITContactName", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().ITPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().ITEmail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().QAContactName)
+                        <br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "QAContactName_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "QAContactName", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().QAPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().QAEmail)
+                    </th>
+                    <th>
+                        <br />
+                        @Html.DisplayNameFor(model => model.First().SiteName)
+                        <br /><br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "SiteName_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "SiteName", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().BaanCoNo)
+                        <br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "BaanCoNo_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "BaanCoNo", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
+                    </th>
+                    <th id="right">
+                        @Html.DisplayNameFor(model => model.First().DimModule.ModuleName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataSourceName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HostName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatabaseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataFilePrefix)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReplicationDelayMinute)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ITContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ITPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ITEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QAContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QAPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QAEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SiteName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BaanCoNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DimModule.ModuleName)
+                        </td>
+                        <td style="font-size:12px;min-width:200px">
+
+                            <a href="@Url.Action("Edit", new { id = item.id })">
+                                <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
+                                Edit
+                                <span class="sr-only">Edit</span>
+                            </a>
+
+                            |
+                            <a href="@Url.Action("Details", new { id = item.id })">
+                                <i style="color:#ff9000" class="glyphicon glyphicon-fullscreen"></i>
+                                Details
+                                <span class="sr-only">Details</span>
+
+
+                            </a>|
+                            <a href="@Url.Action("Delete", new { id = item.id })">
+                                <i style="color:#ff0000" class="glyphicon glyphicon-trash"></i>
+                                Delete
+                                <span class="sr-only">Delete</span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+   
+    
+
+    <div>
         <br />
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 

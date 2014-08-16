@@ -262,14 +262,15 @@ body {
                 }
     #ffinstance table {
                 table-layout:fixed;
-                width:100%;
+                
                 border-collapse:collapse;
-                overflow:hidden;
+                overflow-x:scroll;
+                overflow-y:scroll;
+                
                     }
-    #ffinstance table td,th {
-               font-size: smaller;
-               border:solid 1px #000;
-
+    #ffinstance td {
+               
+               
                   }
 
     #ffinstance .sliding-window {

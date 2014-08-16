@@ -8,6 +8,27 @@ jQuery.validator.unobtrusive.adapters.add("dropdown", function (options) {
     }
 });
 
+
+$.fn.scrollTo = function (target, options, callback) {
+    if (typeof options == 'function' && arguments.length == 2) { callback = options; options = target; }
+    var settings = $.extend({
+        scrollTarget: target,
+        offsetTop: 50,
+        duration: 500,
+        easing: 'swing'
+    }, options);
+    return this.each(function () {
+        var scrollPane = $(this);
+        var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
+        var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
+        scrollPane.animate({ scrollTop: scrollY }, parseInt(settings.duration), settings.easing, function () {
+            if (typeof callback == 'function') { callback.call(this); }
+        });
+    });
+}
+
+
+
 function gotoURL(url) {
 
     var xhr = new XMLHttpRequest();
@@ -28,6 +49,31 @@ function gotoURL(url) {
     $('#bigblue').hide();
 
 }
+
+$('#rightnavigation').on('click', function (event) {
+    $('#ffinstance').scrollLeft(2000)
+
+});
+
+$('#leftnavigation').on('click', function (event) {
+    $('#ffinstance').scrollLeft(-2000)
+
+});
+
+$('table tr').on('click', function (e) {
+
+    var state = $(this).hasClass('highlight');
+
+    /*Reset field values and Next Button*/
+    $('.highlight').removeClass('highlight');
+   
+    if (!state) {
+
+        $(this).addClass('highlight');                   
+    }
+
+
+});
 
 $(function () {
 
