@@ -34,7 +34,7 @@ namespace AtomConfiguratorModel.Models
             if (!String.IsNullOrEmpty(searchString))
             {
 
-                dimffinstances = dimffinstances.Where(s => s.HostName.ToUpper().Contains(searchString.ToUpper()) || s.DatabaseName.ToUpper().Contains(searchString.ToUpper()) || s.DataSourceName.ToUpper().Contains(searchString.ToUpper()) || s.ProjectName.ToUpper().Contains(searchString.ToUpper()) || s.DataFilePrefix.ToUpper().Contains(searchString.ToUpper()) || s.DimModule.ModuleName.ToUpper().Contains(searchString.ToUpper()) || s.DimProductNumbers.FirstOrDefault().ProductNumber.ToUpper().Contains(searchString.ToUpper()) || s.SiteName.ToUpper().Contains(searchString.ToUpper()) || s.QAContactName.ToUpper().Contains(searchString.ToUpper()) || s.ITContactName.ToUpper().Contains(searchString.ToUpper()) || s.UserName.ToUpper().Contains(searchString.ToUpper()) || s.BaanCoNo.ToUpper().Contains(searchString.ToUpper()));
+                dimffinstances = dimffinstances.Where(s => s.HostName.ToUpper().Contains(searchString.ToUpper()) || s.DatabaseName.ToUpper().Contains(searchString.ToUpper()) || s.DataSourceName.ToUpper().Contains(searchString.ToUpper()) || s.ProjectName.ToUpper().Contains(searchString.ToUpper()) || s.DataFilePrefix.ToUpper().Contains(searchString.ToUpper()) || s.DimModule.ModuleName.ToUpper().Contains(searchString.ToUpper()) || s.DimProductNumbers.FirstOrDefault().ProductNumber.ToUpper().Contains(searchString.ToUpper()) || s.SiteName.ToUpper().Contains(searchString.ToUpper()) || s.QAContactName.ToUpper().Contains(searchString.ToUpper()) || s.ITContactName.ToUpper().Contains(searchString.ToUpper()) || s.UserName.ToUpper().Contains(searchString.ToUpper()) || s.BaanCoNo.ToUpper().Contains(searchString.ToUpper()) || s.DimModule.ModuleName.ToUpper().Contains(searchString.ToUpper()));
             }
                 switch (sortOrder)
                 {
@@ -56,6 +56,8 @@ namespace AtomConfiguratorModel.Models
                     case "UserName_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.UserName); break;
                     case "BaanCoNo": dimffinstances = dimffinstances.OrderBy(s => s.BaanCoNo); break;
                     case "BaanCoNo_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.BaanCoNo); break;
+                    case "Module": dimffinstances = dimffinstances.OrderBy(s => s.DimModule.ModuleName); break;
+                    case "Module_Desc": dimffinstances = dimffinstances.OrderByDescending(s => s.DimModule.ModuleName); break;
                     
                     default:
                         dimffinstances = dimffinstances.OrderBy(s => s.HostName);

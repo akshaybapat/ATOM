@@ -10,17 +10,21 @@
 
     <p>
         @Html.ActionLink("Create New", "Create")
+        <a style="color:#00ff21" href="@Url.Action("Create")">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="sr-only">Create</span>
+        </a>
     </p>
 
 
     @using (Html.BeginForm(Html.BeginForm("Index", "DimFFInstance", FormMethod.Get)))
     {
 
-        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br/><br/>
-        <span id="leftnavigation" class="fa fa-3x fa-arrow-circle-o-left" style="color:#0094ff;opacity:1;float:left;"></span>
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc;" }) <br/><br/>
+        <span id="leftnavigation" class="fa fa-3x fa-arrow-circle-o-left" style="color:#0094ff;opacity:1;float:left;cursor:pointer;"></span>
         <input id="search" class="btn btn-success" type="submit" value="Filter" style="float:none;"/>
         <input id="reset" type="button" class="btn btn-primary " value="Reset" style="float:none;" onclick="location.href='@Url.Action("Index")' " />
-        <span id="rightnavigation" class="fa fa-3x fa-arrow-circle-o-right" style="color:#0094ff;opacity:1;float:right;"></span>
+        <span id="rightnavigation" class="fa fa-3x fa-arrow-circle-o-right" style="color:#0094ff;opacity:1;float:right;cursor:pointer;"></span>
 
 
     }
@@ -181,6 +185,17 @@
                     </th>
                     <th id="right">
                         @Html.DisplayNameFor(model => model.First().DimModule.ModuleName)
+                        <br />
+                        <br />
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Module_Desc", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                            <span class="sr-only">Descending</span>
+                        </a>
+
+                        <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Module", currentFilter = ViewBag.CurrentFilter })">
+                            <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                            <span class="sr-only">Ascending</span>
+                        </a>
                     </th>
                     <th></th>
                 </tr>

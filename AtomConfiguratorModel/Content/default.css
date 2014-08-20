@@ -670,26 +670,6 @@ ul.contact li a.icon-rss:before
 	border-radius: 50%;
 }
 
-.column1,  .column2,  .column3,  .column4
-{
-	width: 282px;
-}
-
-.column1,  .column2
-{
-	float: left;
-	margin-right: 24px;
-}
-
-.column3
-{
-	float: left;
-}
-
-.column4
-{
-	float: right;
-}
 
 #slider-wrapper
 {
@@ -903,12 +883,12 @@ ul.contact li a.icon-rss:before
 	overflow: hidden;
 	margin-bottom: 5em;
 	padding-bottom: 5em;
-	border-bottom: 1px solid rgba(0,0,0,.1);
+	border-bottom: 1px solid rgba(0,0,0,.1); 
 }
 
 .extra2 .button
 {
-	margin-top: 2em;
+	/*margin-top: 2em;*/
 }
 
 .extra2 .title h2
@@ -924,17 +904,24 @@ ul.contact li a.icon-rss:before
 .extra2 .ebox1,
 .extra2 .ebox2
 {
-	width: 560px;
+	width: 480px;
 }
 
 .extra2  .ebox1
 {
-	float: left;
-	padding-right: 40px;
-	border-right: 1px solid rgba(0,0,0,.1);
+    margin:0;
+    padding:0;
+    margin: 1em;
+    
+    float: left;
+	/*border-right: 1px solid rgba(0,0,0,.1);*/
 }
 
 .extra2 .ebox2
 {
-	float: right;
+	margin:0;
+    padding:0;
+    margin: 1em;
+
+    float: right;
 }

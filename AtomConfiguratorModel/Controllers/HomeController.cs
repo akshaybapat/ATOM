@@ -19,5 +19,10 @@ namespace AtomConfiguratorModel.Controllers
         {
             return View();
         }
+
+        public ActionResult DimNavigation()
+        {
+            return View();
+        }
     }
 }

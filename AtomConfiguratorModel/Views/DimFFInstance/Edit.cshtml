@@ -4,21 +4,19 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm("Edit", "DimFFInstance", FormMethod.Post, new { @class = "form-crud" }))
+@using (Html.BeginForm("Edit", "DimFFInstance", FormMethod.Post, new { id = "msform", style = "width:600px;" }))
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    <fieldset>
+        <h2>Edit</h2>
         <h4>DimFFInstance</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataSourceName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DataSourceName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.DataSourceName)
                 @Html.ValidationMessageFor(model => model.DataSourceName)
@@ -26,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HostName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.HostName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.HostName)
                 @Html.ValidationMessageFor(model => model.HostName)
@@ -34,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DatabaseName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DatabaseName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.DatabaseName)
                 @Html.ValidationMessageFor(model => model.DatabaseName)
@@ -42,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.UserName)
                 @Html.ValidationMessageFor(model => model.UserName)
@@ -50,7 +48,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Password, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password)
@@ -58,7 +56,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProjectName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProjectName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.ProjectName)
                 @Html.ValidationMessageFor(model => model.ProjectName)
@@ -66,7 +64,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataFilePrefix, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DataFilePrefix, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.DataFilePrefix)
                 @Html.ValidationMessageFor(model => model.DataFilePrefix)
@@ -74,7 +72,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ReplicationDelayMinute, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ReplicationDelayMinute, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.ReplicationDelayMinute)
                 @Html.ValidationMessageFor(model => model.ReplicationDelayMinute)
@@ -82,15 +80,26 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsActive, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.IsActive)
                 @Html.ValidationMessageFor(model => model.IsActive)
             </div>
         </div>
+        <input type="button" name="next" class="next action-button" value="Next" />
 
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </fieldset>
+    
+    <fieldset>
+        <h2>Edit</h2>
+        <h4>DimFFInstance (Continued)</h4>
+        <hr />
         <div class="form-group">
-            @Html.LabelFor(model => model.KeyModule, "KeyModule", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.KeyModule, "KeyModule", new { @class = "control-label" })
             <div>
                 @Html.DropDownList("KeyModule", String.Empty)
                 @Html.ValidationMessageFor(model => model.KeyModule)
@@ -98,7 +107,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ITContactName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ITContactName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.ITContactName)
                 @Html.ValidationMessageFor(model => model.ITContactName)
@@ -106,7 +115,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ITPhone, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ITPhone, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.ITPhone)
                 @Html.ValidationMessageFor(model => model.ITPhone)
@@ -114,7 +123,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ITEmail, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ITEmail, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.ITEmail)
                 @Html.ValidationMessageFor(model => model.ITEmail)
@@ -122,7 +131,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.QAContactName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.QAContactName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.QAContactName)
                 @Html.ValidationMessageFor(model => model.QAContactName)
@@ -130,7 +139,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.QAPhone, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.QAPhone, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.QAPhone)
                 @Html.ValidationMessageFor(model => model.QAPhone)
@@ -138,7 +147,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.QAEmail, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.QAEmail, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.QAEmail)
                 @Html.ValidationMessageFor(model => model.QAEmail)
@@ -146,7 +155,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SiteName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SiteName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.SiteName)
                 @Html.ValidationMessageFor(model => model.SiteName)
@@ -154,25 +163,33 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BaanCoNo, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BaanCoNo, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.BaanCoNo)
                 @Html.ValidationMessageFor(model => model.BaanCoNo)
             </div>
         </div>
 
+        <input type="button" name="previous" class="previous action-button col-md-10" value="Previous" style="float:none" />
+
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="control-label col-md-offset-1 col-md-10">
+                <input type="submit" value="Save" class="action-button" style="background:#00b7ff;" />
             </div>
         </div>
-    </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </fieldset>
+    
+    
+   
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -1,4 +1,4 @@
-﻿@model AtomConfiguratorModel.Models.DimFinancialCompany
+﻿@model AtomConfiguratorModel.Models.DimProcessType
 
 @{
     ViewBag.Title = "Edit";
@@ -7,22 +7,22 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm("Edit", "DimFinancialCompany", FormMethod.Post, new { @class = "form-crud" }))
+@using (Html.BeginForm("Edit", "DimProcessTypes", FormMethod.Post, new { @class = "form-crud" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div >
+
+    <div>
         <h2>Edit</h2>
-        <h4>DimFinancialCompany</h4>
+        <h4>DimProcessType</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FinancialCompanyName, new { @class = "control-label" })
+            @Html.LabelFor(model => model.ProcessTypeName, new { @class = "control-label" })
             <div>
-                @Html.EditorFor(model => model.FinancialCompanyName)
-                @Html.ValidationMessageFor(model => model.FinancialCompanyName)
+                @Html.EditorFor(model => model.ProcessTypeName)
+                @Html.ValidationMessageFor(model => model.ProcessTypeName)
                 <br /><br />
             </div>
         </div>

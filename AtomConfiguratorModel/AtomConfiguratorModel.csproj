@@ -52,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -153,8 +154,11 @@
     <Compile Include="Models\CISTestResultSet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DimBucketsController.cs" />
+    <Compile Include="Models\DimModel.cs" />
     <Compile Include="Models\DimBuildingsController.cs" />
     <Compile Include="Models\DimModulesController.cs" />
+    <Compile Include="Models\DimProcessTypesController.cs" />
     <Compile Include="Models\FFSite.cs" />
     <Compile Include="Models\FFSiteController.cs" />
     <Compile Include="Models\SiteModel.cs" />
@@ -447,8 +451,20 @@
     <Content Include="Views\FFSite\Index.cshtml" />
     <Content Include="Views\DimFFInstance\Index - Copy.cshtml" />
     <Content Include="Views\FFSite\Index - Copy.cshtml" />
+    <Content Include="Views\Home\DimNavigation.cshtml" />
+    <Content Include="Views\DimProcessTypes\Create.cshtml" />
+    <Content Include="Views\DimProcessTypes\Delete.cshtml" />
+    <Content Include="Views\DimProcessTypes\Details.cshtml" />
+    <Content Include="Views\DimProcessTypes\Edit.cshtml" />
+    <Content Include="Views\DimProcessTypes\Index.cshtml" />
+    <Content Include="Views\DimBuckets\Create.cshtml" />
+    <Content Include="Views\DimBuckets\Delete.cshtml" />
+    <Content Include="Views\DimBuckets\Details.cshtml" />
+    <Content Include="Views\DimBuckets\Edit.cshtml" />
+    <Content Include="Views\DimBuckets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>

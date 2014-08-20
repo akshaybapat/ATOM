@@ -35,7 +35,7 @@ body {
 	border: 0 none;
 	border-radius: 15px;
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-	padding: 20px 30px;
+	padding: 20px 20px;
 	
 	box-sizing: border-box;
 	width: 80%;
@@ -49,12 +49,14 @@ body {
     #msform fieldset:not(:first-of-type) {
 	display: none;
     }
-    /*inputs*/
+    /*inputs */
 
     #msform input, #msform textarea {
-	padding: 15px;
+	 
+    padding-left: 1.5em;
+    padding-right: 0.5em;
 	border: 1px solid #ccc;
-	border-radius: 3px;
+	border-radius: 15px;
 	margin-bottom: 10px;
 	width: 100%;
 	box-sizing: border-box;
@@ -74,10 +76,8 @@ body {
 	cursor: pointer;
 	padding: 10px 5px;
 	margin: 10px 5px;
-    }
-    #msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #0099FF;
-    }
+    } 
+  
 
     /*headings*/
     .fs-title {
@@ -151,7 +151,21 @@ body {
 
     /*CRUD Form - For All Dimension Data*/
     .form-crud {
-            min-width:360px; width:480px; margin-top: 50px; margin-left: auto; margin-right: auto; text-align: center; position: relative; background: white; 	border: 0 none; border-radius: 15px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; opacity: 0.9; filter: alpha(opacity=90); 
+            min-width:360px; 
+            width:480px; 
+            margin-top: 50px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            text-align: center; 
+            position: relative; 
+            background: white; 	
+            border: 0 none; 
+            border-radius: 15px; 
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
+            padding: 20px 30px; 
+            box-sizing: border-box; 
+            opacity: 0.9; 
+            filter: alpha(opacity=90); 
         }
 
     
@@ -209,23 +223,26 @@ body {
 	        margin: 10px 5px;
             }
 
+           .blue{
+               background:#00b7ff;
+           }
+
+           .red{
+               background:#ff0000;
+           }
+
+           .purple{
+               background:#3600ff;
+           }
+
             .action-button:hover, .action-button:focus {
 	        box-shadow: 0 0 0 2px white, 0 0 0 3px #0099FF;
             }
 
             .highlight { background-color: #b0c9ff; border-radius: 15px; }
+            tr:hover { cursor: pointer; }
 
-            .modal {
-                display:    none;
-                position:   fixed;
-                z-index:    1000;
-                top:        0;
-                left:       0;
-                height:     100%;
-                width:      100%;
-                
-                }
-
+           
            #bigblue
              {
                 background: rgba( 255, 255, 255, .8 ) 
@@ -268,17 +285,5 @@ body {
                 overflow-y:scroll;
                 
                     }
-    #ffinstance td {
-               
-               
-                  }
-
-    #ffinstance .sliding-window {
-                width:100%; /* Total width of all columns in sliding-window + border widths */
-                overflow:hidden;
-                }
-
-    #ffinstance .sliding-window div {
-             float:left;
-             width:50%;
-            }
+    
+ 

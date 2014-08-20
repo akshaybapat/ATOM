@@ -11,14 +11,15 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    <div>
+        <h2>Edit</h2>
         <h4>DimFacility</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SiteName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SiteName, new { @class = "control-label" })
             <div>
                 @Html.EditorFor(model => model.SiteName)
                 @Html.ValidationMessageFor(model => model.SiteName)
@@ -26,15 +27,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KeyCountry, "KeyCountry", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.KeyCountry, "KeyCountry", new { @class = "control-label" })
             <div>
                 @Html.DropDownList("KeyCountry", String.Empty)
                 @Html.ValidationMessageFor(model => model.KeyCountry)
+                <br /><br />
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-1 col-md-10">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
