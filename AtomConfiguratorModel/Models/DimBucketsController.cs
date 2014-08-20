@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -14,10 +15,51 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: DimBuckets
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var dimBuckets = db.DimBuckets.Include(d => d.DimProcessType);
-            return View(dimBuckets.ToList());
+
+            ViewBag.CurrentSort = sortOrder;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var dimBuckets = db.DimBuckets.AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dimBuckets = dimBuckets.Where(s => s.BucketName.ToUpper().Contains(searchString.ToUpper()) || s.DimProcessType.ProcessTypeName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch (sortOrder)
+            {
+                case "BucketName_Desc":
+                    dimBuckets = dimBuckets.OrderByDescending(s => s.BucketName);
+                    break;
+
+                case "ProcessTypeName_Desc":
+                    dimBuckets = dimBuckets.OrderByDescending(s => s.DimProcessType.ProcessTypeName);
+                    break;
+
+                case "ProcessTypeName":
+                    dimBuckets = dimBuckets.OrderBy(s => s.DimProcessType.ProcessTypeName);
+                    break;
+
+                default:
+                    dimBuckets = dimBuckets.OrderBy(s => s.BucketName);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(dimBuckets.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: DimBuckets/Details/5

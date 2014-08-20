@@ -30,7 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.First().ProcessTypeName)
 
-                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "ProcessType_Desc", currentFilter = ViewBag.CurrentFilter })">
+                <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "ProcessTypeName_Desc", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
                     <span class="sr-only">Descending</span>
                 </a>

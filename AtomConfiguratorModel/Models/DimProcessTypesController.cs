@@ -40,7 +40,7 @@ namespace AtomConfiguratorModel.Models
 
             switch (sortOrder)
             {
-                case "ProcessType_Desc":
+                case "ProcessTypeName_Desc":
                     dimProcessTypes = dimProcessTypes.OrderByDescending(s => s.ProcessTypeName);
                     break;
 

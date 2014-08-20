@@ -158,7 +158,9 @@
     <Compile Include="Models\DimModel.cs" />
     <Compile Include="Models\DimBuildingsController.cs" />
     <Compile Include="Models\DimModulesController.cs" />
+    <Compile Include="Models\DimPhysicalStationsController.cs" />
     <Compile Include="Models\DimProcessTypesController.cs" />
+    <Compile Include="Models\DimStationTypesController.cs" />
     <Compile Include="Models\FFSite.cs" />
     <Compile Include="Models\FFSiteController.cs" />
     <Compile Include="Models\SiteModel.cs" />
@@ -462,6 +464,16 @@
     <Content Include="Views\DimBuckets\Details.cshtml" />
     <Content Include="Views\DimBuckets\Edit.cshtml" />
     <Content Include="Views\DimBuckets\Index.cshtml" />
+    <Content Include="Views\DimStationTypes\Create.cshtml" />
+    <Content Include="Views\DimStationTypes\Delete.cshtml" />
+    <Content Include="Views\DimStationTypes\Details.cshtml" />
+    <Content Include="Views\DimStationTypes\Edit.cshtml" />
+    <Content Include="Views\DimStationTypes\Index.cshtml" />
+    <Content Include="Views\DimPhysicalStations\Create.cshtml" />
+    <Content Include="Views\DimPhysicalStations\Delete.cshtml" />
+    <Content Include="Views\DimPhysicalStations\Details.cshtml" />
+    <Content Include="Views\DimPhysicalStations\Edit.cshtml" />
+    <Content Include="Views\DimPhysicalStations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
