@@ -75,6 +75,37 @@ $('table tr').on('click', function (e) {
 
 });
 
+
+$('#SearchBox').on("keyup paste", function () {
+
+    var value = $(this).val().toUpperCase();
+    var $rows = $("table tr");
+
+    if (value === '') {
+        $rows.show();
+        return false;
+    }
+
+    $rows.each(function (index) {
+        if (index !== 0) {
+
+            $row = $(this);
+
+            var column1 = $row.find("td").eq(0).text().toUpperCase();
+            var column2 = $row.find("td").eq(1).text().toUpperCase();
+
+            if ((column1.indexOf(value) > -1) || (column2.indexOf(value) > -1)) {
+                $row.show();
+            }
+            else {
+                $row.hide();
+            }
+        }
+    });
+
+});
+
+
 $(function () {
 
     $('#CountriesDivID').hide();

@@ -15,8 +15,9 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: DimBuildings
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string columnFilter, string searchString, int? page)
         {
+            ViewBag.ColumnFilter = (columnFilter != null) ? columnFilter : "ALL";
 
             ViewBag.CurrentSort = sortOrder;
 
@@ -33,13 +34,22 @@ namespace AtomConfiguratorModel.Models
 
             var dimBuildings = db.DimBuildings.Include(d => d.DimFacility);
 
+            ViewBag.SiteList = db.DimFacilities.Select(b => b.SiteName);
+
             if (!String.IsNullOrEmpty(searchString))
 
             {
                 
                 dimBuildings = dimBuildings.Where(s => s.BuildingName.ToUpper().Contains(searchString.ToUpper()) || s.DimFacility.SiteName.ToUpper().Contains(searchString.ToUpper()));
                
-            }
+            } 
+
+            if (!String.IsNullOrEmpty(columnFilter) && !columnFilter.Equals("ALL") )
+            {
+
+                dimBuildings = dimBuildings.Where(s => s.DimFacility.SiteName.ToUpper().Contains(columnFilter.ToUpper()));
+
+            } 
 
             switch (sortOrder)
             {
@@ -60,6 +70,8 @@ namespace AtomConfiguratorModel.Models
                     dimBuildings = dimBuildings.OrderBy(s => s.BuildingName);
                     break;
             }
+
+
 
             int pageSize = 10;
             int pageNumber = (page ?? 1);
