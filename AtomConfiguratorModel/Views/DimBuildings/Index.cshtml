@@ -20,7 +20,7 @@
         @using (Html.BeginForm("Index", "DimBuildings", FormMethod.Get))
         {
         
-            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {  id="SearchBox", columnFilter = ViewBag.ColumnFilter , style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { id = "SearchBox", columnFilter = ViewBag.ColumnFilter, placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
             <input id="search" class="btn btn-success" type="submit" value="Search" />
             <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
         }

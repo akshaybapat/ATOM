@@ -19,8 +19,8 @@
             @using (Html.BeginForm("Index", "DimBusinessPartner", FormMethod.Get))
             {
 
-                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
-                <input id="search" class="btn btn-success" type="submit" value="Filter" />
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { id = "SearchBox", columnFilter = ViewBag.ColumnFilter , placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
+                <input id="search" class="btn btn-success" type="submit" value="Search" />
                 <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
 
             }
@@ -32,7 +32,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.First().BusinessPartnerName)
 
-                        <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPName_Desc", currentFilter = ViewBag.CurrentFilter })">
+                       <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPName_Desc", currentFilter = ViewBag.CurrentFilter })">
                             <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
                             <span class="sr-only">Descending</span>
                         </a>
@@ -45,6 +45,13 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.First().BPCode)
+
+                        @Html.DropDownListFor(model => model.First().BPCode, new SelectList(ViewBag.BPCodeList, "ALL"), ViewBag.ColumnFilter as string, new { id = "BPCodeFilter", style = "padding-left:1em;" })
+
+                        <a href="@Url.Action("Index")">
+                            <i class="glyphicon glyphicon glyphicon-remove"></i>
+                            <span class="sr-only">Clear</span>
+                        </a>
 
                         <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "BPCode_Desc", currentFilter = ViewBag.CurrentFilter })">
                             <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
@@ -107,3 +114,15 @@
      new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
     </div>
+
+
+<script>
+    $('#BPCodeFilter').change(function () {
+
+        var url = '/DimBusinessPartner/Index?columnFilter=' + $('#BPCodeFilter option:selected').text(); + '&sortOrder=' + '@ViewBag.CurrentSort' + '&currentFilter=' + '@ViewBag.CurrentFilter'
+         gotoURL(url);
+
+    });
+
+
+</script>

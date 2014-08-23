@@ -34,7 +34,7 @@ namespace AtomConfiguratorModel.Models
 
             var dimBuildings = db.DimBuildings.Include(d => d.DimFacility);
 
-            ViewBag.SiteList = db.DimFacilities.Select(b => b.SiteName);
+            ViewBag.SiteList = db.DimFacilities.Select(b => b.SiteName).Distinct();
 
             if (!String.IsNullOrEmpty(searchString))
 

@@ -15,8 +15,10 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimBusinessUnit/
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string columnFilter, string searchString, int? page)
         {
+
+            ViewBag.ColumnFilter = (columnFilter != null) ? columnFilter : "ALL";
 
             ViewBag.CurrentSort = sortOrder;
 
@@ -33,12 +35,20 @@ namespace AtomConfiguratorModel.Models
 
             var dimbusinessunits = db.DimBusinessUnits.Include(d => d.DimCostCenter);
 
+            ViewBag.CostCenterList = db.DimBusinessUnits.Select(b => b.DimCostCenter.CostCenter).Distinct();
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 dimbusinessunits = dimbusinessunits.Where(s => s.BusinessUnitName.ToUpper().Contains(searchString.ToUpper()) || s.DimCostCenter.CostCenter.ToUpper().Contains(searchString.ToUpper()));
                
             }
+
+            if (!String.IsNullOrEmpty(columnFilter) && !columnFilter.Equals("ALL"))
+            {
+
+                dimbusinessunits = dimbusinessunits.Where(s => s.DimCostCenter.CostCenter.ToUpper().Contains(columnFilter.ToUpper()));
+
+            } 
 
             switch (sortOrder)
             {

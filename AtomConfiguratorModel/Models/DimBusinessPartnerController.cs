@@ -15,8 +15,9 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimBusinessPartner/
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string columnFilter, string searchString, int? page)
         {
+            ViewBag.ColumnFilter = (columnFilter != null) ? columnFilter : "ALL";
 
             ViewBag.CurrentSort = sortOrder;
 
@@ -33,10 +34,19 @@ namespace AtomConfiguratorModel.Models
 
             var dimBusinessPartners = db.DimBusinessPartners.AsQueryable();
 
+            ViewBag.BPCodeList = db.DimBusinessPartners.Select(b => b.BPCode).Distinct();
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 dimBusinessPartners = dimBusinessPartners.Where(s => s.BusinessPartnerName.ToUpper().Contains(searchString.ToUpper()) || s.BPCode.ToUpper().Contains(searchString.ToUpper()));
             }
+
+            if (!String.IsNullOrEmpty(columnFilter) && !columnFilter.Equals("ALL"))
+            {
+
+                dimBusinessPartners = dimBusinessPartners.Where(s => s.BPCode.ToUpper().Contains(columnFilter.ToUpper()));
+
+            } 
 
             switch (sortOrder)
             {

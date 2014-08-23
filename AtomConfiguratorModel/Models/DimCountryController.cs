@@ -15,8 +15,10 @@ namespace AtomConfiguratorModel.Models
         private FFCube2Entities db = new FFCube2Entities();
 
         // GET: /DimCountry/
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string columnFilter, string searchString, int? page)
         {
+
+            ViewBag.ColumnFilter = (columnFilter != null) ? columnFilter : "ALL";
 
             ViewBag.CurrentSort = sortOrder;
 
@@ -33,11 +35,20 @@ namespace AtomConfiguratorModel.Models
 
             var dimcountries = db.DimCountries.Include(d => d.DimRegion);
 
+            ViewBag.RegionList = db.DimCountries.Select(b => b.DimRegion.RegionName).Distinct();
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 dimcountries = dimcountries.Where(s => s.CountryName.ToUpper().Contains(searchString.ToUpper()) || s.DimRegion.RegionName.ToUpper().Contains(searchString.ToUpper()));
 
             }
+
+            if (!String.IsNullOrEmpty(columnFilter) && !columnFilter.Equals("ALL"))
+            {
+
+                dimcountries = dimcountries.Where(s => s.DimRegion.RegionName.ToUpper().Contains(columnFilter.ToUpper()));
+
+            } 
 
             switch (sortOrder)
             {

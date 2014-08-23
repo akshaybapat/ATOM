@@ -18,8 +18,8 @@
         @using (Html.BeginForm(Html.BeginForm("Index", "DimModules", FormMethod.Get)))
         {
 
-            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = ";border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc;" }) <br /><br />
-            <input id="search" class="btn btn-success" type="submit" value="Filter" />
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { id = "SearchBox", columnFilter = ViewBag.ColumnFilter, placeholder = "Enter Keyword", style = ";border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc;" }) <br /><br />
+            <input id="search" class="btn btn-success" type="submit" value="Search" />
             <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
 
         }
@@ -43,6 +43,13 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.First().DimBuilding.BuildingName)
+
+                @Html.DropDownListFor(model => model.First().DimBuilding.BuildingName, new SelectList(ViewBag.BuildingList, "ALL"), ViewBag.ColumnFilter as string, new { id = "BuildingFilter", style = "padding-left:1em;" })
+
+                <a href="@Url.Action("Index")">
+                    <i class="glyphicon glyphicon glyphicon-remove"></i>
+                    <span class="sr-only">Clear</span>
+                </a>
 
                 <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Building_Desc", currentFilter = ViewBag.CurrentFilter })">
                     <i class="glyphicon glyphicon-sort-by-alphabet-alt">|</i>
@@ -104,3 +111,14 @@
      new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 </div>
+
+<script>
+    $('#BuildingFilter').change(function () {
+
+        var url = '/DimModules/Index?columnFilter=' + $('#BuildingFilter option:selected').text(); + '&sortOrder=' + '@ViewBag.CurrentSort' + '&currentFilter=' + '@ViewBag.CurrentFilter'
+        gotoURL(url);
+
+    });
+
+
+</script>
