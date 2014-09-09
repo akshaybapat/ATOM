@@ -1,12 +1,12 @@
-﻿@model IEnumerable<AtomConfiguratorModel.Models.FFCube2Entities>
+﻿@model IEnumerable<AtomConfiguratorModel.Models.DimModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="form-crud" style="width:80% ; background-color:#ffffff; overflow:auto;">
-
-    <table class="responsive table-condensed table-bordered" style="margin-top:15%">
+<div class="form-crud list-small" style="min-width:240px; width:280px;">
+    <h3>Select the Dimension</h3>
+    <table class="table-bordered" style="margin-top:15px;">
         <tr id="heading">
             <th>
                 Dimension
@@ -14,83 +14,88 @@
             <th></th>
         </tr>
 
-                <tr>
-                    <td>
-                    @Html.DisplayFor(modelItem => )
-                    </td>
-                    <td style="font-size:12px;min-width:200px">
+        <tr>
+            <td>
+                @Html.LabelFor(modelItem => modelItem.First().BusinessPartner)
+            </td>
+            <td style="font-size:12px;">
 
-                        <a href="@Url.Action("Index", "DimBuildings")">
-                            <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
-                            View
-                            <span class="sr-only">View</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => Model.First().DimBusinessPartners.ToString())
-                    </td>
-                    <td style="font-size:12px;min-width:200px">
+                <a href="@Url.Action("Index", "DimBusinessPartner")">
+                    <i style="color:#5500ff" class="glyphicon glyphicon-list-alt"></i>
+                    View
+                    <span class="sr-only">View</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(modelItem => modelItem.First().BusinessUnit)
+            </td>
+            <td style="font-size:12px;">
 
-                        <a href="@Url.Action("Index", "DimBusinessPartner")">
-                            <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
-                            View
-                            <span class="sr-only">View</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => Model.First().DimBusinessUnits.ToString())
-                    </td>
-                    <td style="font-size:12px;min-width:200px">
+                <a href="@Url.Action("Index", "DimBusinessUnit")">
+                    <i style="color:#5500ff" class="glyphicon glyphicon-list-alt"></i>
+                    View
+                    <span class="sr-only">View</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(modelItem => modelItem.First().Country)
+            </td>
+            <td style="font-size:12px;">
 
-                        <a href="@Url.Action("Index", "DimBusinessUnit")">
-                            <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
-                            View
-                            <span class="sr-only">View</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => Model.First().DimCountries.ToString())
-                    </td>
-                    <td style="font-size:12px;min-width:200px">
+                <a href="@Url.Action("Index", "DimCountry")">
+                    <i style="color:#5500ff" class="glyphicon glyphicon-list-alt"></i>
+                    View
+                    <span class="sr-only">View</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(modelItem => modelItem.First().FinancialCompany)
+            </td>
+            <td style="font-size:12px;">
 
-                        <a href="@Url.Action("Index", "DimCountry")">
-                            <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
-                            View
-                            <span class="sr-only">View</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => Model.First().DimCountries.ToString())
-                    </td>
-                    <td style="font-size:12px;min-width:200px">
+                <a href="@Url.Action("Index", "DimFinancialCompany")">
+                    <i style="color:#5500ff" class="glyphicon glyphicon-list-alt"></i>
+                    View
+                    <span class="sr-only">View</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(modelItem => modelItem.First().Region)
+            </td>
+            <td style="font-size:12px;">
 
-                        <a href="@Url.Action("Index", "DimCountry")">
-                            <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
-                            View
-                            <span class="sr-only">View</span>
-                        </a>
-                    </td>
-                </tr>
-        
+                <a href="@Url.Action("Index", "DimRegion")">
+                    <i style="color:#5500ff" class="glyphicon glyphicon-list-alt"></i>
+                    View
+                    <span class="sr-only">View</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(modelItem => modelItem.First().Site)
+            </td>
+            <td style="font-size:12px;">
+
+                <a href="@Url.Action("Index", "DimFacility")">
+                    <i style="color:#5500ff" class="glyphicon glyphicon-list-alt"></i>
+                    View
+                    <span class="sr-only">View</span>
+                </a>
+            </td>
+        </tr>
+
 
     </table>
+    
 
-
-
-    <div>
-        <br />
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-        @Html.PagedListPager(Model, page => Url.Action("Index",
-     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-    </div>
 </div>
 

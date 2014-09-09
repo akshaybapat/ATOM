@@ -449,6 +449,8 @@
     <Content Include="Views\DimFFInstance\Index - Copy.cshtml" />
     <Content Include="Views\FFSite\Index - Copy.cshtml" />
     <Content Include="Views\Home\DimNavigation.cshtml" />
+    <Content Include="Views\Home\AdminView.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
