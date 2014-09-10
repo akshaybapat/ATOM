@@ -1,305 +1,606 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Flextronics ATOM | Home :: w3layouts</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-    <link href="../Content/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../Content/slider.css" rel="stylesheet" media="screen">
-    <link href="../Content/default.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../Content/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../Content/fonts.css" rel="stylesheet" type="text/css" media="all" />
-    <script src="../Scripts/jquery.min.js"></script>
-    <style>
-        .form-crud {
-            width: 80%;
-            margin-top: 50px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            position: relative;
-            background: white;
-            border: 0 none;
-            border-radius: 15px;
-            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-            padding: 20px 30px;
-            box-sizing: border-box;
-            opacity: 0.9;
-            filter: alpha(opacity=90);
-        } </style>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Flextronics ATOM</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/freelancer.css" rel="stylesheet">
+    <link href="~/Content/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-<body>
 
-    <div class="content" id="home">
-        <!--<div class="header">
-            <div class="wrap">
-                <header id="topnav">
-                    <nav>
-                        <ul>
-                            <li class="active"><a href="#home" class="scroll">Home</a></li>
-                            <li><a href="#ourstory" class="scroll">Console</a></li>
-                            <li><a href="#contact" class="scroll">Contact</a></li>
-                            <div class="clear"> </div>
-                        </ul>
-                    </nav>
-                    <h1><a href="index.html">ATOM</a></h1>
-                    <a href="#" id="navbtn">Nav Menu</a>
-                    <div class="clear"> </div>
-                </header>
-            </div>
-        </div>-->
+<body id="page-top" class="index">
 
-        <div class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(#04519b, #044687 60%, #033769);">
-            <div class=" container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Flextronics ATOM", "Index", "Home", null, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                        <li><a href="#ourstory" class="scroll">Console</a></li>
-                    </ul>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">ATOM</a>
             </div>
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Console</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-----script------------->
-        <script type="text/javascript" src="../Scripts/menu.js"></script>
+        <!-- /.container-fluid -->
+    </nav>
 
-        <div class="slider" id="home">
-            <div class="wrap">
-                <!---start-da-slider----->
-                <div id="da-slider" class="da-slider">
-                    <div class="da-slide">
-                        <h2>What is ATOM?</h2>
-                        <p>An Enterprise Solution to provide the right data, with the right quality, at the right time, presented in a consistent and flexible way.</p>
-                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
+
+
+    <!-- Header --
+    <header>
+        <div class="container" style="background:url('http://upload.wikimedia.org/wikipedia/commons/1/1f/Flextronics,_Aug_06.JPG') no-repeat;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img src="~/Content/images/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Flextronics ATOM</span>
+                        <hr class="star-light">
+                        <span class="skills">Go to Console</span>
                     </div>
-                    <div class="da-slide">
-                        <h2>What kind of Data?</h2>
-                        <p>KPI data, Operational Reports From Baan, FlexFlow, RPMDSS and other legacy systems.</p>
-                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
-                    </div>
-                    <div class="da-slide">
-                        <h2>Who will consume & maintain the Data?</h2>
-                        <p> Executive Management – KPI’s, Regional / Site Management – KPI’s / Reports, Site Operational staff (including Gold Factory users) – Reports</p>
-                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
-
-                    </div>
-
-                </div>
-
-                <script type="text/javascript" src="../Scripts/jquery.cslider.js"></script>
-                <!---strat-slider---->
-                <link rel="stylesheet" type="text/css" href="../Content/slider.css" />
-                <script type="text/javascript" src="../Scripts/modernizr.custom.28468.js"></script>
-                <script type="text/javascript">
-							$(function() {
-
-								$('#da-slider').cslider({
-									autoplay	: true,
-									bgincrement	: 450
-								});
-
-							});
-                </script>
-                <!---//End-da-slider----->
-
-            </div>
-        </div>
-    </div>
-    <!---start-team----->
-    <div class="team" id="team">
-        <div class="wrap">
-            <div class="section group">
-                <div class="col_1_of_1 span_1_of_1">
-                    <h3>Global Data Configurator </h3>
-                    <p>FlexFlow is a project based application, so each customer-project has its own database where all the data is collected; the data is stored into the production database. Based on this, report database server can contain multiple FF databases.  After the production data is replicated into the reporting database where all the calculations for yield, work in progress, defects, and completions are obtained to avoid impact production performance.</p>
-                </div>
-                <div class="pen">
-                    <img src="../Content/images/pen.png">
                 </div>
             </div>
         </div>
-    </div>
-    <!---//end-team----->
-    <!---start-our story----->
-    <div class="ourstory" id="ourstory">
-        <div class="our-story">
-            <br /><br />
-            <h3>ATOM Functions </h3>
-            <p>Select the task that you wish to perform based on your roles</p>
+    </header> -->
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <div class="btn-dark btn-lg">
+                <h1>Flextronics ATOM</h1>
+                <br>
+                <div class="page-scroll">
+                    <a href="#portfolio" class="btn btn-primary btn-lg" style="border-radius: 25px;">Go to Console</a>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;    
+                    <a href="#about" class="btn btn-success btn-lg" style="border-radius: 25px;">Find Out More</a>
+                </div>
+                 <div class="page-scroll">
+                   
+                </div>
+            </div>
         </div>
+    </header>
 
-        <div  id="Portfolio">
-            <div class="wrap" style="width:50%;
-            margin-top: 50px; 
-            margin-left: auto; 
-            margin-right: auto; 
-            text-align: center; 
-            position: relative; 
-            background: white; 	
-            border: 0 none; 
-            border-radius: 15px; 
-            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
-            padding: 10px 10px 10px 1px; 
-            box-sizing: border-box; ">
-                <div>
 
-                    <div id="wrapper">
-                        <div id="featured-wrapper">
-                            <div id="featured" class="extra2 margin-btm">
-                                <div class="main-title">
-                                    <h2>Task Console</h2>
-                                    <span class="byline"></span>
-                                </div>
-
-                                <div class="ebox1">
-                                    <span class="fa fa-cubes"></span>
-                                    <div>
-                                        <h2>FF Dimension Data Administration</h2>
-                                        <span class="byline">Maintain FFInstance Data</span>
-                                    </div>
-
-                                    <a href="#" class="button">SELECT</a>
-                                </div>
-                                <div class="ebox2">
-                                    <span class="fa fa-bar-chart-o"></span>
-                                    <div>
-                                        <h2>FF Site Adminitration</h2>
-                                        <span class="byline">Maintain Site Data</span>
-                                    </div>
-
-                                    <a href="#" class="button">SELECT</a>
-                                </div>
-                            </div>
-                            <div class="extra2">
-                                <div class="ebox1">
-                                    <span class="fa fa-tachometer"></span>
-                                    <div>
-                                        <h2>Metrics Management</h2>
-                                        <span class="byline">Create, Update, Define Metrics</span>
-                                    </div>
-
-                                    <a href="#" class="button">SELECT</a>
-                                </div>
-                                <div class="ebox2">
-                                    <span class="fa fa-thumbs-up"></span>
-                                    <div>
-                                        <h2>Metric Sign Off</h2>
-                                        <span class="byline">Approve/Reject Metrics Access</span>
-                                    </div>
-
-                                    <a href="#" class="button">SELECT</a>
-                                </div>
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Console</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                    </div>
-
+                        <img src="~/Content/images/portfolio/cabin.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="~/Content/images/portfolio/cake.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="~/Content/images/portfolio/circus.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="~/Content/images/portfolio/game.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="~/Content/images/portfolio/safe.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="~/Content/images/portfolio/submarine.png" class="img-responsive" alt="">
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-   
-    <!----start-contact---->
-    <div class="contact" id="contact">
-        <div class="contact">
-            <h3>Get in touch</h3>
-            <p>Got any questions?to feel free to get in touch with us .we would love to hear from you.</p>
-            <div class="wrap">
-                <div class="con">
-                    <form method="post" action="#">
-                        <input type="text" placeholder="Name" required />
-                        <input type="text" placeholder="Email " required />
-                        <div class="clear"> </div>
-                        <div>
-                            <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' Message';}">Message</textarea>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>What is ATOM?</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>An Enterprise Solution to provide the right data, with the right quality, at the right time, presented in a consistent and flexible way.</p>
+                </div>
+                <div class="col-lg-4">
+                    <p>Executive Management – KPI’s, Regional / Site Management – KPI’s / Reports, Site Operational staff (including Gold Factory users) – Reports</p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center page-scroll">
+                    <a href="#" class="btn btn-lg btn-outline">
+                        <i class="fa fa-download"></i> Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Contact Me</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
                         </div>
-                        <div class="con-button">
-                            <input type="submit" value="Send">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Message</label>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Send</button>
+                            </div>
                         </div>
                     </form>
                 </div>
-                <div class="clear"> </div>
-                <div class="social_icon">
-                    <ul>
+            </div>
+        </div>
+    </section>
 
-                        <li class="twitter"><a href="#"><span> </span></a></li>
-                        <li class="facebook"><a href="#"><span> </span></a></li>
-                        <li class="google"><a href="#"><span> </span></a></li>
-                    </ul>
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Freelancer</h3>
+                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Your Website 2014
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="~/Content/images/portfolio/cabin.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Client:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Date:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Service:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!----//End-contact---->
-    <div class="footer">
-        <div class="wrap">
-            <div class="footer-con">
-
-                <div class="footer-right">
-                    <ul>
-                        <li class="active"><a href="#home" class="scroll">Home</a></li>
-                        <li><a href="#team" class="scroll">Team</a></li>
-                        <li><a href="#ourstory" class="scroll">Our story</a></li>
-                        <li><a href="#blog" class="scroll">Blog</a></li>
-                        <li><a href="#contact" class="scroll">Contact</a></li>
-                        <div class="clear"> </div>
-                    </ul>
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
                 </div>
-                <div class="footer-left">
-                    <p> 2014 &#169; Template by <a href="#">W3layouts</a></p>
-
-                </div>
-                <div class="clear"> </div>
             </div>
-
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="~/Content/images/portfolio/cake.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Client:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Date:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Service:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
-    <!-- scroll_top_btn -->
-    <script type="text/javascript" src="../Scripts/move-top.js"></script>
-    <script type="text/javascript" src="../Scripts/easing.js"></script>
-    <script type="text/javascript">
-						$(document).ready(function() {
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="~/Content/images/portfolio/circus.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Client:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Date:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Service:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="~/Content/images/portfolio/game.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Client:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Date:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Service:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="~/Content/images/portfolio/safe.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Client:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Date:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Service:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="~/Content/images/portfolio/submarine.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    Client:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Date:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Service:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-							var defaults = {
-					  			containerID: 'toTop', // fading element id
-								containerHoverID: 'toTopHover', // fading element hover id
-								scrollSpeed: 1200,
-								easingType: 'linear'
-					 		};
+    <!-- jQuery Version 1.11.0 -->
+    <script src="~/Scripts/jquery-1.11.0.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
 
-							$().UItoTop({ easingType: 'easeOutQuart' });
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="~/Scripts/classie.js"></script>
+    <script src="~/Scripts/cbpAnimatedHeader.js"></script>
 
-						});
-    </script>
+    <!-- Contact Form JavaScript -->
+    <script src="~/Scripts/jqBootstrapValidation.js"></script>
+    <script src="~/Scripts/contact_me.js"></script>
 
-    <!---smoth-scrlling---->
-    <script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
-				});
-			});
-    </script>
-
-    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Scripts/freelancer.js"></script>
+  
 
 </body>
-</html>
 
+</html>

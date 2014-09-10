@@ -1,0 +1,305 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flextronics ATOM | Home :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+    <link href="../Content/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../Content/slider.css" rel="stylesheet" media="screen">
+    <link href="../Content/default.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../Content/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../Content/fonts.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="../Scripts/jquery.min.js"></script>
+    <style>
+        .form-crud {
+            width: 80%;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            position: relative;
+            background: white;
+            border: 0 none;
+            border-radius: 15px;
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+            padding: 20px 30px;
+            box-sizing: border-box;
+            opacity: 0.9;
+            filter: alpha(opacity=90);
+        } </style>
+</head>
+<body>
+
+    <div class="content" id="home">
+        <!--<div class="header">
+            <div class="wrap">
+                <header id="topnav">
+                    <nav>
+                        <ul>
+                            <li class="active"><a href="#home" class="scroll">Home</a></li>
+                            <li><a href="#ourstory" class="scroll">Console</a></li>
+                            <li><a href="#contact" class="scroll">Contact</a></li>
+                            <div class="clear"> </div>
+                        </ul>
+                    </nav>
+                    <h1><a href="index.html">ATOM</a></h1>
+                    <a href="#" id="navbtn">Nav Menu</a>
+                    <div class="clear"> </div>
+                </header>
+            </div>
+        </div>-->
+
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(#04519b, #044687 60%, #033769);">
+            <div class=" container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Flextronics ATOM", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                        <li><a href="#ourstory" class="scroll">Console</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-----script------------->
+        <script type="text/javascript" src="../Scripts/menu.js"></script>
+
+        <div class="slider" id="home">
+            <div class="wrap">
+                <!---start-da-slider----->
+                <div id="da-slider" class="da-slider">
+                    <div class="da-slide">
+                        <h2>What is ATOM?</h2>
+                        <p>An Enterprise Solution to provide the right data, with the right quality, at the right time, presented in a consistent and flexible way.</p>
+                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
+                    </div>
+                    <div class="da-slide">
+                        <h2>What kind of Data?</h2>
+                        <p>KPI data, Operational Reports From Baan, FlexFlow, RPMDSS and other legacy systems.</p>
+                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
+                    </div>
+                    <div class="da-slide">
+                        <h2>Who will consume & maintain the Data?</h2>
+                        <p> Executive Management – KPI’s, Regional / Site Management – KPI’s / Reports, Site Operational staff (including Gold Factory users) – Reports</p>
+                        <a href="#ourstory" class="da-link scroll">Go to Console</a>
+
+                    </div>
+
+                </div>
+
+                <script type="text/javascript" src="../Scripts/jquery.cslider.js"></script>
+                <!---strat-slider---->
+                <link rel="stylesheet" type="text/css" href="../Content/slider.css" />
+                <script type="text/javascript" src="../Scripts/modernizr.custom.28468.js"></script>
+                <script type="text/javascript">
+							$(function() {
+
+								$('#da-slider').cslider({
+									autoplay	: true,
+									bgincrement	: 450
+								});
+
+							});
+                </script>
+                <!---//End-da-slider----->
+
+            </div>
+        </div>
+    </div>
+    <!---start-team----->
+    <div class="team" id="team">
+        <div class="wrap">
+            <div class="section group">
+                <div class="col_1_of_1 span_1_of_1">
+                    <h3>Global Data Configurator </h3>
+                    <p>FlexFlow is a project based application, so each customer-project has its own database where all the data is collected; the data is stored into the production database. Based on this, report database server can contain multiple FF databases.  After the production data is replicated into the reporting database where all the calculations for yield, work in progress, defects, and completions are obtained to avoid impact production performance.</p>
+                </div>
+                <div class="pen">
+                    <img src="../Content/images/pen.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---//end-team----->
+    <!---start-our story----->
+    <div class="ourstory" id="ourstory">
+        <div class="our-story">
+            <br /><br />
+            <h3>ATOM Functions </h3>
+            <p>Select the task that you wish to perform based on your roles</p>
+        </div>
+
+        <div  id="Portfolio">
+            <div class="wrap" style="width:50%;
+            margin-top: 50px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            text-align: center; 
+            position: relative; 
+            background: white; 	
+            border: 0 none; 
+            border-radius: 15px; 
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
+            padding: 10px 10px 10px 1px; 
+            box-sizing: border-box; ">
+                <div>
+
+                    <div id="wrapper">
+                        <div id="featured-wrapper">
+                            <div id="featured" class="extra2 margin-btm">
+                                <div class="main-title">
+                                    <h2>Task Console</h2>
+                                    <span class="byline"></span>
+                                </div>
+
+                                <div class="ebox1">
+                                    <span class="fa fa-cubes"></span>
+                                    <div>
+                                        <h2>FF Dimension Data Administration</h2>
+                                        <span class="byline">Maintain FFInstance Data</span>
+                                    </div>
+
+                                    <a href="#" class="button">SELECT</a>
+                                </div>
+                                <div class="ebox2">
+                                    <span class="fa fa-bar-chart-o"></span>
+                                    <div>
+                                        <h2>FF Site Adminitration</h2>
+                                        <span class="byline">Maintain Site Data</span>
+                                    </div>
+
+                                    <a href="#" class="button">SELECT</a>
+                                </div>
+                            </div>
+                            <div class="extra2">
+                                <div class="ebox1">
+                                    <span class="fa fa-tachometer"></span>
+                                    <div>
+                                        <h2>Metrics Management</h2>
+                                        <span class="byline">Create, Update, Define Metrics</span>
+                                    </div>
+
+                                    <a href="#" class="button">SELECT</a>
+                                </div>
+                                <div class="ebox2">
+                                    <span class="fa fa-thumbs-up"></span>
+                                    <div>
+                                        <h2>Metric Sign Off</h2>
+                                        <span class="byline">Approve/Reject Metrics Access</span>
+                                    </div>
+
+                                    <a href="#" class="button">SELECT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!----start-contact---->
+    <div class="contact" id="contact">
+        <div class="contact">
+            <h3>Get in touch</h3>
+            <p>Got any questions?to feel free to get in touch with us .we would love to hear from you.</p>
+            <div class="wrap">
+                <div class="con">
+                    <form method="post" action="#">
+                        <input type="text" placeholder="Name" required />
+                        <input type="text" placeholder="Email " required />
+                        <div class="clear"> </div>
+                        <div>
+                            <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' Message';}">Message</textarea>
+                        </div>
+                        <div class="con-button">
+                            <input type="submit" value="Send">
+                        </div>
+                    </form>
+                </div>
+                <div class="clear"> </div>
+                <div class="social_icon">
+                    <ul>
+
+                        <li class="twitter"><a href="#"><span> </span></a></li>
+                        <li class="facebook"><a href="#"><span> </span></a></li>
+                        <li class="google"><a href="#"><span> </span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----//End-contact---->
+    <div class="footer">
+        <div class="wrap">
+            <div class="footer-con">
+
+                <div class="footer-right">
+                    <ul>
+                        <li class="active"><a href="#home" class="scroll">Home</a></li>
+                        <li><a href="#team" class="scroll">Team</a></li>
+                        <li><a href="#ourstory" class="scroll">Our story</a></li>
+                        <li><a href="#blog" class="scroll">Blog</a></li>
+                        <li><a href="#contact" class="scroll">Contact</a></li>
+                        <div class="clear"> </div>
+                    </ul>
+                </div>
+                <div class="footer-left">
+                    <p> 2014 &#169; Template by <a href="#">W3layouts</a></p>
+
+                </div>
+                <div class="clear"> </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- scroll_top_btn -->
+    <script type="text/javascript" src="../Scripts/move-top.js"></script>
+    <script type="text/javascript" src="../Scripts/easing.js"></script>
+    <script type="text/javascript">
+						$(document).ready(function() {
+
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear'
+					 		};
+
+
+							$().UItoTop({ easingType: 'easeOutQuart' });
+
+						});
+    </script>
+
+    <!---smoth-scrlling---->
+    <script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+				});
+			});
+    </script>
+
+    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+
+</body>
+</html>
+

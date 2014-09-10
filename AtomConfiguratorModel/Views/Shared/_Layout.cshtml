@@ -10,11 +10,13 @@
     <link rel="StyleSheet" href="~/Content/atomStyles.css" type="text/css">
     <link rel="StyleSheet" href="~/Content/responsive-tables.css" type="text/css">
     <link rel="StyleSheet" href="~/Content/simple-sidebar.css" type="text/css">
+    <link href="~/Content/freelancer.css" rel="stylesheet">
    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
    <link href="~/Content/fonts.css" rel="stylesheet" type="text/css" media="all" />
+
 </head>
 <body style="margin:0; padding:0; height:0;">
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(#04519b, #044687 60%, #033769);">
+    <!--<div class="navbar navbar-inverse navbar-fixed-top" style="background-image: linear-gradient(#04519b, #044687 60%, #033769);">
         <div class=" container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,9 +34,52 @@
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
         </div>
     </div>
-    </div>
+    </div> -->
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               @Html.ActionLink("ATOM", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Console", "Index", "Home", null, new { href = "../Home/Index#portfolio" })
+                        
+                    </li>
+                    <li>
+                        @Html.ActionLink("About", "Index", "Home", null, new { href = "../Home/Index#about" })
+
+                    </li>
+                    <li>
+                        @Html.ActionLink("Contact", "Index", "Home", null, new { href = "../Home/Index#contact" })
+
+                    </li>
+                    <li>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+                    </li>
+               </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
    
-    <div id="wrapper">
+    <div id="wrapper" class="toggled">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -91,5 +136,6 @@
                 $("#wrapper").toggleClass("toggled");
             });
         </script>
+        <script src="~/Scripts/freelancer.js"></script>
 </body>
 </html>

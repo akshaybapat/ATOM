@@ -95,7 +95,8 @@ body {
 
     /*progressbar*/
     #progressbar {
-	margin-bottom: 30px;
+
+	margin-top: 100px;
 	overflow: hidden;
 
 	/*CSS counters to number the steps*/
@@ -153,7 +154,7 @@ body {
     .form-crud {
             min-width:360px; 
             width:480px; 
-            margin-top: 50px; 
+            margin-top: 150px; 
             margin-left: auto; 
             margin-right: auto; 
             text-align: center; 
