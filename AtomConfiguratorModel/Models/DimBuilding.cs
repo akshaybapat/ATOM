@@ -6,13 +6,12 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
 
 namespace AtomConfiguratorModel.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class DimBuilding
     {
@@ -24,7 +23,7 @@ namespace AtomConfiguratorModel.Models
         public int id { get; set; }
         [Display(Name = "Building")]
         public string BuildingName { get; set; }
-        [Display(Name = "Site")]
+        [Display(Name = "Facility")]
         public Nullable<int> KeyFacility { get; set; }
     
         public virtual DimFacility DimFacility { get; set; }

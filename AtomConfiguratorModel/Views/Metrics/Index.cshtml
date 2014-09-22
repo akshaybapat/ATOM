@@ -1,0 +1,98 @@
+﻿@model PagedList.IPagedList<AtomConfiguratorModel.Models.Metric>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="form-crud list-medium">
+    <h2>Metrics</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        <a style="color:#00ff21" href="@Url.Action("Create")">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="sr-only">Create</span>
+        </a>
+
+        @using (Html.BeginForm("Index", "Metrics", FormMethod.Get))
+        {
+
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { id = "SearchBox", columnFilter = ViewBag.ColumnFilter, placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc" }) <br /><br />
+            <input id="search" class="btn btn-success" type="submit" value="Search" />
+            <input id="reset" type="button" class="btn btn-primary " value="Reset" onclick="location.href='@Url.Action("Index")'" />
+
+        }
+
+    </p>
+    <p>
+
+        <table class="table table table-bordered table-condensed responsive">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().MetricName)
+               
+                    <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "Metrics_Desc", currentFilter = ViewBag.CurrentFilter })">
+                        <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                        <span class="sr-only">Descending</span>
+                    </a>
+
+                    <a style="float: right;" href="@Url.Action("Index", new { sortOrder = "", currentFilter = ViewBag.CurrentFilter })">
+                        <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                        <span class="sr-only">Ascending</span>
+                    </a>
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Status)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MetricName)
+                   
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td style="font-size:12px">
+
+                        <a href="@Url.Action("Edit", new { id = item.id })">
+                            <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
+                            Edit
+                            <span class="sr-only">Edit</span>
+                        </a>
+
+                        |
+                        <a href="@Url.Action("Details", new { id = item.id })">
+                            <i style="color:#ff9000" class="glyphicon glyphicon-fullscreen"></i>
+                            Details
+                            <span class="sr-only">Details</span>
+
+
+                        </a>|
+                        <a href="@Url.Action("Delete", new { id = item.id })">
+                            <i style="color:#ff0000" class="glyphicon glyphicon-trash"></i>
+                            Delete
+                            <span class="sr-only">Delete</span>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </p>
+
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+
+

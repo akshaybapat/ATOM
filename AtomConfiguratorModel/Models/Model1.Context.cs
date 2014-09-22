@@ -53,5 +53,9 @@ namespace AtomConfiguratorModel.Models
         public DbSet<FactffDefect> FactffDefects { get; set; }
         public DbSet<RTYbyDay> RTYbyDays { get; set; }
         public DbSet<SpeedMeasure> SpeedMeasures { get; set; }
+        public DbSet<Metric> Metrics { get; set; }
+        public DbSet<MetricRoleType> MetricRoleTypes { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<MetricConfiguration> MetricConfigurations { get; set; }
     }
 }

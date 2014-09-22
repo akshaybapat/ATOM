@@ -6,12 +6,12 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
 
 namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class DimModule
     {
@@ -19,10 +19,11 @@ namespace AtomConfiguratorModel.Models
         {
             this.DimFFInstances = new HashSet<DimFFInstance>();
         }
-    
+
         public int id { get; set; }
-        [Display(Name= "Module")]
+        [Display(Name = "Module")]
         public string ModuleName { get; set; }
+        [Display(Name = "Building")]
         public Nullable<int> KeyBuilding { get; set; }
     
         public virtual DimBuilding DimBuilding { get; set; }

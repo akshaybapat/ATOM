@@ -153,11 +153,23 @@
     <Compile Include="Models\CISTestResultSet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\DimModel.cs" />
     <Compile Include="Models\DimBuildingsController.cs" />
     <Compile Include="Models\DimModulesController.cs" />
     <Compile Include="Models\FFSite.cs" />
     <Compile Include="Models\FFSiteController.cs" />
+    <Compile Include="Models\Metric.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetricConfiguration.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetricConfigurationsController.cs" />
+    <Compile Include="Models\MetricRoleType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetricsController.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\DataPollingExecutionTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -261,6 +273,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SpeedMeasure.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -487,6 +502,16 @@
     <Content Include="Views\Home\DimNavigation.cshtml" />
     <Content Include="Views\Home\AdminView.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Metrics\Create.cshtml" />
+    <Content Include="Views\Metrics\Delete.cshtml" />
+    <Content Include="Views\Metrics\Details.cshtml" />
+    <Content Include="Views\Metrics\Edit.cshtml" />
+    <Content Include="Views\Metrics\Index.cshtml" />
+    <Content Include="Views\MetricConfigurations\Create.cshtml" />
+    <Content Include="Views\MetricConfigurations\Delete.cshtml" />
+    <Content Include="Views\MetricConfigurations\Details.cshtml" />
+    <Content Include="Views\MetricConfigurations\Edit.cshtml" />
+    <Content Include="Views\MetricConfigurations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

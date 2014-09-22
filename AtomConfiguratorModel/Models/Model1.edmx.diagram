@@ -46,6 +46,15 @@
         <AssociationConnector Association="FFCube2Model.fk_station_name" ManuallyRouted="false" />
         <AssociationConnector Association="FFCube2Model.fk_stationtype" ManuallyRouted="false" />
         <AssociationConnector Association="FFCube2Model.FK_ProductLine" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FFCube2Model.Metric" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="FFCube2Model.MetricRoleType" Width="1.5" PointX="7.375" PointY="10.75" />
+        <EntityTypeShape EntityType="FFCube2Model.User" Width="1.5" PointX="12.375" PointY="7.75" />
+        <EntityTypeShape EntityType="FFCube2Model.MetricConfiguration" Width="1.5" PointX="14.375" PointY="7.75" />
+        <AssociationConnector Association="FFCube2Model.FK_MetricConfiguration_DimBusinessPartner" />
+        <AssociationConnector Association="FFCube2Model.FK_MetricConfiguration_DimFacility" />
+        <AssociationConnector Association="FFCube2Model.FK_MetricConfiguration_DimFFInstance" />
+        <AssociationConnector Association="FFCube2Model.FK_MetricConfiguration_Metric" />
+        <AssociationConnector Association="FFCube2Model.FK_MetricConfiguration_MetricRoleType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

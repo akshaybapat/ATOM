@@ -6,26 +6,25 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
 
 namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
-    public partial class DimBusinessPartner
+    public partial class Metric
     {
-        public DimBusinessPartner()
+        public Metric()
         {
-            this.DimProductLines = new HashSet<DimProductLine>();
             this.MetricConfigurations = new HashSet<MetricConfiguration>();
         }
     
         public int id { get; set; }
-        public string BusinessPartnerName { get; set; }
-        public string BPCode { get; set; }
+        [Display(Name = "Metric")]
+        public string MetricName { get; set; }
+        public string Status { get; set; }
     
-        public virtual ICollection<DimProductLine> DimProductLines { get; set; }
         public virtual ICollection<MetricConfiguration> MetricConfigurations { get; set; }
     }
 }

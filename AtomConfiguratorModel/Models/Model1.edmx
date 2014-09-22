@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FFCube2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FFCube2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FFCube2.dbo.DataPollingExecutionTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DataPollingExecutionTime">
@@ -245,84 +245,43 @@ warning 6002: The table/view 'FFCube2.dbo.FactffDefect' does not have a primary 
           <Property Name="FFInstanceID" Type="int" />
           <Property Name="PartIsUnit" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.FlexpertCompletion' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="FlexpertCompletion">
-          <Property Name="UserAD" Type="nvarchar" MaxLength="50" />
-          <Property Name="Site" Type="nvarchar" MaxLength="50" />
-          <Property Name="Building" Type="nvarchar" MaxLength="50" />
-          <Property Name="Project" Type="nvarchar" MaxLength="50" />
-          <Property Name="OrderTotal" Type="int" />
-          <Property Name="InProgress" Type="int" />
-          <Property Name="Finished" Type="int" />
-          <Property Name="DueDate" Type="date" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Application" Type="nvarchar" MaxLength="50" />
-          <Property Name="Color" Type="nvarchar" MaxLength="50" />
-          <Property Name="ProductionOrder" Type="nvarchar" MaxLength="250" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.FlexpertDefect' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="FlexpertDefect">
-          <Property Name="UserAD" Type="nvarchar" MaxLength="50" />
-          <Property Name="Site" Type="nvarchar" MaxLength="50" />
-          <Property Name="Building" Type="nvarchar" MaxLength="50" />
-          <Property Name="Project" Type="nvarchar" MaxLength="50" />
-          <Property Name="Line" Type="nvarchar" MaxLength="50" />
-          <Property Name="PartNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="Position" Type="int" />
-          <Property Name="Defect" Type="nvarchar" MaxLength="50" />
-          <Property Name="DefectCount" Type="int" />
-          <Property Name="PercentageValue" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Application" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.FlexpertFPY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="FlexpertFPY">
-          <Property Name="UserAD" Type="nvarchar" MaxLength="50" />
-          <Property Name="Site" Type="nvarchar" MaxLength="50" />
-          <Property Name="Building" Type="nvarchar" MaxLength="50" />
-          <Property Name="Project" Type="nvarchar" MaxLength="50" />
-          <Property Name="Line" Type="nvarchar" MaxLength="50" />
-          <Property Name="PartNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="YieldValue" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Machine" Type="nvarchar" MaxLength="50" />
-          <Property Name="Application" Type="nvarchar" MaxLength="50" />
-          <Property Name="Color" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.FlexpertRTY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="FlexpertRTY">
-          <Property Name="UserAD" Type="nvarchar" MaxLength="50" />
-          <Property Name="Site" Type="nvarchar" MaxLength="50" />
-          <Property Name="Building" Type="nvarchar" MaxLength="50" />
-          <Property Name="Project" Type="nvarchar" MaxLength="50" />
-          <Property Name="Line" Type="nvarchar" MaxLength="50" />
-          <Property Name="PartNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="YieldValue" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Application" Type="nvarchar" MaxLength="50" />
-          <Property Name="Color" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.luPartFamily' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="luPartFamily">
-          <Property Name="luPFID" Type="int" />
-          <Property Name="PartFamilyTypeID" Type="int" />
-          <Property Name="FFInstanceID" Type="int" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" />
-          <Property Name="Description" Type="nvarchar" MaxLength="200" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.luPartFamilyType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="luPartFamilyType">
-          <Property Name="luPFTID" Type="int" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="FFinstanceID" Type="int" />
-          <Property Name="KeyBusinessPartner" Type="int" />
-        </EntityType>-->
+        <EntityType Name="Metric">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="MetricName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Status" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetricConfiguration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="KeyMetricID" Type="int" />
+          <Property Name="KeyMetricRoleTypeID" Type="int" />
+          <Property Name="KeySiteID" Type="int" />
+          <Property Name="KeyBusinessPartnerID" Type="int" />
+          <Property Name="KeyFFInstanceID" Type="int" />
+          <Property Name="Goal" Type="varchar(max)" />
+          <Property Name="Red" Type="varchar(max)" />
+          <Property Name="Green" Type="varchar(max)" />
+          <Property Name="Alert" Type="varchar(max)" />
+          <Property Name="Alert_MasterDataChange" Type="varchar(max)" />
+          <Property Name="Alert_SystemErrors" Type="varchar(max)" />
+          <Property Name="MetricManagerValidationStatus" Type="varchar(max)" />
+          <Property Name="MetricOwnerValidationStatus" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="MetricRoleType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="varchar(max)" Nullable="false" />
+          <Property Name="RoleType" Type="varchar(max)" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FFCube2.dbo.RTYbyDay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="RTYbyDay">
@@ -352,52 +311,6 @@ warning 6002: The table/view 'FFCube2.dbo.RTYbyDay' does not have a primary key 
           <Property Name="TopFPY1" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.RTYbyMonth' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="RTYbyMonth">
-          <Property Name="RTYYear" Type="int" />
-          <Property Name="RTYMonth" Type="nchar" MaxLength="10" />
-          <Property Name="BusinessPartner" Type="nvarchar" MaxLength="50" />
-          <Property Name="StationBucket" Type="nchar" MaxLength="10" />
-          <Property Name="PartFamilyID" Type="nvarchar" MaxLength="50" />
-          <Property Name="RTY" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="SiteID" Type="nchar" MaxLength="10" />
-          <Property Name="MonthNo" Type="int" />
-          <Property Name="ProdVol" Type="int" />
-          <Property Name="TopFPYStationName5" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY5" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TopFPYStationName4" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY4" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TopFPYStationName3" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY3" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TopFPYStationName2" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY2" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TopFPYStationName1" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY1" Type="decimal" Precision="18" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.RTYbyWeek' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="RTYbyWeek">
-          <Property Name="RTYYear" Type="int" />
-          <Property Name="RTYMonth" Type="nchar" MaxLength="10" />
-          <Property Name="RTYWeek" Type="int" />
-          <Property Name="BusinessPartner" Type="nvarchar" MaxLength="50" />
-          <Property Name="StationBucket" Type="nchar" MaxLength="10" />
-          <Property Name="PartFamilyID" Type="nvarchar" MaxLength="50" />
-          <Property Name="RTY" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="SiteID" Type="nchar" MaxLength="10" />
-          <Property Name="ProdVol" Type="int" />
-          <Property Name="TopFPYStationName5" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY5" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TopFPYStationName4" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY4" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TopFPYStationName3" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY3" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TopFPYStationName2" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY2" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TopFPYStationName1" Type="nvarchar" MaxLength="50" />
-          <Property Name="TopFPY1" Type="decimal" Precision="18" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'FFCube2.dbo.SpeedMeasure' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SpeedMeasure">
           <Key>
@@ -411,93 +324,19 @@ warning 6002: The table/view 'FFCube2.dbo.SpeedMeasure' does not have a primary 
           <Property Name="FromDate" Type="date" />
           <Property Name="ToDate" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.Staging.ffCompletions' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Staging_ffCompletions">
-          <Property Name="OrderTotal" Type="int" />
-          <Property Name="ReadyQuantity" Type="int" />
-          <Property Name="RequestedFinishTime" Type="nvarchar" MaxLength="50" />
-          <Property Name="StartTime" Type="nvarchar" MaxLength="50" />
-          <Property Name="ProductionOrderNumber" Type="nvarchar" MaxLength="250" />
-          <Property Name="FFInstanceID" Type="nvarchar" MaxLength="50" />
-          <Property Name="ProductionLine" Type="nvarchar" MaxLength="250" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.Staging.ffDefect' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Staging_ffDefect">
-          <Property Name="StartTime" Type="nvarchar" MaxLength="50" />
-          <Property Name="EndTime" Type="nvarchar" MaxLength="50" />
-          <Property Name="StationType" Type="nvarchar" MaxLength="50" />
-          <Property Name="StationName" Type="nvarchar" MaxLength="50" />
-          <Property Name="ProductionLine" Type="nvarchar" MaxLength="50" />
-          <Property Name="Revision" Type="nchar" MaxLength="10" />
-          <Property Name="IsUnit" Type="int" />
-          <Property Name="FailureCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="FFInstance" Type="nvarchar" MaxLength="50" />
-          <Property Name="DefectTime" Type="nvarchar" MaxLength="50" />
-          <Property Name="TestDate" Type="nvarchar" MaxLength="50" />
-          <Property Name="DefectLocation" Type="nvarchar" MaxLength="50" />
-          <Property Name="ComponentDescription" Type="nvarchar" MaxLength="255" />
-          <Property Name="PartNumber" Type="nvarchar" MaxLength="250" />
-          <Property Name="DefectCode" Type="nvarchar" MaxLength="250" />
-          <Property Name="SerialNo" Type="nvarchar" MaxLength="250" />
-          <Property Name="ProductionOrderNo" Type="nvarchar" MaxLength="250" />
-          <Property Name="ComponentNo" Type="nvarchar" MaxLength="250" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.Staging.ffFirstPass' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Staging_ffFirstPass">
-          <Property Name="ProductNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="StartTime" Type="nvarchar" MaxLength="50" />
-          <Property Name="EndTime" Type="nvarchar" MaxLength="50" />
-          <Property Name="StationType" Type="nvarchar" MaxLength="50" />
-          <Property Name="StationName" Type="nvarchar" MaxLength="50" />
-          <Property Name="ProductionLine" Type="nvarchar" MaxLength="50" />
-          <Property Name="TotalTestCount" Type="int" />
-          <Property Name="FirstPassCount" Type="int" />
-          <Property Name="Revision" Type="nchar" MaxLength="10" />
-          <Property Name="PartIsUnit" Type="int" />
-          <Property Name="FFInstance" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.Staging.PartFamily' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Staging_PartFamily">
-          <Property Name="PartNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="luPFID" Type="int" />
-          <Property Name="luPFTID" Type="int" />
-          <Property Name="PFTName" Type="nvarchar" MaxLength="50" />
-          <Property Name="FFInstanceID" Type="nvarchar" MaxLength="50" />
-          <Property Name="PFDescription" Type="nvarchar" MaxLength="200" />
-          <Property Name="PFName" Type="nvarchar" MaxLength="200" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.dbo.Staging.StationType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Staging_StationType">
-          <Property Name="StnDescription" Type="nvarchar" MaxLength="250" />
-          <Property Name="StnTypeID" Type="int" />
-          <Property Name="LineID" Type="int" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" />
-          <Property Name="STDescription" Type="nvarchar" MaxLength="250" />
-          <Property Name="AppTypeID" Type="int" />
-          <Property Name="FFInstanceID" Type="nvarchar" MaxLength="250" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.staging.CISManufacturingOperation' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CISManufacturingOperation">
-          <Property Name="CustomerName" Type="varchar" MaxLength="255" />
-          <Property Name="BaanCompanyCode" Type="varchar" MaxLength="3" />
-          <Property Name="SiteName" Type="varchar" MaxLength="255" />
-          <Property Name="ProductLine" Type="int" />
-          <Property Name="id" Type="int" />
-          <Property Name="UnitState" Type="varchar" MaxLength="800" />
-          <Property Name="StationType" Type="varchar" MaxLength="200" />
-          <Property Name="PartNumber" Type="varchar" MaxLength="200" />
-          <Property Name="PartRevision" Type="varchar" MaxLength="50" />
-          <Property Name="EnterTime" Type="datetime" />
-          <Property Name="ExitTime" Type="datetime" />
-          <Property Name="DataRecvTime" Type="datetime" />
-          <Property Name="ProcessStatus" Type="tinyint" />
-        </EntityType>-->
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="SecurityRole" Type="varchar(max)" />
+          <Property Name="ADUsername" Type="varchar(max)" />
+          <Property Name="FirstName" Type="varchar(max)" />
+          <Property Name="LastName" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="Site" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="CISTestResultSet">
           <Key>
             <PropertyRef Name="id" />
@@ -548,15 +387,6 @@ warning 6013: The table/view 'FFCube2.staging.CISManufacturingOperation' does no
           <Property Name="StationTypeID" Type="int" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.staging.ffTest' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ffTest">
-          <Property Name="SiteID" Type="int" />
-          <Property Name="TestID" Type="int" />
-          <Property Name="StationID" Type="int" />
-          <Property Name="IsPass" Type="bit" />
-          <Property Name="PartID" Type="int" />
-        </EntityType>-->
         <EntityType Name="fsSite">
           <Key>
             <PropertyRef Name="id" />
@@ -564,14 +394,6 @@ warning 6013: The table/view 'FFCube2.staging.ffTest' does not have a primary ke
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="SiteName" Type="varchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FFCube2.staging.rptTestGeneration' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="rptTestGeneration">
-          <Property Name="SiteID" Type="int" />
-          <Property Name="TestID" Type="int" />
-          <Property Name="TestDate" Type="smalldatetime" />
-          <Property Name="Generation" Type="smallint" />
-        </EntityType>-->
         <Association Name="FK_Bucket">
           <End Role="DimBucket" Type="Self.DimBucket" Multiplicity="0..1" />
           <End Role="DimStationType" Type="Self.DimStationType" Multiplicity="*" />
@@ -653,6 +475,76 @@ warning 6013: The table/view 'FFCube2.staging.rptTestGeneration' does not have a
             </Principal>
             <Dependent Role="DimProductNumber">
               <PropertyRef Name="KeyFFInstance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_DimBusinessPartner">
+          <End Role="DimBusinessPartner" Type="Self.DimBusinessPartner" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MetricConfiguration" Type="Self.MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBusinessPartner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyBusinessPartnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_DimFacility">
+          <End Role="DimFacility" Type="Self.DimFacility" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MetricConfiguration" Type="Self.MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFacility">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeySiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_DimFFInstance">
+          <End Role="DimFFInstance" Type="Self.DimFFInstance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MetricConfiguration" Type="Self.MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFFInstance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyFFInstanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_Metric">
+          <End Role="Metric" Type="Self.Metric" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MetricConfiguration" Type="Self.MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metric">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyMetricID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_MetricRoleType">
+          <End Role="MetricRoleType" Type="Self.MetricRoleType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MetricConfiguration" Type="Self.MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetricRoleType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyMetricRoleTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -747,6 +639,10 @@ warning 6013: The table/view 'FFCube2.staging.rptTestGeneration' does not have a
           <EntitySet Name="DimRegion" EntityType="Self.DimRegion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DimStationType" EntityType="Self.DimStationType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FactffFirstPass" EntityType="Self.FactffFirstPass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Metric" EntityType="Self.Metric" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetricConfiguration" EntityType="Self.MetricConfiguration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetricRoleType" EntityType="Self.MetricRoleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CISTestResultSet" EntityType="Self.CISTestResultSet" Schema="staging" store:Type="Tables" />
           <EntitySet Name="ffPart" EntityType="Self.ffPart" Schema="staging" store:Type="Tables" />
           <EntitySet Name="ffStation" EntityType="Self.ffStation" Schema="staging" store:Type="Tables" />
@@ -860,6 +756,26 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
             <End Role="DimFFInstance" EntitySet="DimFFInstance" />
             <End Role="DimProductNumber" EntitySet="DimProductNumber" />
           </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_DimBusinessPartner" Association="Self.FK_MetricConfiguration_DimBusinessPartner">
+            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartner" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_DimFacility" Association="Self.FK_MetricConfiguration_DimFacility">
+            <End Role="DimFacility" EntitySet="DimFacility" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_DimFFInstance" Association="Self.FK_MetricConfiguration_DimFFInstance">
+            <End Role="DimFFInstance" EntitySet="DimFFInstance" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_Metric" Association="Self.FK_MetricConfiguration_Metric">
+            <End Role="Metric" EntitySet="Metric" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_MetricRoleType" Association="Self.FK_MetricConfiguration_MetricRoleType">
+            <End Role="MetricRoleType" EntitySet="MetricRoleType" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
+          </AssociationSet>
           <AssociationSet Name="FK_Module" Association="Self.FK_Module">
             <End Role="DimModule" EntitySet="DimModule" />
             <End Role="DimFFInstance" EntitySet="DimFFInstance" />
@@ -885,8 +801,7 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
             <End Role="DimPhysicalStation" EntitySet="DimPhysicalStation" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FFCube2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -918,6 +833,7 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="BusinessPartnerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="BPCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="DimProductLines" Relationship="Self.FK_BusinessPartner" FromRole="DimBusinessPartner" ToRole="DimProductLine" />
+          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimBusinessPartner" FromRole="DimBusinessPartner" ToRole="MetricConfiguration" />
         </EntityType>
         <EntityType Name="DimBusinessUnit">
           <Key>
@@ -970,6 +886,7 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="KeyCountry" Type="Int32" />
           <NavigationProperty Name="DimBuildings" Relationship="Self.FK_DimBuilding_DimFacility" FromRole="DimFacility" ToRole="DimBuilding" />
           <NavigationProperty Name="DimCountry" Relationship="Self.FK_Country" FromRole="DimFacility" ToRole="DimCountry" />
+          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimFacility" FromRole="DimFacility" ToRole="MetricConfiguration" />
         </EntityType>
         <EntityType Name="DimFFInstance">
           <Key>
@@ -996,6 +913,7 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="BaanCoNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DimProductNumbers" Relationship="Self.FK_FFInstance" FromRole="DimFFInstance" ToRole="DimProductNumber" />
           <NavigationProperty Name="DimModule" Relationship="Self.FK_Module" FromRole="DimFFInstance" ToRole="DimModule" />
+          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimFFInstance" FromRole="DimFFInstance" ToRole="MetricConfiguration" />
         </EntityType>
         <EntityType Name="DimFinancialCompany">
           <Key>
@@ -1482,7 +1400,158 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
             <End Role="DimProductLine" EntitySet="DimProductLines" />
             <End Role="DimProductNumber" EntitySet="DimProductNumbers" />
           </AssociationSet>
+          <EntitySet Name="Metrics" EntityType="FFCube2Model.Metric" />
+          <EntitySet Name="MetricRoleTypes" EntityType="FFCube2Model.MetricRoleType" />
+          <EntitySet Name="Users" EntityType="FFCube2Model.User" />
+          <EntitySet Name="MetricConfigurations" EntityType="FFCube2Model.MetricConfiguration" />
+          <AssociationSet Name="FK_MetricConfiguration_DimBusinessPartner" Association="FFCube2Model.FK_MetricConfiguration_DimBusinessPartner">
+            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartners" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfigurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_DimFacility" Association="FFCube2Model.FK_MetricConfiguration_DimFacility">
+            <End Role="DimFacility" EntitySet="DimFacilities" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfigurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_DimFFInstance" Association="FFCube2Model.FK_MetricConfiguration_DimFFInstance">
+            <End Role="DimFFInstance" EntitySet="DimFFInstances" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfigurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_Metric" Association="FFCube2Model.FK_MetricConfiguration_Metric">
+            <End Role="Metric" EntitySet="Metrics" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfigurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_MetricRoleType" Association="FFCube2Model.FK_MetricConfiguration_MetricRoleType">
+            <End Role="MetricRoleType" EntitySet="MetricRoleTypes" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfigurations" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Metric">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="MetricName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_Metric" FromRole="Metric" ToRole="MetricConfiguration" />
+        </EntityType>
+        <EntityType Name="MetricRoleType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RoleType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_MetricRoleType" FromRole="MetricRoleType" ToRole="MetricConfiguration" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="SecurityRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ADUsername" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MetricConfiguration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="KeyMetricID" Type="Int32" />
+          <Property Name="KeyMetricRoleTypeID" Type="Int32" />
+          <Property Name="KeySiteID" Type="Int32" />
+          <Property Name="KeyBusinessPartnerID" Type="Int32" />
+          <Property Name="KeyFFInstanceID" Type="Int32" />
+          <Property Name="Goal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Red" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Green" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Alert" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Alert_MasterDataChange" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Alert_SystemErrors" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetricManagerValidationStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetricOwnerValidationStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DimBusinessPartner" Relationship="FFCube2Model.FK_MetricConfiguration_DimBusinessPartner" FromRole="MetricConfiguration" ToRole="DimBusinessPartner" />
+          <NavigationProperty Name="DimFacility" Relationship="FFCube2Model.FK_MetricConfiguration_DimFacility" FromRole="MetricConfiguration" ToRole="DimFacility" />
+          <NavigationProperty Name="DimFFInstance" Relationship="FFCube2Model.FK_MetricConfiguration_DimFFInstance" FromRole="MetricConfiguration" ToRole="DimFFInstance" />
+          <NavigationProperty Name="Metric" Relationship="FFCube2Model.FK_MetricConfiguration_Metric" FromRole="MetricConfiguration" ToRole="Metric" />
+          <NavigationProperty Name="MetricRoleType" Relationship="FFCube2Model.FK_MetricConfiguration_MetricRoleType" FromRole="MetricConfiguration" ToRole="MetricRoleType" />
+        </EntityType>
+        <Association Name="FK_MetricConfiguration_DimBusinessPartner">
+          <End Type="FFCube2Model.DimBusinessPartner" Role="DimBusinessPartner" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FFCube2Model.MetricConfiguration" Role="MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBusinessPartner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyBusinessPartnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_DimFacility">
+          <End Type="FFCube2Model.DimFacility" Role="DimFacility" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FFCube2Model.MetricConfiguration" Role="MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFacility">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeySiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_DimFFInstance">
+          <End Type="FFCube2Model.DimFFInstance" Role="DimFFInstance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FFCube2Model.MetricConfiguration" Role="MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFFInstance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyFFInstanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_Metric">
+          <End Type="FFCube2Model.Metric" Role="Metric" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FFCube2Model.MetricConfiguration" Role="MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metric">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyMetricID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_MetricRoleType">
+          <End Type="FFCube2Model.MetricRoleType" Role="MetricRoleType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FFCube2Model.MetricConfiguration" Role="MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetricRoleType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyMetricRoleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1842,6 +1911,60 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
                 <ScalarProperty Name="NoRecords" ColumnName="NoRecords" />
                 <ScalarProperty Name="FromDate" ColumnName="FromDate" />
                 <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Metrics">
+            <EntityTypeMapping TypeName="FFCube2Model.Metric">
+              <MappingFragment StoreEntitySet="Metric">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MetricName" ColumnName="MetricName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetricRoleTypes">
+            <EntityTypeMapping TypeName="FFCube2Model.MetricRoleType">
+              <MappingFragment StoreEntitySet="MetricRoleType">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RoleType" ColumnName="RoleType" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FFCube2Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ADUsername" ColumnName="ADUsername" />
+                <ScalarProperty Name="SecurityRole" ColumnName="SecurityRole" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetricConfigurations">
+            <EntityTypeMapping TypeName="FFCube2Model.MetricConfiguration">
+              <MappingFragment StoreEntitySet="MetricConfiguration">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MetricOwnerValidationStatus" ColumnName="MetricOwnerValidationStatus" />
+                <ScalarProperty Name="MetricManagerValidationStatus" ColumnName="MetricManagerValidationStatus" />
+                <ScalarProperty Name="Alert_SystemErrors" ColumnName="Alert_SystemErrors" />
+                <ScalarProperty Name="Alert_MasterDataChange" ColumnName="Alert_MasterDataChange" />
+                <ScalarProperty Name="Alert" ColumnName="Alert" />
+                <ScalarProperty Name="Green" ColumnName="Green" />
+                <ScalarProperty Name="Red" ColumnName="Red" />
+                <ScalarProperty Name="Goal" ColumnName="Goal" />
+                <ScalarProperty Name="KeyFFInstanceID" ColumnName="KeyFFInstanceID" />
+                <ScalarProperty Name="KeyBusinessPartnerID" ColumnName="KeyBusinessPartnerID" />
+                <ScalarProperty Name="KeySiteID" ColumnName="KeySiteID" />
+                <ScalarProperty Name="KeyMetricRoleTypeID" ColumnName="KeyMetricRoleTypeID" />
+                <ScalarProperty Name="KeyMetricID" ColumnName="KeyMetricID" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

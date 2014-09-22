@@ -6,19 +6,21 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
 
 namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class DimBusinessUnit
     {
         public int id { get; set; }
-         [Display(Name = "Business Unit")]
+        [Display(Name = "Business Unit")]
         public string BusinessUnitName { get; set; }
+        [Display(Name = "Cost Center")]
         public Nullable<int> KeyCostCenter { get; set; }
+    
         public virtual DimCostCenter DimCostCenter { get; set; }
     }
 }

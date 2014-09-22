@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
     
     public partial class DimRegion
     {
@@ -20,10 +20,8 @@ namespace AtomConfiguratorModel.Models
         {
             this.DimCountries = new HashSet<DimCountry>();
         }
-
-       
+    
         public int id { get; set; }
-          [MustBeSelectedAttribute(ErrorMessage = "Please Select Region")] 
          [Display(Name = "Region")]
         public string RegionName { get; set; }
     

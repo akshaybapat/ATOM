@@ -1,0 +1,130 @@
+﻿@model AtomConfiguratorModel.Models.MetricConfiguration
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MetricConfiguration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KeyMetricID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeyMetricID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KeyMetricRoleTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeyMetricRoleTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KeySiteID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeySiteID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KeyBusinessPartnerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeyBusinessPartnerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KeyFFInstanceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeyFFInstanceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Red)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Red)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Green)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Green)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert_MasterDataChange)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alert_MasterDataChange)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert_SystemErrors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alert_SystemErrors)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetricManagerValidationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetricManagerValidationStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetricOwnerValidationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetricOwnerValidationStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

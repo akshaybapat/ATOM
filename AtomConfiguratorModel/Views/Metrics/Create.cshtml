@@ -1,0 +1,53 @@
+﻿@model AtomConfiguratorModel.Models.Metric
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Metrics", FormMethod.Post, new { @class = "form-crud" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Metric</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.MetricName, htmlAttributes: new { @class = "control-label" })
+            <div>
+                @Html.EditorFor(model => model.MetricName)
+                @Html.ValidationMessageFor(model => model.MetricName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
+            <div>
+                @Html.DropDownListFor(
+                model => model.Status,
+                new SelectList(new string[] { "Active", "Inactive" }),
+                new { @class = "search-dropdown", name = "status" }
+  )
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

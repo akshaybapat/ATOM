@@ -11,7 +11,6 @@ namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class DimProcessType
     {
@@ -21,7 +20,6 @@ namespace AtomConfiguratorModel.Models
         }
     
         public int id { get; set; }
-         [Display(Name = "Process Type")]
         public string ProcessTypeName { get; set; }
     
         public virtual ICollection<DimBucket> DimBuckets { get; set; }

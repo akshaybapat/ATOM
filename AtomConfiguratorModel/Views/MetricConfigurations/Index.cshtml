@@ -1,0 +1,146 @@
+﻿@*@model IEnumerable<AtomConfiguratorModel.Models.MetricConfiguration>*@
+@model PagedList.IPagedList<AtomConfiguratorModel.Models.MetricConfiguration>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="form-crud" style="margin-top:100px; width:80%; margin-left:10%;background-position-x:center;z-index:3">
+    <h2>Metric Configurations</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        <a style="color:#00ff21" href="@Url.Action("Create")">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="sr-only">Create</span>
+        </a>
+    </p>
+
+
+    @using (Html.BeginForm(Html.BeginForm("Index", "MetricConfigurations", FormMethod.Get)))
+    {
+
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc;" }) <br /><br />
+        <span id="leftnavigation" class="fa fa-3x fa-arrow-circle-o-left" style="color:#0094ff;opacity:1;float:left;cursor:pointer;"></span>
+        <input id="search" class="btn btn-success" type="submit" value="Filter" style="float:none;" />
+        <input id="reset" type="button" class="btn btn-primary " value="Reset" style="float:none;" onclick="location.href='@Url.Action("Index")' " />
+        <span id="rightnavigation" class="fa fa-3x fa-arrow-circle-o-right" style="color:#0094ff;opacity:1;float:right;cursor:pointer;"></span>
+
+
+    }
+
+</div>
+
+<div id="ffinstance" class="form-crud" style="margin-top: 0; width:80% ; background-color:#ffffff; overflow:auto;">
+    <table class="responsive table-condensed table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().KeyMetricID)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().KeyMetricRoleTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().KeySiteID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().KeyBusinessPartnerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().KeyFFInstanceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Goal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Red)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Green)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Alert)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Alert_MasterDataChange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Alert_SystemErrors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MetricManagerValidationStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MetricOwnerValidationStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyMetricID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyMetricRoleTypeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeySiteID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyBusinessPartnerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyFFInstanceID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Goal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Red)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Green)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alert)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alert_MasterDataChange)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alert_SystemErrors)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MetricManagerValidationStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MetricOwnerValidationStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>
