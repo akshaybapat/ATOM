@@ -17,41 +17,41 @@
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KeyMetricID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.KeyMetricID, "KeyMetricID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.KeyMetricID)
+                @Html.DropDownList("KeyMetricID", String.Empty)
                 @Html.ValidationMessageFor(model => model.KeyMetricID)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KeyMetricRoleTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.KeyMetricRoleTypeID, "KeyMetricRoleTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.KeyMetricRoleTypeID)
+                @Html.DropDownList("KeyMetricRoleTypeID", String.Empty)
                 @Html.ValidationMessageFor(model => model.KeyMetricRoleTypeID)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KeySiteID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.KeySiteID, "KeySiteID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.KeySiteID)
+                @Html.DropDownList("KeySiteID", String.Empty)
                 @Html.ValidationMessageFor(model => model.KeySiteID)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KeyBusinessPartnerID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.KeyBusinessPartnerID, "KeyBusinessPartnerID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.KeyBusinessPartnerID)
+                @Html.DropDownList("KeyBusinessPartnerID", String.Empty)
                 @Html.ValidationMessageFor(model => model.KeyBusinessPartnerID)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KeyFFInstanceID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.KeyFFInstanceID, "KeyFFInstanceID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.KeyFFInstanceID)
+                @Html.DropDownList("KeyFFInstanceID", String.Empty)
                 @Html.ValidationMessageFor(model => model.KeyFFInstanceID)
             </div>
         </div>

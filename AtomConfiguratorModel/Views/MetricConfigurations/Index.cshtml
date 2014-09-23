@@ -36,29 +36,113 @@
     <table class="responsive table-condensed table-bordered">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.First().KeyMetricID)
+                <br />
+                @Html.DisplayNameFor(model => model.First().Metric.MetricName)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Metric_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
 
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Metric", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().KeyMetricRoleTypeID)
+                @Html.DisplayNameFor(model => model.First().MetricRoleType.RoleType)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "MetricRoleType_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "MetricRoleType", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().KeySiteID)
+                <br />
+                @Html.DisplayNameFor(model => model.First().DimFacility.SiteName)
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimFacility_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimFacility", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().KeyBusinessPartnerID)
+                @Html.DisplayNameFor(model => model.First().DimBusinessPartner.BusinessPartnerName)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimBusinessPartner_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimBusinessPartner", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().KeyFFInstanceID)
+                @Html.DisplayNameFor(model => model.First().DimFFInstance.DatabaseName)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimFFInstance_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimFFInstance", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th>
+                <br />
                 @Html.DisplayNameFor(model => model.First().Goal)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Goal_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Goal", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th>
+                <br />
                 @Html.DisplayNameFor(model => model.First().Red)
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Red_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Red", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th>
+                <br />
                 @Html.DisplayNameFor(model => model.First().Green)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Green_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Green", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.First().Alert)
@@ -76,7 +160,18 @@
                 @Html.DisplayNameFor(model => model.First().MetricOwnerValidationStatus)
             </th>
             <th>
+                <br />
                 @Html.DisplayNameFor(model => model.First().Status)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Status_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Status", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
             </th>
             <th></th>
         </tr>
@@ -85,28 +180,37 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.KeyMetricID)
+                    @Html.DisplayFor(modelItem => item.Metric.MetricName)
+
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.KeyMetricRoleTypeID)
+                    @Html.DisplayFor(modelItem => item.MetricRoleType.RoleType)
+
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.KeySiteID)
+                    @Html.DisplayFor(modelItem => item.DimFacility.SiteName)
+
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.KeyBusinessPartnerID)
+                    @Html.DisplayFor(modelItem => item.DimBusinessPartner.BusinessPartnerName)
+
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.KeyFFInstanceID)
+                    @Html.DisplayFor(modelItem => item.DimFFInstance.DatabaseName)
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Goal)
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Red)
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Green)
+
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Alert)
@@ -125,11 +229,30 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
+
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                <td style="font-size:12px;min-width:200px">
+
+                    <a href="@Url.Action("Edit", new { id = item.id })">
+                        <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
+                        Edit
+                        <span class="sr-only">Edit</span>
+                    </a>
+
+                    |
+                    <a href="@Url.Action("Details", new { id = item.id })">
+                        <i style="color:#ff9000" class="glyphicon glyphicon-fullscreen"></i>
+                        Details
+                        <span class="sr-only">Details</span>
+
+
+                    </a>|
+                    <a href="@Url.Action("Delete", new { id = item.id })">
+                        <i style="color:#ff0000" class="glyphicon glyphicon-trash"></i>
+                        Delete
+                        <span class="sr-only">Delete</span>
+                    </a>
+
                 </td>
             </tr>
         }

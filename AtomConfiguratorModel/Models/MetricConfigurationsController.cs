@@ -13,12 +13,14 @@ namespace AtomConfiguratorModel.Models
     public class MetricConfigurationsController : Controller
     {
         private FFCube2Entities db = new FFCube2Entities();
+       
+
 
         // GET: MetricConfigurations
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
 
-            
+
             if (searchString != null)
             {
                 page = 1;
@@ -30,7 +32,7 @@ namespace AtomConfiguratorModel.Models
 
             ViewBag.CurrentFilter = searchString;
 
-            var metricConfigurations = db.MetricConfigurations.AsQueryable();
+            var metricConfigurations = db.MetricConfigurations.Include(m => m.DimBusinessPartner).Include(m => m.DimFacility).Include(m => m.DimFFInstance).Include(m => m.Metric).Include(m => m.MetricRoleType);
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -67,7 +69,7 @@ namespace AtomConfiguratorModel.Models
             //return View(dimffinstances.ToList());
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-            return View(metricConfigurations.ToPagedList(pageNumber, pageSize)); 
+            return View(metricConfigurations.ToPagedList(pageNumber, pageSize));
             //return View(db.MetricConfigurations.ToList());
 
         }
@@ -90,6 +92,11 @@ namespace AtomConfiguratorModel.Models
         // GET: MetricConfigurations/Create
         public ActionResult Create()
         {
+            ViewBag.KeyBusinessPartnerID = new SelectList(db.DimBusinessPartners, "id", "BusinessPartnerName");
+            ViewBag.KeySiteID = new SelectList(db.DimFacilities, "id", "SiteName");
+            ViewBag.KeyFFInstanceID = new SelectList(db.DimFFInstances, "id", "DataSourceName");
+            ViewBag.KeyMetricID = new SelectList(db.Metrics, "id", "MetricName");
+            ViewBag.KeyMetricRoleTypeID = new SelectList(db.MetricRoleTypes, "id", "RoleName");
             return View();
         }
 
@@ -107,6 +114,11 @@ namespace AtomConfiguratorModel.Models
                 return RedirectToAction("Index");
             }
 
+            ViewBag.KeyBusinessPartnerID = new SelectList(db.DimBusinessPartners, "id", "BusinessPartnerName", metricConfiguration.KeyBusinessPartnerID);
+            ViewBag.KeySiteID = new SelectList(db.DimFacilities, "id", "SiteName", metricConfiguration.KeySiteID);
+            ViewBag.KeyFFInstanceID = new SelectList(db.DimFFInstances, "id", "DataSourceName", metricConfiguration.KeyFFInstanceID);
+            ViewBag.KeyMetricID = new SelectList(db.Metrics, "id", "MetricName", metricConfiguration.KeyMetricID);
+            ViewBag.KeyMetricRoleTypeID = new SelectList(db.MetricRoleTypes, "id", "RoleName", metricConfiguration.KeyMetricRoleTypeID);
             return View(metricConfiguration);
         }
 
@@ -122,6 +134,11 @@ namespace AtomConfiguratorModel.Models
             {
                 return HttpNotFound();
             }
+            ViewBag.KeyBusinessPartnerID = new SelectList(db.DimBusinessPartners, "id", "BusinessPartnerName", metricConfiguration.KeyBusinessPartnerID);
+            ViewBag.KeySiteID = new SelectList(db.DimFacilities, "id", "SiteName", metricConfiguration.KeySiteID);
+            ViewBag.KeyFFInstanceID = new SelectList(db.DimFFInstances, "id", "DataSourceName", metricConfiguration.KeyFFInstanceID);
+            ViewBag.KeyMetricID = new SelectList(db.Metrics, "id", "MetricName", metricConfiguration.KeyMetricID);
+            ViewBag.KeyMetricRoleTypeID = new SelectList(db.MetricRoleTypes, "id", "RoleName", metricConfiguration.KeyMetricRoleTypeID);
             return View(metricConfiguration);
         }
 
@@ -138,6 +155,11 @@ namespace AtomConfiguratorModel.Models
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.KeyBusinessPartnerID = new SelectList(db.DimBusinessPartners, "id", "BusinessPartnerName", metricConfiguration.KeyBusinessPartnerID);
+            ViewBag.KeySiteID = new SelectList(db.DimFacilities, "id", "SiteName", metricConfiguration.KeySiteID);
+            ViewBag.KeyFFInstanceID = new SelectList(db.DimFFInstances, "id", "DataSourceName", metricConfiguration.KeyFFInstanceID);
+            ViewBag.KeyMetricID = new SelectList(db.Metrics, "id", "MetricName", metricConfiguration.KeyMetricID);
+            ViewBag.KeyMetricRoleTypeID = new SelectList(db.MetricRoleTypes, "id", "RoleName", metricConfiguration.KeyMetricRoleTypeID);
             return View(metricConfiguration);
         }
 
