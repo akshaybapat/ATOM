@@ -27,5 +27,6 @@ namespace AtomConfiguratorModel.Models
     
         public virtual DimBucket DimBucket { get; set; }
         public virtual ICollection<DimPhysicalStation> DimPhysicalStations { get; set; }
+        public virtual DimFFInstance DimFFInstance { get; set; }
     }
 }

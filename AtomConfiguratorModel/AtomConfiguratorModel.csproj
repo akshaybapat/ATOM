@@ -413,10 +413,12 @@
     <Content Include="Scripts\DropDown.js" />
     <Content Include="Scripts\easing.js" />
     <Content Include="Scripts\FFSiteAdministration.js" />
+    <Content Include="Scripts\FFSiteForm - Copy.js" />
     <Content Include="Scripts\FFSiteForm.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-sortable-min.js" />
     <Content Include="Scripts\jquery.cslider.js" />
     <Content Include="Scripts\jquery.easing.1.3.js" />
     <Content Include="Scripts\jquery.magnific-popup.js" />

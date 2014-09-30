@@ -11,7 +11,6 @@ namespace AtomConfiguratorModel.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Metric
     {
@@ -21,7 +20,6 @@ namespace AtomConfiguratorModel.Models
         }
     
         public int id { get; set; }
-        [Display(Name = "Metric")]
         public string MetricName { get; set; }
         public string Status { get; set; }
     

@@ -15,12 +15,16 @@ namespace AtomConfiguratorModel.Models
         public DimFacility SelectedFacility { get; set; }
         public DimBuilding SelectedBuilding { get; set; }
         public DimModule SelectedModule { get; set; }
+        public DimFFInstance SelectedFFInstance { get; set; }
+        public DimStationType SelectedStationType { get; set; }
 
         public virtual ICollection<DimRegion> ListRegions { get; set; }
         public virtual ICollection<DimCountry> ListCountries { get; set; }
         public virtual ICollection<DimFacility> ListFacilities { get; set; }
         public virtual ICollection<DimBuilding> ListBuildings { get; set; }
         public virtual ICollection<DimModule> ListModules { get; set; }
+        public virtual ICollection<DimFFInstance> ListFFInstances { get; set; }
+        public virtual ICollection<DimStationType> ListStationTypes { get; set; }
 
         public bool IsRegionSelected()
         {
@@ -53,6 +57,19 @@ namespace AtomConfiguratorModel.Models
         public bool IsModuleSelected()
         {
             if (!SelectedModule.ModuleName.Equals(null)) return true;
+
+            else return false;
+        }
+
+        public bool IsFFInstanceSelected()
+        {
+            if (!SelectedFFInstance.DatabaseName.Equals(null)) return true;
+
+            else return false;
+        }
+        public bool IsStationTypeSelected()
+        {
+            if (!SelectedStationType.StationTypeName.Equals(null)) return true;
 
             else return false;
         }

@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace AtomConfiguratorModel.Models
 {
     using System;
@@ -22,7 +20,6 @@ namespace AtomConfiguratorModel.Models
         }
     
         public int id { get; set; }
-         [Display(Name = "Region")]
         public string RegionName { get; set; }
     
         public virtual ICollection<DimCountry> DimCountries { get; set; }

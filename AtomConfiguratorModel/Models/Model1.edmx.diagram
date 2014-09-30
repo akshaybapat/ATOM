@@ -55,6 +55,7 @@
         <AssociationConnector Association="FFCube2Model.FK_MetricConfiguration_DimFFInstance" />
         <AssociationConnector Association="FFCube2Model.FK_MetricConfiguration_Metric" />
         <AssociationConnector Association="FFCube2Model.FK_MetricConfiguration_MetricRoleType" />
+        <AssociationConnector Association="FFCube2Model.FK_DimStationType_DimFFInstance" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

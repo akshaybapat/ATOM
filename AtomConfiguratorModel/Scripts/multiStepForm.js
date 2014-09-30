@@ -18,6 +18,15 @@ $(".next").click(function () {
         //activate next step on progressbar using the index of next_fs
         $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
+        switch (next_fs.index()) {
+            case 0: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Site Selection"); break;
+            case 1: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Building Selection"); break;
+            case 2: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Module Selection"); break;
+            case 3: $("#progressbar li").eq($("fieldset").index(next_fs)).text("FlexFlow Instance Selection"); break;
+            case 4: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Station Bucket Selection"); break;
+
+        }
+
         //show the next fieldset
         next_fs.show();
         //hide the current fieldset with style
@@ -57,6 +66,21 @@ $(".previous").click(function(){
 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
 	$("#progressbar li").eq($("fieldset").index(previous_fs)).addClass("active");
+
+	switch (current_fs.index()) {
+	    case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Site Selection"); break;
+	    case 1: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Building Selection"); break;
+	    case 2: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Module Selection"); break;
+	    case 3: $("#progressbar li").eq($("fieldset").index(current_fs)).text("FlexFlow Instance Selection"); break;
+	    case 4: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Station Bucket Selection"); break;
+
+	}
+
+    /*
+	$("#progressbar li").eq(1).text("Building Selection");
+	$("#progressbar li").eq(2).text("Module Selection");
+	$("#progressbar li").eq(3).text("FlexFlow Instance Selection");
+	$("#progressbar li").eq(4).text("Station Bucket Selection"); */
 	
 	//show the previous fieldset
 	previous_fs.show(); 
@@ -81,6 +105,8 @@ $(".previous").click(function(){
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
 	});
+
+	
 });
 
 $(".submit").click(function(){

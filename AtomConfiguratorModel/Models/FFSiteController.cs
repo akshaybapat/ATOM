@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Objects.SqlClient;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -64,6 +65,24 @@ namespace AtomConfiguratorModel.Models
                     IEnumerable<DimModule> modules = querymodules.Select(x => new DimModule { ModuleName = x.ModuleName, id = x.id });
 
                     return Json(modules, JsonRequestBehavior.AllowGet);
+
+                case "FFInstanceList":
+
+                    var queryffinstances = db.DimFFInstances.Where(x => x.DimModule.ModuleName.Equals(filter)).ToList();
+
+                    IEnumerable<DimFFInstance> ffinstances = queryffinstances.Select(x => new DimFFInstance { ProjectName = x.ProjectName, id = x.id });
+
+                    return Json(ffinstances, JsonRequestBehavior.AllowGet);
+
+                case "StationTypesList":
+
+                    System.Diagnostics.Debug.WriteLine("filter:"+filter);
+              
+                    var querystationtypes = db.DimStationTypes.Where(x => x.DimFFInstance.ProjectName.Equals(filter)).ToList();
+
+                    IEnumerable<DimStationType> stationtypes = querystationtypes.Select(x => new DimStationType { StationTypeName = x.StationTypeName, id = x.id });
+
+                    return Json(stationtypes, JsonRequestBehavior.AllowGet);
 
                                        
                 default:

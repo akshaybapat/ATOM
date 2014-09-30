@@ -6,7 +6,6 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -20,11 +19,9 @@ namespace AtomConfiguratorModel.Models
             this.DimBuildings = new HashSet<DimBuilding>();
             this.MetricConfigurations = new HashSet<MetricConfiguration>();
         }
-
+    
         public int id { get; set; }
-        [Display(Name = "Site")]
-        public string SiteName { get; set; } 
-        [Display(Name = "Country")]
+        public string SiteName { get; set; }
         public Nullable<int> KeyCountry { get; set; }
     
         public virtual ICollection<DimBuilding> DimBuildings { get; set; }

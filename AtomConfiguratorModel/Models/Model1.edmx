@@ -466,6 +466,20 @@ warning 6002: The table/view 'FFCube2.dbo.SpeedMeasure' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DimStationType_DimFFInstance">
+          <End Role="DimFFInstance" Type="Self.DimFFInstance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DimStationType" Type="Self.DimStationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFFInstance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimStationType">
+              <PropertyRef Name="FFInstanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FFInstance">
           <End Role="DimFFInstance" Type="Self.DimFFInstance" Multiplicity="0..1" />
           <End Role="DimProductNumber" Type="Self.DimProductNumber" Multiplicity="*" />
@@ -752,6 +766,10 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
             <End Role="DimBuilding" EntitySet="DimBuilding" />
             <End Role="DimModule" EntitySet="DimModule" />
           </AssociationSet>
+          <AssociationSet Name="FK_DimStationType_DimFFInstance" Association="Self.FK_DimStationType_DimFFInstance">
+            <End Role="DimFFInstance" EntitySet="DimFFInstance" />
+            <End Role="DimStationType" EntitySet="DimStationType" />
+          </AssociationSet>
           <AssociationSet Name="FK_FFInstance" Association="Self.FK_FFInstance">
             <End Role="DimFFInstance" EntitySet="DimFFInstance" />
             <End Role="DimProductNumber" EntitySet="DimProductNumber" />
@@ -914,6 +932,7 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <NavigationProperty Name="DimProductNumbers" Relationship="Self.FK_FFInstance" FromRole="DimFFInstance" ToRole="DimProductNumber" />
           <NavigationProperty Name="DimModule" Relationship="Self.FK_Module" FromRole="DimFFInstance" ToRole="DimModule" />
           <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimFFInstance" FromRole="DimFFInstance" ToRole="MetricConfiguration" />
+          <NavigationProperty Name="DimStationTypes" Relationship="FFCube2Model.FK_DimStationType_DimFFInstance" FromRole="DimFFInstance" ToRole="DimStationType" />
         </EntityType>
         <EntityType Name="DimFinancialCompany">
           <Key>
@@ -997,6 +1016,7 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="FFInstanceID" Type="Int32" />
           <NavigationProperty Name="DimBucket" Relationship="Self.FK_Bucket" FromRole="DimStationType" ToRole="DimBucket" />
           <NavigationProperty Name="DimPhysicalStations" Relationship="Self.fk_stationtype" FromRole="DimStationType" ToRole="DimPhysicalStation" />
+          <NavigationProperty Name="DimFFInstance" Relationship="FFCube2Model.FK_DimStationType_DimFFInstance" FromRole="DimStationType" ToRole="DimFFInstance" />
         </EntityType>
         <EntityType Name="FactffFirstPass">
           <Key>
@@ -1424,6 +1444,10 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
             <End Role="MetricRoleType" EntitySet="MetricRoleTypes" />
             <End Role="MetricConfiguration" EntitySet="MetricConfigurations" />
           </AssociationSet>
+          <AssociationSet Name="FK_DimStationType_DimFFInstance" Association="FFCube2Model.FK_DimStationType_DimFFInstance">
+            <End Role="DimFFInstance" EntitySet="DimFFInstances" />
+            <End Role="DimStationType" EntitySet="DimStationTypes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Metric">
           <Key>
@@ -1549,6 +1573,20 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
             </Principal>
             <Dependent Role="MetricConfiguration">
               <PropertyRef Name="KeyMetricRoleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DimStationType_DimFFInstance">
+          <End Type="FFCube2Model.DimFFInstance" Role="DimFFInstance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FFCube2Model.DimStationType" Role="DimStationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFFInstance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimStationType">
+              <PropertyRef Name="FFInstanceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

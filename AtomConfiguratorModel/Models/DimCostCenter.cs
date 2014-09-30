@@ -6,7 +6,6 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -19,9 +18,8 @@ namespace AtomConfiguratorModel.Models
         {
             this.DimBusinessUnits = new HashSet<DimBusinessUnit>();
         }
-
+    
         public int id { get; set; }
-        [Display(Name = "Cost Center")]
         public string CostCenter { get; set; }
     
         public virtual ICollection<DimBusinessUnit> DimBusinessUnits { get; set; }

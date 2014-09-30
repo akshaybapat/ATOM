@@ -6,12 +6,15 @@
             <li class="active" style="color:black">Site Selection</li>
             <li style="color:black">Building Selection</li>
             <li style="color:black">Module Selection</li>
+            <li style="color:black">FlexFlow Instance Selection</li>
+            <li style="color:black">Station Bucket Selection</li>
+           
         </ul>
         <!-- fieldsets -->
         <div >
             <fieldset style="margin:0 10%">
 
-                <h3 class="fs-subtitle">Select your site</h3>
+                <h2>Select your site</h2>
                 @Html.ValidationSummary(true)
 
                 <div class="form-control-static" style="align-self:center">
@@ -34,10 +37,10 @@
             </fieldset>
 
             <fieldset style="margin:0 10%">
-                <h3 class="fs-subtitle">Building Selection</h3>
+                <h3>Buildings</h3>
 
 
-                <table id="buildingsresultset" class="table table-bordered responsive" style="border-radius:15px;">
+                <table id="buildingsresultset" class="table table-bordered responsive simple_with_animation" style="border-radius:15px;">
                     <tr>
                         <th>
                             &nbsp; &nbsp; &nbsp; Building
@@ -64,7 +67,7 @@
 
             <fieldset style="margin:0 10%">
 
-                <h3 class="fs-subtitle">Module Selection</h3>
+                <h3>Modules</h3>
 
                 <table id="modulesresultset" class="table table-bordered responsive" style="border-radius:15px;">
                     <tr>
@@ -76,9 +79,9 @@
 
 
                 <!--<div class="col-md-12" id="ModulesDivID" style="align-self:center ">
-                <select id="ModulesID" name="Modules"></select>
-                @Html.ValidationMessageFor(model => model.ListModules)
-                </div>-->
+        <select id="ModulesID" name="Modules"></select>
+        @Html.ValidationMessageFor(model => model.ListModules)
+        </div>-->
 
                 <div id="wait" class="modal"><!-- Place at bottom of page --></div>
 
@@ -88,9 +91,78 @@
 
                 <input id="DeleteModuleButton" type="button" name="delete" class="action-button" value="Delete" style="background-color: #d62c1a">
 
-                <input id="NextButton" type="button" name="next" class="next action-button" value="Next" />
+                <input id="Next-ToFFSelection" type="button" name="next" class="next action-button" value="Next" />
+
+            </fieldset>
+
+            <fieldset style="margin:0 10%">
+
+                <h3>FlexFlow Instances</h3>
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                    <a style="color:#00ff21" href="@Url.Action("Create")">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span class="sr-only">Create</span>
+                    </a>
+                </p>
+
+                <table id="ffinstancesresultset" class="table table-bordered responsive" style="border-radius:15px;">
+                    <tr>
+                        <th>
+                            &nbsp; &nbsp; &nbsp; FFInstance
+                        </th>
+                    </tr>
+                </table>
+
+
+                <!--<div class="col-md-12" id="ModulesDivID" style="align-self:center ">
+                <select id="ModulesID" name="Modules"></select>
+                @Html.ValidationMessageFor(model => model.ListFFInstances)
+                </div>-->
+
+                <div id="wait" class="modal"><!-- Place at bottom of page --></div>
+
+                <input id="PreviousButton" type="button" name="previous" class="previous action-button" value="Previous" style="background-color: #217dbb">
+
+                <input id="EditFFButton" type="button" name="edit" class="action-button" value="Edit" style="background-color: #ffa617">
+
+                <input id="DeleteFFButton" type="button" name="delete" class="action-button" value="Delete" style="background-color: #d62c1a">
+
+                <input id="Next-ToBucketSelection" type="button" name="next" class="next action-button" value="Next" />
 
            </fieldset>
+
+            <fieldset style="margin:0 10%">
+
+                <h3>Station Bucket</h3>
+
+                <ol id="stationtypesresultset" class="simple_with_animation">
+
+
+                </ol> 
+                    
+                <!--<table id="stationtypesresultset" class="table table-bordered responsive" style="border-radius:15px;">
+                    <tr>
+                        <th>
+                            &nbsp; &nbsp; &nbsp; Define Bucket
+                        </th>
+                    </tr>
+                </table>-->
+                    <!--<div class="col-md-12" id="ModulesDivID" style="align-self:center ">
+        <select id="ModulesID" name="Modules"></select>
+        @Html.ValidationMessageFor(model => model.ListStationTypes)
+        </div>-->
+
+                    <div id="wait" class="modal"><!-- Place at bottom of page --></div>
+
+                    <input id="PreviousButton" type="button" name="previous" class="previous action-button" value="Previous" style="background-color: #217dbb">
+
+                    <input id="Finish" type="button" name="next" class="next action-button" value="Finish" />
+
+
+</fieldset>
+
         </div>
     </form>
 
