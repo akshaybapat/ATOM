@@ -75,14 +75,20 @@ namespace AtomConfiguratorModel.Models
                     return Json(ffinstances, JsonRequestBehavior.AllowGet);
 
                 case "StationTypesList":
-
-                    System.Diagnostics.Debug.WriteLine("filter:"+filter);
               
                     var querystationtypes = db.DimStationTypes.Where(x => x.DimFFInstance.ProjectName.Equals(filter)).ToList();
 
                     IEnumerable<DimStationType> stationtypes = querystationtypes.Select(x => new DimStationType { StationTypeName = x.StationTypeName, id = x.id });
 
                     return Json(stationtypes, JsonRequestBehavior.AllowGet);
+
+                case "BucketsList":
+
+                    var querybuckets = db.DimBuckets.ToList();
+
+                    IEnumerable<DimBucket> buckets = querybuckets.Select(x => new DimBucket { BucketName = x.BucketName, id = x.id });
+
+                    return Json(buckets, JsonRequestBehavior.AllowGet);
 
                                        
                 default:

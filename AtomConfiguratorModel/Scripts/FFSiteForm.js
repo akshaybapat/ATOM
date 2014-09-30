@@ -455,6 +455,16 @@ $('#SearchBox').on("keyup paste", function () {
 
         var result = '';
 
+        $.getJSON('/FFSite/GetDropDownData', { typeofData: "BucketsList" }, function (data) {
+            var items = '<option>Select a Bucket Type</option>';
+            $.each(data, function (i, bucket) {
+                items += "<option value='" + bucket.id + "'>" + bucket.BucketName + "</option>";
+            });
+            $('#BucketsDropDown').html(items);
+          
+
+        });
+
         $.getJSON('/FFSite/GetDropDownData', { typeofData: "StationTypesList", filter: selection }, function (data) {
 
 
@@ -463,13 +473,13 @@ $('#SearchBox').on("keyup paste", function () {
             $.each(data, function (i, stationtype) {
                 items += "<option value='" + stationtype.id + "'>" + stationtype.StationTypeName + "</option>";
                 //result += '<tr  class="simple_with_animation" style="width:50%;"><td id="selectedStationTypeName" style="border-radius:15px;font-weight: bold">' + stationtype.StationTypeName + '</td><td id="selectedStationTypeID" style="display:none;">' + stationtype.id + '</tr>';
-                result += '<li id="selectedStationTypeName" style="border-radius:15px;font-weight: bold">' + stationtype.StationTypeName + '<div id="selectedStationTypeID" style="display:none;">' + stationtype.id + '</div></li>';
+                result += '<li id="selectedStationTypeName" style="border-radius:15px;">' + stationtype.StationTypeName + '<div id="selectedStationTypeID" style="display:none;">' + stationtype.id + '</div></li>';
             });
 
             if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid FlexFlow Instance</b></h4></td></tr>';
 
             $('#stationtypesresultset').html(result);
-
+            //$('#bucketypesresultset').html(result);
 
             /* Get all rows from your 'table' but not the first one 
             * that includes headers. */
@@ -479,46 +489,6 @@ $('#SearchBox').on("keyup paste", function () {
 
             /* Create 'click' event handler for rows */
            // rows.on('click', function (e) {
-
-                
-           // });
-
-            /* This 'event' is used just to avoid that the table text 
-            * gets selected (just for styling). 
-            * For example, when pressing 'Shift' keyboard key and clicking 
-            * (without this 'event') the text of the 'table' will be selected.
-            * You can remove it if you want, I just tested this in 
-            * Chrome v30.0.1599.69 */
-            $(document).bind('selectstart dragstart', function (e) {
-                e.preventDefault(); return false;
-            });
-
-
-        });
-
-    });
-
-
-    var adjustment
-
-    $("ol.simple_with_animation").sortable({
-        group: 'simple_with_animation',
-        pullPlaceholder: false,
-        // animation on drop
-        onDrop: function (item, targetContainer, _super) {
-            var clonedItem = $('<li/>').css({ height: 0 })
-            item.before(clonedItem)
-            clonedItem.animate({ 'height': item.height() })
-
-            item.animate(clonedItem.position(), function () {
-                clonedItem.detach()
-                _super(item)
-            })
-        },
-
-        // set item relative to cursor position
-        onDragStart: function ($item, container, _super) {
-
             /*Start Highlight logic
 
             var state = $(this).hasClass('highlight');
@@ -549,27 +519,26 @@ $('#SearchBox').on("keyup paste", function () {
 
             };
 
-            //End Highlight logic */
+            //End Highlight logic 
+                
+           // });
 
-            var offset = $item.offset(),
-            pointer = container.rootGroup.pointer
-
-            adjustment = {
-                left: pointer.left - offset.left,
-                top: pointer.top - offset.top
-            }
-
-            _super($item, container)
-
-
-        },
-        onDrag: function ($item, position) {
-            $item.css({
-                left: position.left - adjustment.left,
-                top: position.top - adjustment.top
-            })
-        }
-    })
+            /* This 'event' is used just to avoid that the table text 
+            * gets selected (just for styling). 
+            * For example, when pressing 'Shift' keyboard key and clicking 
+            * (without this 'event') the text of the 'table' will be selected.
+            * You can remove it if you want, I just tested this in 
+            * Chrome v30.0.1599.69 */
+            $(document).bind('selectstart dragstart', function (e) {
+                e.preventDefault(); return false;
+            });
 
 
+        });
 
+    });
+
+
+$("#stationtypesresultset, #bucketypesresultset").sortable({
+    connectWith: ".simple_with_animation"
+    }).disableSelection();
