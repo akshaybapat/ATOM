@@ -60,12 +60,12 @@ $('#leftnavigation').on('click', function (event) {
 
 });
 
-/*
+
 $('table tr').on('click', function (e) {
 
     var state = $(this).hasClass('highlight');
 
-    /*Reset field values and Next Button
+    /*Reset field values and Next Button */
     $('.highlight').removeClass('highlight');
    
     if (!state) {
@@ -76,7 +76,7 @@ $('table tr').on('click', function (e) {
 
 
 });
-*/
+
 
 
 $('#SearchBox').on("keyup paste", function () {
