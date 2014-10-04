@@ -1,4 +1,6 @@
 ﻿
+var current_fs, next_fs, previous_fs;
+
 jQuery.validator.unobtrusive.adapters.add("dropdown", function (options) {
     if (options.element.tagName.toUpperCase() == "SELECT" && options.element.type.toUpperCase() == "SELECT-ONE") {
         options.rules["required"] = true;
@@ -139,7 +141,7 @@ $('#SearchBox').on("keyup paste", function () {
 
 
         $.getJSON('/FFSite/GetDropDownData', { typeofData: "CountryList", filter: $('#RegionID').val() }, function (data) {
-            var items = '<option>Select a Country</option>';
+            var items = '<option>---SELECT---</option>';
             $.each(data, function (i, country) {
                 items += "<option value='" + country.id + "'>" + country.CountryName + "</option>";
             });
@@ -158,7 +160,7 @@ $('#SearchBox').on("keyup paste", function () {
 
 
         $.getJSON('/FFSite/GetDropDownData', { typeofData: "FacilityList", filter: $('#CountriesID option:selected').text() }, function (data) {
-            var items = '<option>Select a Facility</option>';
+            var items = '<option>---SELECT---</option>';
             $.each(data, function (i, facility) {
                 items += "<option value='" + facility.id + "'>" + facility.SiteName + "</option>";
             });
@@ -179,178 +181,109 @@ $('#SearchBox').on("keyup paste", function () {
 
     $('#Next-ToBuildingSelection').on('click', function () {
 
-        $('#Next-ToModuleSelection').hide();
+        $('#Next-ToBucketSelection').hide();
 
+
+        var site = $('#FacilitiesID option:selected').text();
+
+        $("#progressbar li").eq(0).append("<br/> { " + site + " }");
 
         $.getJSON('/FFSite/GetDropDownData', { typeofData: "BuildingList", filter: $('#FacilitiesID option:selected').text() }, function (data) {
             var items = '<option>Select a Building</option>';
             var result = '';
             $.each(data, function (i, building) {
-                items += "<option value='" + building.id + "'>" + building.BuildingName + "</option>";
+                items += "<option value='" + building.id + "'>" + building.BuildingName + '</option>';
                 result += '<tr style="width:50%;"><td id="selectedBuildingName" style="border-radius:15px;font-weight: bold">' + building.BuildingName + '</td><td id="selectedBuildingID" style="display:none;">' + building.id + '</tr>';
             });
 
-            if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid Site</b></h4></td></tr>';
+            //if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid Site</b></h4></td></tr>';
 
-            // $('#BuildingsID').html(items);
-            $('#buildingsresultset').html(result);
-
-
-            /* Get all rows from your 'table' but not the first one 
-            * that includes headers. */
-            var row = '';
-            var rows = $('#buildingsresultset tr');
-
-            /* Create 'click' event handler for rows */
-            rows.on('click', function (e) {
-
-                var state = $(this).hasClass('highlight');
-
-                /*Reset field values and Next Button*/
-                $('#buildingsresultset tr.highlight').removeClass('highlight');
-                $('#Next-ToModuleSelection').hide();
-                selectedBuildingID = '';
-
-                $("#progressbar li").eq(1).text("Building Selection");
+            $('#BuildingsID').html(items);
+            //$('#buildingsresultset').html(result);
 
 
-                if (!state) {
+            $('#EditBuilding').click(function () {
 
-                    $(this).addClass('highlight');
-
-                    /* Get current row */
-                    row = $(this);
-
-                    /* Get index of column for Building id*/
-                    var column = $('#selectedBuildingID').index();
-
-                    /* Get value of Building id of the current row*/
-                    selectedBuildingID = row.find('td').eq(column).html();
-
-                    $("#progressbar li").eq(1).append("<br/> { " + row.find('td').eq(0).html() + " }");
-
-                    /*Display Next Button */
-                    $('#Next-ToModuleSelection').show();
+                if ($('#BuildingsID option:selected').val() !== null) {
+                    var url = '/DimBuildings/Edit?id=' + $('#BuildingsID option:selected').val();
+                    //window.location.href = url;
+                    gotoURL(url);
                 }
+            });
+
+            $('#DetailsBuilding').click(function () {
+
+                if ($('#BuildingsID option:selected').val() !== null) {
+                    var url = '/DimBuildings/Details?id=' + $('#BuildingsID option:selected').val();
+                    //window.location.href = url;
+                    gotoURL(url);
+                }
+            });
+
+            $('#DeleteBuilding').click(function () {
+
+                if ($('#BuildingsID option:selected').val() !== null) {
+                    var url = '/DimBuildings/Delete?id=' + $('#BuildingsID option:selected').val();
+                    //window.location.href = url;
+                    gotoURL(url);
+                }
+            });
+
+            /*Display Next Button */
+            $('#Next-ToBucketSelection').show();
+
+
+            var selection = '';
+
+            selection = $('#FacilitiesID option:selected').text()
+
+            var result = '';
+
+            $.getJSON('/FFSite/GetDropDownData', { typeofData: "FFInstanceList", filter: selection }, function (data) {
+
+
+                var items = '<option>Select a FlexFlow Instance</option>';
+
+                $.each(data, function (i, ffinstance) {
+                    items += "<option value='" + ffinstance.id + "'>" + ffinstance.ProjectName + "</option>";
+                    //result += '<li style="width:50%;"><td id="selectedFFInstance" style="border-radius:15px;font-weight: bold">' + ffinstance.ProjectName + '</td><td id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</tr>';
+                    result += '<li id="selectedFFInstance" style="border-radius:15px;">' + ffinstance.ProjectName + '<div id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</div></li>';
+                });
+
+                if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid FlexFlow Instance</b></h4></td></tr>';
+
+                //$('#ModulesID').html(items);
+                $('#availablecustomersresultset').html(result);
+
+                /* This 'event' is used just to avoid that the table text 
+                * gets selected (just for styling). 
+                * For example, when pressing 'Shift' keyboard key and clicking 
+                * (without this 'event') the text of the 'table' will be selected.
+                * You can remove it if you want, I just tested this in 
+                * Chrome v30.0.1599.69 */
+                $(document).bind('selectstart dragstart', function (e) {
+                    e.preventDefault(); return false;
+                });
 
 
             });
 
-            /* This 'event' is used just to avoid that the table text 
-            * gets selected (just for styling). 
-            * For example, when pressing 'Shift' keyboard key and clicking 
-            * (without this 'event') the text of the 'table' will be selected.
-            * You can remove it if you want, I just tested this in 
-            * Chrome v30.0.1599.69 */
-            $(document).bind('selectstart dragstart', function (e) {
-                e.preventDefault(); return false;
-            });
 
 
-            $('#EditBuildingButton').click(function () {
-                var url = '/DimBuildings/Edit?id=' + selectedBuildingID;
-                //window.location.href = url;
-                gotoURL(url);
+            $('#BuildingsID').change(function () {
+                var assignedcustomers = '';
+                $.getJSON('/FFSite/GetDropDownData', { typeofData: "FFInstanceList", buildingfilter: $('#BuildingsID option:selected').text() }, function (data) {
 
-            });
+                    var items = '<option>---SELECT---</option>';
+                    $.each(data, function (i, ffinstance) {
+                        items += "<option value='" + ffinstance.id + "'>" + ffinstance.ProjectName + "</option>";
+                        //assignedcustomers += '<tr style="width:50%;"><td id="selectedFFInstance" style="border-radius:15px;font-weight: bold">' + ffinstance.ProjectName + '</td><td id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</tr>';
+                        assignedcustomers += '<li id="selectedFFInstance" style="border-radius:15px;">' + ffinstance.ProjectName + '<div id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</div></li>';
+                    });
+                    $('#assignedcustomersresultset').html(assignedcustomers);
+                   
 
-            $('#DeleteBuildingButton').click(function () {
-                var url = '/DimBuildings/Delete?id=' + selectedBuildingID;
-                //window.location.href = url;
-                gotoURL(url);
-
-            });
-
-
-        });
-
-    });
-
-    $('#Next-ToModuleSelection').on('click', function () {
-
-        $('#Next-ToFFSelection').hide();
-
-        var selection = '';
-
-        selection = $('#buildingsresultset tr.highlight td').filter('#selectedBuildingName').html()
-
-        var result = '';
-
-        $.getJSON('/FFSite/GetDropDownData', { typeofData: "ModuleList", filter: selection }, function (data) {
-
-
-            var items = '<option>Select a Module</option>';
-
-            $.each(data, function (i, module) {
-                items += "<option value='" + module.id + "'>" + module.ModuleName + "</option>";
-                result += '<tr style="width:50%;"><td id="selectedModuleName" style="border-radius:15px;font-weight: bold">' + module.ModuleName + '</td><td id="selectedModuleID" style="display:none;">' + module.id + '</tr>';
-            });
-
-            if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid Building</b></h4></td></tr>';
-
-            //$('#ModulesID').html(items);
-            $('#modulesresultset').html(result);
-
-
-            /* Get all rows from your 'table' but not the first one 
-            * that includes headers. */
-            var row = '';
-            var selectedModuleID = '';
-            var rows = $('#modulesresultset tr');
-
-            /* Create 'click' event handler for rows */
-            rows.on('click', function (e) {
-
-                var state = $(this).hasClass('highlight');
-
-                /*Reset field values*/
-                $('#modulesresultset tr.highlight').removeClass('highlight');
-                selectedModuleID = '';
-
-                $("#progressbar li").eq(2).text("Module Selection");
-
-                if (!state) {
-
-                    $(this).addClass('highlight');
-
-                    /* Get current row */
-                    row = $(this);
-
-                    /* Get index of column for Module id*/
-                    var column = $('#selectedModuleID').index();
-
-                    /* Get value of Module id of the current row*/
-                    selectedModuleID = row.find('td').eq(column).html();
-
-                    $("#progressbar li").eq(2).append("<br/> { " + row.find('td').eq(0).html() + " }");
-
-                    /*Display Next Button */
-                    $('#Next-ToFFSelection').show();
-
-                };
-            });
-
-            /* This 'event' is used just to avoid that the table text 
-            * gets selected (just for styling). 
-            * For example, when pressing 'Shift' keyboard key and clicking 
-            * (without this 'event') the text of the 'table' will be selected.
-            * You can remove it if you want, I just tested this in 
-            * Chrome v30.0.1599.69 */
-            $(document).bind('selectstart dragstart', function (e) {
-                e.preventDefault(); return false;
-            });
-
-
-            $('#EditModuleButton').click(function () {
-                var url = '/DimModules/Edit?id=' + selectedModuleID;
-                //window.location.href = url;
-                gotoURL(url);
-            });
-
-            $('#DeleteModuleButton').click(function () {
-                var url = '/DimModules/Delete?id=' + selectedModuleID;
-                //window.location.href = url;
-                gotoURL(url);
+                });
             });
 
 
@@ -358,93 +291,7 @@ $('#SearchBox').on("keyup paste", function () {
 
     });
 
-
-    $('#Next-ToFFSelection').on('click', function () {
-        var selection = '';
-
-        selection = $('#modulesresultset tr.highlight td').filter('#selectedModuleName').html()
-
-        var result = '';
-
-        $.getJSON('/FFSite/GetDropDownData', { typeofData: "FFInstanceList", filter: selection }, function (data) {
-
-
-            var items = '<option>Select a FlexFlow Instance</option>';
-
-            $.each(data, function (i, ffinstance) {
-                items += "<option value='" + ffinstance.id + "'>" + ffinstance.ProjectName + "</option>";
-                result += '<tr style="width:50%;"><td id="selectedFFInstance" style="border-radius:15px;font-weight: bold">' + ffinstance.ProjectName + '</td><td id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</tr>';
-            });
-
-            if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid FlexFlow Instance</b></h4></td></tr>';
-
-            //$('#ModulesID').html(items);
-            $('#ffinstancesresultset').html(result);
-
-
-            /* Get all rows from your 'table' but not the first one 
-            * that includes headers. */
-            var row = '';
-            var selectedFFInstanceID = '';
-            var rows = $('#ffinstancesresultset tr');
-
-            /* Create 'click' event handler for rows */
-            rows.on('click', function (e) {
-
-                var state = $(this).hasClass('highlight');
-
-                /*Reset field values*/
-                $('#ffinstancesresultset tr.highlight').removeClass('highlight');
-                selectedFFInstanceID = '';
-
-                $("#progressbar li").eq(3).text("FlexFlow Instance Selection");
-
-                if (!state) {
-
-                    $(this).addClass('highlight');
-
-                    /* Get current row */
-                    row = $(this);
-
-                    /* Get index of column for Module id*/
-                    var column = $('#selectedFFInstanceID').index();
-
-                    /* Get value of Module id of the current row*/
-                    selectedFFInstanceID = row.find('td').eq(column).html();
-
-                    $("#progressbar li").eq(3).append("<br/> { " + row.find('td').eq(0).html() + " }");
-
-                };
-            });
-
-            /* This 'event' is used just to avoid that the table text 
-            * gets selected (just for styling). 
-            * For example, when pressing 'Shift' keyboard key and clicking 
-            * (without this 'event') the text of the 'table' will be selected.
-            * You can remove it if you want, I just tested this in 
-            * Chrome v30.0.1599.69 */
-            $(document).bind('selectstart dragstart', function (e) {
-                e.preventDefault(); return false;
-            });
-
-
-            $('#EditFFButton').click(function () {
-                var url = '/DimFFInstance/Edit?id=' + selectedFFInstanceID;
-                //window.location.href = url;
-                gotoURL(url);
-            });
-
-            $('#DeleteFFButton').click(function () {
-                var url = '/DimFFInstance/Delete?id=' + selectedFFInstanceID;
-                //window.location.href = url;
-                gotoURL(url);
-            });
-
-
-        });
-
-    });
-
+   
 
     $('#Next-ToBucketSelection').on('click', function () {
         var selection = '';
@@ -541,4 +388,9 @@ $('#SearchBox').on("keyup paste", function () {
 
 $("#stationtypesresultset, #bucketypesresultset").sortable({
     connectWith: ".simple_with_animation"
-    }).disableSelection();
+}).disableSelection();
+
+
+$("#availablecustomersresultset, #assignedcustomersresultset").sortable({
+    connectWith: ".simple_with_animation"
+});

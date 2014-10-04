@@ -111,6 +111,14 @@ namespace AtomConfiguratorModel.Models
             {
                 db.DimBuildings.Add(dimBuilding);
                 db.SaveChanges();
+
+                DimModule defModule = new DimModule();
+                defModule.ModuleName = dimBuilding.BuildingName + "_Default";
+                defModule.KeyBuilding = dimBuilding.id;
+                defModule.DimBuilding = dimBuilding;
+                db.DimModules.Add(defModule);
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

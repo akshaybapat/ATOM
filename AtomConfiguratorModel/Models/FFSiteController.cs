@@ -19,9 +19,17 @@ namespace AtomConfiguratorModel.Models
             return View();
         }
 
+        // GET: FFSiteMenu
+        public ActionResult FFSiteMenu()
+        {
+            ViewBag.KeyRegion = (from r in db.DimRegions
+                                 select r.RegionName).Distinct();
+            return View();
+        }
+
 
         // GET: FFSite/GetDropDownData
-        public JsonResult GetDropDownData(string typeofData, string filter)
+        public JsonResult GetDropDownData(string typeofData, string filter, string buildingfilter)
         {
             switch (typeofData)
             {
@@ -68,7 +76,15 @@ namespace AtomConfiguratorModel.Models
 
                 case "FFInstanceList":
 
-                    var queryffinstances = db.DimFFInstances.Where(x => x.DimModule.ModuleName.Equals(filter)).ToList();
+                    var queryffinstances = db.DimFFInstances.AsEnumerable();
+
+                     if(buildingfilter == null)
+                    
+                    queryffinstances = db.DimFFInstances.Where(x => x.DimModule.DimBuilding.DimFacility.SiteName.Equals(filter)).ToList();
+
+                     else
+
+                    queryffinstances = db.DimFFInstances.Where(x => x.DimModule.DimBuilding.BuildingName.Equals(buildingfilter)).ToList();
 
                     IEnumerable<DimFFInstance> ffinstances = queryffinstances.Select(x => new DimFFInstance { ProjectName = x.ProjectName, id = x.id });
 
@@ -89,6 +105,14 @@ namespace AtomConfiguratorModel.Models
                     IEnumerable<DimBucket> buckets = querybuckets.Select(x => new DimBucket { BucketName = x.BucketName, id = x.id });
 
                     return Json(buckets, JsonRequestBehavior.AllowGet);
+
+                case "CustomersList":
+                   
+                    var querycustomers = db.DimBusinessPartners.Where(x => x.BusinessPartnerName.Equals(filter)).ToList();
+
+                    IEnumerable<DimBusinessPartner> customers = querycustomers.Select(x => new DimBusinessPartner { BusinessPartnerName = x.BusinessPartnerName, id = x.id });
+
+                    return Json(customers, JsonRequestBehavior.AllowGet);
 
                                        
                 default:

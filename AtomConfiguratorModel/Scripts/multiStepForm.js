@@ -21,9 +21,7 @@ $(".next").click(function () {
         switch (next_fs.index()) {
             case 0: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Site Selection"); break;
             case 1: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Building Selection"); break;
-            case 2: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Module Selection"); break;
-            case 3: $("#progressbar li").eq($("fieldset").index(next_fs)).text("FlexFlow Instance Selection"); break;
-            case 4: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Station Bucket Selection"); break;
+            case 2: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Station Bucket Selection"); break;
 
         }
 
@@ -70,11 +68,17 @@ $(".previous").click(function(){
 	switch (current_fs.index()) {
 	    case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Site Selection"); break;
 	    case 1: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Building Selection"); break;
-	    case 2: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Module Selection"); break;
-	    case 3: $("#progressbar li").eq($("fieldset").index(current_fs)).text("FlexFlow Instance Selection"); break;
-	    case 4: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Station Bucket Selection"); break;
+	    case 2: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Station Bucket Selection"); break;
 
 	}
+
+	switch (previous_fs.index()) {
+	    case 0: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Site Selection"); break;
+	    case 1: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Building Selection"); break;
+	    case 2: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Station Bucket Selection"); break;
+
+	}
+
 
     /*
 	$("#progressbar li").eq(1).text("Building Selection");

@@ -514,6 +514,7 @@
     <Content Include="Views\MetricConfigurations\Details.cshtml" />
     <Content Include="Views\MetricConfigurations\Edit.cshtml" />
     <Content Include="Views\MetricConfigurations\Index.cshtml" />
+    <Content Include="Views\FFSite\FFSiteMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
