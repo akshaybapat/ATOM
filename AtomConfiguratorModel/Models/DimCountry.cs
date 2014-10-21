@@ -22,6 +22,7 @@ namespace AtomConfiguratorModel.Models
         public int id { get; set; }
         public string CountryName { get; set; }
         public Nullable<int> KeyRegion { get; set; }
+        public Nullable<int> IsActive { get; set; }
     
         public virtual ICollection<DimFacility> DimFacilities { get; set; }
         public virtual DimRegion DimRegion { get; set; }

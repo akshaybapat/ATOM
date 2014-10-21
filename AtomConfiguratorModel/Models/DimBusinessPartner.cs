@@ -23,8 +23,13 @@ namespace AtomConfiguratorModel.Models
         public int id { get; set; }
         public string BusinessPartnerName { get; set; }
         public string BPCode { get; set; }
+        public Nullable<int> KeySite { get; set; }
+        public Nullable<int> IsActive { get; set; }
+        public Nullable<int> KeyBuilding { get; set; }
     
         public virtual ICollection<DimProductLine> DimProductLines { get; set; }
         public virtual ICollection<MetricConfiguration> MetricConfigurations { get; set; }
+        public virtual DimBuilding DimBuilding { get; set; }
+        public virtual DimFacility DimFacility { get; set; }
     }
 }

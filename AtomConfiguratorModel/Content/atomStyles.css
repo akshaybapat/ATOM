@@ -273,6 +273,10 @@ body {
             margin: 10px 5px;
              }
 
+           a{
+               cursor: pointer;
+           }
+
     /*FF Instance Specific properties*/
     #ffinstance table td.fill {
                 width:9999em;

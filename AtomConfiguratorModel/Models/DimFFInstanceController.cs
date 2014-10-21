@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Net.Http;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -171,7 +172,66 @@ namespace AtomConfiguratorModel.Models
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+
+        // POST: /DimFFInstance/Update/
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost, ActionName("Update")]
+        public HttpResponseMessage Update(DimFFInstanceAJAXModel ffInstanceAJAXModel)
+        {
+            var Module = db.DimModules.Where(x => x.DimBuilding.BuildingName.Equals(ffInstanceAJAXModel.buildingname));
+
+            if (ffInstanceAJAXModel.assignedcustomers != null)
+            {
+                foreach (string ffinstance in ffInstanceAJAXModel.assignedcustomers)
+                {
+                    System.Diagnostics.Debug.Write(ffinstance + '\n');
+
+                    var ffRow = db.DimFFInstances.Where(x => x.ProjectName.Equals(ffinstance)).First();
+
+                    if (!ffRow.KeyModule.HasValue)
+                    {
+                        ffRow.KeyModule = Module.FirstOrDefault().id;
+
+                        System.Diagnostics.Debug.Write(ffRow.KeyModule);
+
+                    }
+                    db.SaveChanges();
+
+                    System.Diagnostics.Debug.Write("Assigned List Saved" +'\n');
+
+                }
+            }
+
+            if (ffInstanceAJAXModel.availablecustomers != null)
+            {
+                foreach (string ffinstance in ffInstanceAJAXModel.availablecustomers)
+                {
+                    var ffRow = db.DimFFInstances.Where(x => x.ProjectName.Equals(ffinstance)).First();
+
+                    if (ffRow.KeyModule.HasValue)
+                    {
+                        ffRow.KeyModule = null;
+
+                        System.Diagnostics.Debug.Write(ffRow.KeyModule);
+
+                    }
+
+                    if (ModelState.IsValid)
+                    {
+                        db.Entry(ffRow).Property(x => x.KeyModule).IsModified = true;
+
+                        db.SaveChanges();
+
+                        System.Diagnostics.Debug.Write("Available List Saved" + '\n');
+                    }
+                }
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        protected override void Dispose(bool disposing) 
         {
             if (disposing)
             {

@@ -24,6 +24,7 @@ namespace AtomConfiguratorModel.Models
         public Nullable<int> KeyBucket { get; set; }
         public Nullable<bool> Status { get; set; }
         public Nullable<int> FFInstanceID { get; set; }
+        public Nullable<int> Sequence { get; set; }
     
         public virtual DimBucket DimBucket { get; set; }
         public virtual ICollection<DimPhysicalStation> DimPhysicalStations { get; set; }

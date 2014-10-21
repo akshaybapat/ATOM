@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Net.Http;
 
 namespace AtomConfiguratorModel.Models
 {
@@ -167,6 +168,62 @@ namespace AtomConfiguratorModel.Models
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+        // POST: /DimBusinessPartner/Update/
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost, ActionName("Update")]
+        public ActionResult Update(DimFFInstanceAJAXModel ffInstanceAJAXModel)
+        {
+            var Building = db.DimBuildings.Where(x => x.BuildingName.Equals(ffInstanceAJAXModel.buildingname));
+
+            if (ffInstanceAJAXModel.assignedcustomers != null)
+            {
+                foreach (string ffinstance in ffInstanceAJAXModel.assignedcustomers)
+                {
+                    System.Diagnostics.Debug.Write(ffinstance + '\n');
+
+                    var bpRow = db.DimBusinessPartners.Where(x => x.BPCode.Equals(ffinstance)).First();
+
+                    if (!bpRow.KeyBuilding.HasValue)
+                    {
+                        bpRow.KeyBuilding = Building.FirstOrDefault().id;
+
+                        System.Diagnostics.Debug.Write(bpRow.KeyBuilding);
+
+                    }
+                    db.SaveChanges();
+
+                    System.Diagnostics.Debug.Write("Assigned List Saved" + '\n');
+
+                }
+            }
+
+            if (ffInstanceAJAXModel.availablecustomers != null)
+            {
+                foreach (string ffinstance in ffInstanceAJAXModel.availablecustomers)
+                {
+            
+                    var bpRow = db.DimBusinessPartners.Where(x => x.BPCode.Equals(ffinstance)).First();
+
+                    if (bpRow.KeyBuilding.HasValue)
+                    {
+                        bpRow.KeyBuilding = null;
+
+                        System.Diagnostics.Debug.Write(bpRow.KeyBuilding);
+
+                    }
+                    db.SaveChanges();
+
+                 
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
 
         protected override void Dispose(bool disposing)
         {

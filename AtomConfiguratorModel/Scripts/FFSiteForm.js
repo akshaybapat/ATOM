@@ -1,16 +1,6 @@
 ﻿
 var current_fs, next_fs, previous_fs;
 
-jQuery.validator.unobtrusive.adapters.add("dropdown", function (options) {
-    if (options.element.tagName.toUpperCase() == "SELECT" && options.element.type.toUpperCase() == "SELECT-ONE") {
-        options.rules["required"] = true;
-        if (options.message) {
-            options.messages["required"] = options.message;
-        }
-    }
-});
-
-
 $.fn.scrollTo = function (target, options, callback) {
     if (typeof options == 'function' && arguments.length == 2) { callback = options; options = target; }
     var settings = $.extend({
@@ -50,6 +40,53 @@ function gotoURL(url) {
     xhr.send(null);
     $('#bigblue').hide();
 
+}
+
+function getAvailableCustomers() {
+    var selection = '';
+
+    selection = $('#FacilitiesID option:selected').text()
+
+    var availablecustomers = '';
+
+    $.getJSON('/FFSite/GetDropDownData', { typeofData: "CustomersList", filter: selection }, function (data) {
+
+
+        var items = '<option>Select a FlexFlow Instance</option>';
+
+        $.each(data, function (i, businesspartner) {
+            items += "<option value='" + businesspartner.id + "'>" + businesspartner.BPCode + "</option>";
+            
+            availablecustomers += '<li><div id="selectedFFInstance">' + businesspartner.BPCode + '</div><div id="selectedFFInstanceID" style="display:none;">' + businesspartner.id + '</div></li>';
+        });
+
+        //if (availablecustomers.length < 2) availablecustomers = '<tr><td><h4><b>Please Select a Valid FlexFlow Instance</b></h4></td></tr>';
+
+        $('#availablecustomersresultset').html(availablecustomers);
+
+        $(document).bind('selectstart dragstart', function (e) {
+            e.preventDefault(); return false;
+        });
+
+
+    });
+}
+
+function getAssignedCustomers() {
+    var assignedcustomers = '';
+    $.getJSON('/FFSite/GetDropDownData', { typeofData: "CustomersList", buildingfilter: $('#BuildingsID option:selected').text() }, function (data) {
+
+        var items = '<option>---SELECT---</option>';
+        $.each(data, function (i, businesspartner) {
+            items += "<option value='" + businesspartner.id + "'>" + businesspartner.BPCode + "</option>";
+
+            assignedcustomers += '<li><div id="selectedFFInstance" >' + businesspartner.BPCode + '</div><div id="selectedFFInstanceID" style="display:none;">' + businesspartner.id + '</div></li>';
+        });
+        $('#assignedcustomersresultset').html(assignedcustomers);
+
+
+
+    });
 }
 
 $('#rightnavigation').on('click', function (event) {
@@ -182,7 +219,8 @@ $('#SearchBox').on("keyup paste", function () {
     $('#Next-ToBuildingSelection').on('click', function () {
 
         $('#Next-ToBucketSelection').hide();
-
+        $('#availablecustomersresultset').html("");
+        $('#assignedcustomersresultset').html("");
 
         var site = $('#FacilitiesID option:selected').text();
 
@@ -190,23 +228,21 @@ $('#SearchBox').on("keyup paste", function () {
 
         $.getJSON('/FFSite/GetDropDownData', { typeofData: "BuildingList", filter: $('#FacilitiesID option:selected').text() }, function (data) {
             var items = '<option>Select a Building</option>';
-            var result = '';
+           
             $.each(data, function (i, building) {
-                items += "<option value='" + building.id + "'>" + building.BuildingName + '</option>';
-                result += '<tr style="width:50%;"><td id="selectedBuildingName" style="border-radius:15px;font-weight: bold">' + building.BuildingName + '</td><td id="selectedBuildingID" style="display:none;">' + building.id + '</tr>';
+                items += "<option value='" + building.id + "'>" + building.BuildingName + '</option>';              
             });
 
-            //if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid Site</b></h4></td></tr>';
 
             $('#BuildingsID').html(items);
-            //$('#buildingsresultset').html(result);
-
+          
+        });
 
             $('#EditBuilding').click(function () {
 
                 if ($('#BuildingsID option:selected').val() !== null) {
                     var url = '/DimBuildings/Edit?id=' + $('#BuildingsID option:selected').val();
-                    //window.location.href = url;
+                  
                     gotoURL(url);
                 }
             });
@@ -215,7 +251,7 @@ $('#SearchBox').on("keyup paste", function () {
 
                 if ($('#BuildingsID option:selected').val() !== null) {
                     var url = '/DimBuildings/Details?id=' + $('#BuildingsID option:selected').val();
-                    //window.location.href = url;
+                    
                     gotoURL(url);
                 }
             });
@@ -224,169 +260,233 @@ $('#SearchBox').on("keyup paste", function () {
 
                 if ($('#BuildingsID option:selected').val() !== null) {
                     var url = '/DimBuildings/Delete?id=' + $('#BuildingsID option:selected').val();
-                    //window.location.href = url;
+                   
                     gotoURL(url);
                 }
             });
 
-            /*Display Next Button */
-            $('#Next-ToBucketSelection').show();
 
 
-            var selection = '';
 
-            selection = $('#FacilitiesID option:selected').text()
-
-            var result = '';
-
-            $.getJSON('/FFSite/GetDropDownData', { typeofData: "FFInstanceList", filter: selection }, function (data) {
-
-
-                var items = '<option>Select a FlexFlow Instance</option>';
-
-                $.each(data, function (i, ffinstance) {
-                    items += "<option value='" + ffinstance.id + "'>" + ffinstance.ProjectName + "</option>";
-                    //result += '<li style="width:50%;"><td id="selectedFFInstance" style="border-radius:15px;font-weight: bold">' + ffinstance.ProjectName + '</td><td id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</tr>';
-                    result += '<li id="selectedFFInstance" style="border-radius:15px;">' + ffinstance.ProjectName + '<div id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</div></li>';
-                });
-
-                if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid FlexFlow Instance</b></h4></td></tr>';
-
-                //$('#ModulesID').html(items);
-                $('#availablecustomersresultset').html(result);
-
-                /* This 'event' is used just to avoid that the table text 
-                * gets selected (just for styling). 
-                * For example, when pressing 'Shift' keyboard key and clicking 
-                * (without this 'event') the text of the 'table' will be selected.
-                * You can remove it if you want, I just tested this in 
-                * Chrome v30.0.1599.69 */
-                $(document).bind('selectstart dragstart', function (e) {
-                    e.preventDefault(); return false;
-                });
-
-
-            });
-
-
+            getAvailableCustomers();
+            //$('#Next-ToBucketSelection').show();
 
             $('#BuildingsID').change(function () {
-                var assignedcustomers = '';
-                $.getJSON('/FFSite/GetDropDownData', { typeofData: "FFInstanceList", buildingfilter: $('#BuildingsID option:selected').text() }, function (data) {
 
-                    var items = '<option>---SELECT---</option>';
-                    $.each(data, function (i, ffinstance) {
-                        items += "<option value='" + ffinstance.id + "'>" + ffinstance.ProjectName + "</option>";
-                        //assignedcustomers += '<tr style="width:50%;"><td id="selectedFFInstance" style="border-radius:15px;font-weight: bold">' + ffinstance.ProjectName + '</td><td id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</tr>';
-                        assignedcustomers += '<li id="selectedFFInstance" style="border-radius:15px;">' + ffinstance.ProjectName + '<div id="selectedFFInstanceID" style="display:none;">' + ffinstance.id + '</div></li>';
-                    });
-                    $('#assignedcustomersresultset').html(assignedcustomers);
-                   
+                getAssignedCustomers();
 
-                });
+                getAvailableCustomers();
+
+               $("#progressbar li").eq(1).text("Building Selection"); 
+
+                var building = $('#BuildingsID option:selected').text();
+
+                $("#progressbar li").eq(1).append("<br/> { " + building + " }");
+
+                console.log($('#BuildingsID option:selected').val()=='Select a Building')
+
+                /*Display Next Button */
+                if ($('#BuildingsID option:selected').val() == 'Select a Building' ) $('#Next-ToBucketSelection').hide();
+                else $('#Next-ToBucketSelection').show(); 
+
             });
 
 
-        });
+            var jsonAssignedCustomers = [];
+            var jsonAvailableCustomers = [];
+
+            $('#SaveButton').click(function () {
+
+                //$('#bigblue').show();
+
+                var assignedcustomers = $("#assignedcustomersresultset li");
+
+                jsonAssignedCustomers = [];
+
+                $.each(assignedcustomers, function (i, customer) {
+                    var row = $(customer).find("#selectedFFInstance").text()
+                    jsonAssignedCustomers.push(row);
+                    console.log(row);
+
+                });
+
+                var availablecustomers = $("#availablecustomersresultset li");
+
+                jsonAvailableCustomers = [];
+
+                $.each(availablecustomers, function (i, customer) {
+                    var row = $(customer).find("#selectedFFInstance").text()
+                    jsonAvailableCustomers.push(row);
+                    console.log(row);
+
+                });
+
+
+                var ffInstanceAJAXModel = {
+                    buildingname: $('#BuildingsID option:selected').text(),
+                    assignedcustomers: jsonAssignedCustomers,
+                    availablecustomers: jsonAvailableCustomers
+                }
+
+                
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/DimBusinessPartner/Update/',
+                    data: JSON.stringify(ffInstanceAJAXModel),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    sucess: function (result) {
+
+                        $('#bigblue').hide()
+                        alert(result);
+                    }
+                });
+
+
+            });
+        
 
     });
 
    
-
     $('#Next-ToBucketSelection').on('click', function () {
-        var selection = '';
 
-        selection = $('#ffinstancesresultset tr.highlight td').filter('#selectedFFInstance').html()
+        var building = $('#BuildingsID option:selected').text();
+        var customer = '';
 
-        //selection = selectedFFInstanceID;
-
-        var result = '';
-
-        $.getJSON('/FFSite/GetDropDownData', { typeofData: "BucketsList" }, function (data) {
-            var items = '<option>Select a Bucket Type</option>';
-            $.each(data, function (i, bucket) {
-                items += "<option value='" + bucket.id + "'>" + bucket.BucketName + "</option>";
-            });
-            $('#BucketsDropDown').html(items);
-          
-
-        });
-
-        $.getJSON('/FFSite/GetDropDownData', { typeofData: "StationTypesList", filter: selection }, function (data) {
+        $('#stationtypesresultset').html('');
+        $('#bucketedstationtypesresultset').html('');
+        
+        $.getJSON('/FFSite/GetDropDownData', { typeofData: "CustomersList", buildingfilter: building }, function (data) {
+                     var items = '<option>Select a Customer Project</option>';
+                     $.each(data, function (i, customer) {
+                         items += "<option value='" + customer.id + "'>" + customer.BPCode + "</option>";
+                     });
+                     $('#CustomersDropDown').html(items);
 
 
-            var items = '<option>Select a Station Type</option>';
+                 });
 
-            $.each(data, function (i, stationtype) {
-                items += "<option value='" + stationtype.id + "'>" + stationtype.StationTypeName + "</option>";
-                //result += '<tr  class="simple_with_animation" style="width:50%;"><td id="selectedStationTypeName" style="border-radius:15px;font-weight: bold">' + stationtype.StationTypeName + '</td><td id="selectedStationTypeID" style="display:none;">' + stationtype.id + '</tr>';
-                result += '<li id="selectedStationTypeName" style="border-radius:15px;">' + stationtype.StationTypeName + '<div id="selectedStationTypeID" style="display:none;">' + stationtype.id + '</div></li>';
-            });
-
-            if (result.length < 2) result = '<tr><td><h4><b>Please Select a Valid FlexFlow Instance</b></h4></td></tr>';
-
-            $('#stationtypesresultset').html(result);
-            //$('#bucketypesresultset').html(result);
-
-            /* Get all rows from your 'table' but not the first one 
-            * that includes headers. */
-            var row = '';
-            var selectedFFInstanceID = '';
-            var rows = $('#stationtypesresultset li');
-
-            /* Create 'click' event handler for rows */
-           // rows.on('click', function (e) {
-            /*Start Highlight logic
-
-            var state = $(this).hasClass('highlight');
-
-            /*Reset field values
-            $('#stationtypesresultset li.highlight').removeClass('highlight');
-            selectedFFInstanceID = '';
-
-            $("#progressbar li").eq(4).text("Bucket Selection");
-
-            if (!state) {
-
-                $(this).addClass('highlight');
-
-                /* Get current row 
-                row = $(this);
-
-                /* Get index of column for Module id
-                var column = $('#selectedStationTypeID').index();
-
-                /* Get index of column for Module id
-                var station = $('#selectedStationTypeName').index();
-
-                /* Get value of Module id of the current row
-                selectedFFInstanceID = row.find('#selectedStationTypeID').html();
-
-                $("#progressbar li").eq(4).append("<br/> { " + row.html() + " }");
-
-            };
-
-            //End Highlight logic 
-                
-           // });
-
-            /* This 'event' is used just to avoid that the table text 
-            * gets selected (just for styling). 
-            * For example, when pressing 'Shift' keyboard key and clicking 
-            * (without this 'event') the text of the 'table' will be selected.
-            * You can remove it if you want, I just tested this in 
-            * Chrome v30.0.1599.69 */
-            $(document).bind('selectstart dragstart', function (e) {
-                e.preventDefault(); return false;
-            });
+                 $.getJSON('/FFSite/GetDropDownData', { typeofData: "BucketsList" }, function (data) {
+                     var items = '<option>Select a Bucket Type</option>';
+                     $.each(data, function (i, bucket) {
+                         items += "<option value='" + bucket.id + "'>" + bucket.BucketName + "</option>";
+                     });
+                     $('#BucketsDropDown').html(items);
 
 
-        });
+                 });
 
+
+                 $('#CustomersDropDown').change(function () {
+
+                     customer = $('#CustomersDropDown option:selected').text();
+
+                     $.getJSON('/FFSite/GetDropDownData', { typeofData: "StationTypesList", filter: customer }, function (data) {
+
+                         var result = '';
+
+                         var items = '<option>Select a Station Type</option>';
+
+                         $.each(data, function (i, stationtype) {
+                             items += "<option value='" + stationtype.id + "'>" + stationtype.StationTypeName + "</option>";
+
+                             result += '<li><div id="selectedStationTypeName" style="border-radius:15px;">' + stationtype.StationTypeName + '</div><div id="selectedStationTypeID" style="display:none;">' + stationtype.id + '</div></li>';
+                         });
+
+                         $('#stationtypesresultset').html(result);
+
+                         /* Get all rows from your 'table' but not the first one 
+                         * that includes headers. */
+                         var row = '';
+                         var selectedFFInstanceID = '';
+                         var rows = $('#stationtypesresultset li');
+
+                         $(document).bind('selectstart dragstart', function (e) {
+                             e.preventDefault(); return false;
+                         });
+
+
+                     });
+
+                 });
+
+
+                 $('#BucketsDropDown').change(function () {
+
+                     var bucket = $('#BucketsDropDown option:selected').text();
+
+                     console.log("Bucket: "+ bucket);
+
+                     $.getJSON('/FFSite/GetDropDownData', { typeofData: "StationTypesList", filter: customer, bucketfilter: bucket }, function (data) {
+
+                         var result = '';
+
+                         var items = '<option>Select a Station Type</option>';
+
+                         $.each(data, function (i, stationtype) {
+                             items += "<option value='" + stationtype.id + "'>" + stationtype.StationTypeName + "</option>";
+
+                             result += '<li><div id="selectedStationTypeName" style="border-radius:15px;">' + stationtype.StationTypeName + '</div><div id="selectedStationTypeID" style="display:none;">' + stationtype.id + '</div></li>';
+                         });
+
+                         $('#bucketedstationtypesresultset').html(result);
+
+                         /* Get all rows from your 'table' but not the first one 
+                         * that includes headers. */
+                         var row = '';
+                         var selectedFFInstanceID = '';
+                         var rows = $('#bucketedstationtypesresultset li');
+
+                         $(document).bind('selectstart dragstart', function (e) {
+                             e.preventDefault(); return false;
+                         });
+
+                     });
+
+
+                 });
+
+                    $('#Finish').click(function () {
+
+                        var orderedstationtypes = $('#bucketedstationtypesresultset li');
+
+                        jsonOrderedStationTypes = [];
+
+                        $.each(orderedstationtypes, function (i, stationtype) {
+                            var row = $(stationtype).find("#selectedStationTypeName").text();
+                            jsonOrderedStationTypes.push(row);
+                            console.log(row);
+
+                        });
+
+                        var bucketstntypesmodel = {
+                            bucketname: $('#BucketsDropDown option:selected').text(),
+                            orderedstationtypes: jsonOrderedStationTypes
+
+                        }
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/DimStationTypes/Update/',
+                            data: JSON.stringify(bucketstntypesmodel),
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            sucess: function (result) {
+
+                                $('#bigblue').hide();
+                                alert(result);
+                            }
+                        });
+
+                    });
     });
 
 
-$("#stationtypesresultset, #bucketypesresultset").sortable({
+
+
+$("#stationtypesresultset, #bucketedstationtypesresultset").sortable({
     connectWith: ".simple_with_animation"
 }).disableSelection();
 

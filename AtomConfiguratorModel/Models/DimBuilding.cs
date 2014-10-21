@@ -17,13 +17,16 @@ namespace AtomConfiguratorModel.Models
         public DimBuilding()
         {
             this.DimModules = new HashSet<DimModule>();
+            this.DimBusinessPartners = new HashSet<DimBusinessPartner>();
         }
     
         public int id { get; set; }
         public string BuildingName { get; set; }
         public Nullable<int> KeyFacility { get; set; }
+        public Nullable<int> IsActive { get; set; }
     
         public virtual DimFacility DimFacility { get; set; }
         public virtual ICollection<DimModule> DimModules { get; set; }
+        public virtual ICollection<DimBusinessPartner> DimBusinessPartners { get; set; }
     }
 }

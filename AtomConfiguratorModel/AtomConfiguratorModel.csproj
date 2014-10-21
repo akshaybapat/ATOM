@@ -61,6 +61,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -150,10 +151,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BucketedStnTypesModel.cs" />
     <Compile Include="Models\CISTestResultSet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\DimFFInstanceAJAXModel.cs" />
     <Compile Include="Models\DimModel.cs" />
     <Compile Include="Models\DimBuildingsController.cs" />
     <Compile Include="Models\DimModulesController.cs" />
@@ -170,6 +172,11 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MetricsController.cs" />
+    <Compile Include="Models\Model11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\DataPollingExecutionTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -241,7 +248,6 @@
     <Compile Include="Models\FactffFirstPass.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FactLocation.cs" />
     <Compile Include="Models\ffPart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -284,7 +290,6 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\default.css" />
     <Content Include="Content\font-awesome-4.1.0\css\font-awesome.css" />
     <Content Include="Content\font-awesome-4.1.0\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome-4.1.0\fonts\fontawesome-webfont.svg" />
@@ -299,21 +304,10 @@
     <Content Include="Content\images\nav-icon.png" />
     <Content Include="Content\images\nav-icon1.png" />
     <Content Include="Content\images\pen.png" />
-    <Content Include="Content\images\slider1.jpg" />
-    <Content Include="Content\images\slider2.jpg" />
-    <Content Include="Content\images\slider3.jpg" />
-    <Content Include="Content\images\slider4.jpg" />
-    <Content Include="Content\images\slider5.jpg" />
-    <Content Include="Content\images\sliderbg.jpg" />
-    <Content Include="Content\images\sprite.png" />
-    <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\atomStyles.css" />
-    <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\responsive-tables.css" />
     <Content Include="Content\simple-sidebar.css" />
-    <Content Include="Content\slider.css" />
-    <Content Include="Content\style.css" />
     <Content Include="Content\stylish-portfolio.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -333,7 +327,7 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model11.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -409,33 +403,24 @@
     <Content Include="Content\font-awesome-4.1.0\scss\_spinning.scss" />
     <Content Include="Content\font-awesome-4.1.0\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.1.0\scss\_variables.scss" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DropDown.js" />
     <Content Include="Scripts\easing.js" />
     <Content Include="Scripts\FFSiteAdministration.js" />
-    <Content Include="Scripts\FFSiteForm - Copy.js" />
     <Content Include="Scripts\FFSiteForm.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\freelancer.js" />
+    <Content Include="Scripts\jquery-1.11.0.js" />
     <Content Include="Scripts\jquery-sortable-min.js" />
-    <Content Include="Scripts\jquery.cslider.js" />
     <Content Include="Scripts\jquery.easing.1.3.js" />
-    <Content Include="Scripts\jquery.magnific-popup.js" />
     <Content Include="Scripts\jquery.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\menu.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr.custom.28468.js" />
-    <Content Include="Scripts\move-top.js" />
     <Content Include="Scripts\multiStepForm.js" />
-    <Content Include="Scripts\owl.carousel.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -443,14 +428,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\IndexBackup.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\DimRegion\Create.cshtml" />
     <Content Include="Views\DimRegion\Delete.cshtml" />
     <Content Include="Views\DimRegion\Details.cshtml" />
@@ -498,9 +479,8 @@
     <Content Include="Views\DimBuildings\Details.cshtml" />
     <Content Include="Views\DimBuildings\Edit.cshtml" />
     <Content Include="Views\DimBuildings\Index.cshtml" />
-    <Content Include="Views\FFSite\Index.cshtml" />
+    <Content Include="Views\FFSite\Index-Backup.cshtml" />
     <Content Include="Views\DimFFInstance\Index - Copy.cshtml" />
-    <Content Include="Views\FFSite\Index - Copy.cshtml" />
     <Content Include="Views\Home\DimNavigation.cshtml" />
     <Content Include="Views\Home\AdminView.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -514,7 +494,7 @@
     <Content Include="Views\MetricConfigurations\Details.cshtml" />
     <Content Include="Views\MetricConfigurations\Edit.cshtml" />
     <Content Include="Views\MetricConfigurations\Index.cshtml" />
-    <Content Include="Views\FFSite\FFSiteMenu.cshtml" />
+    <Content Include="Views\FFSite\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
