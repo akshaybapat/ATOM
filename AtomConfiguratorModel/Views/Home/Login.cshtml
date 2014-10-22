@@ -1,0 +1,62 @@
+﻿@model AtomConfiguratorModel.Models.LoginModel
+
+@{
+  ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-crud" }))
+{
+  @Html.ValidationSummary(true)
+  <table style="width:100%">
+
+    <tr>
+      <td colspan="2">
+        <span style="font-size:small">Welcome to the ATOM Admin Workflow Process System</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="labelText" style="text-align:left">User Name</span></td>
+      <td>
+        <div>
+          @Html.TextBoxFor(model => model.UserName)<br />
+          <span class="validationText" style="color:red">
+            @Html.ValidationMessageFor(model => model.UserName)
+          </span>
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="labelText">Password</span>
+      </td>
+      <td>
+        <div>
+          @Html.PasswordFor(model => model.Password)<br />
+          <span class="validationText" style="color:red">
+            @Html.ValidationMessageFor(model => model.Password)
+          </span>
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div style="color:red">
+          @Html.ValidationMessage("Error")
+        </div>
+      </td>
+    </tr>
+    <tr>
+
+      <td colspan="2">
+        <div class="form-group">
+          <div class="col-md-offset-1 col-md-10">
+            <input type="submit" value="Login" class="btn btn-primary" />
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+}
+
