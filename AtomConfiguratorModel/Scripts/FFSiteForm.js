@@ -343,6 +343,15 @@ $('#SearchBox').on("keyup paste", function () {
                     }
                 });
 
+                $.ajax({
+                    type: 'POST',
+                    url: '/DimFFInstance/Update/',
+                    data: JSON.stringify(ffInstanceAJAXModel),
+                    contentType: 'application/json',
+                    dataType: 'json'
+                 
+                });
+
 
             });
         
