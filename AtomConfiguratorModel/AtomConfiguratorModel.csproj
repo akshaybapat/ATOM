@@ -161,6 +161,7 @@
     <Compile Include="Models\DimModulesController.cs" />
     <Compile Include="Models\FFSite.cs" />
     <Compile Include="Models\FFSiteController.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Metric.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -177,6 +178,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RolesEnum.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\DataPollingExecutionTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -495,6 +497,7 @@
     <Content Include="Views\MetricConfigurations\Edit.cshtml" />
     <Content Include="Views\MetricConfigurations\Index.cshtml" />
     <Content Include="Views\FFSite\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
