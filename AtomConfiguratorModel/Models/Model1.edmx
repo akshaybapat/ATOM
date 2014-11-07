@@ -266,7 +266,7 @@ warning 6002: The table/view 'FFCube2.dbo.FactffDefect' does not have a primary 
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="KeyMetricID" Type="int" />
           <Property Name="KeyMetricRoleTypeID" Type="int" />
           <Property Name="KeySiteID" Type="int" />
@@ -278,6 +278,8 @@ warning 6002: The table/view 'FFCube2.dbo.FactffDefect' does not have a primary 
           <Property Name="Alert" Type="varchar(max)" />
           <Property Name="Alert_MasterDataChange" Type="varchar(max)" />
           <Property Name="Alert_SystemErrors" Type="varchar(max)" />
+          <Property Name="MetricManager" Type="varchar(max)" />
+          <Property Name="MetricOwner" Type="varchar(max)" />
           <Property Name="MetricManagerValidationStatus" Type="varchar(max)" />
           <Property Name="MetricOwnerValidationStatus" Type="varchar(max)" />
           <Property Name="Status" Type="varchar(max)" />
@@ -1287,7 +1289,7 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ConcurrencyMode="None" />
           <Property Name="KeyMetricID" Type="Int32" />
           <Property Name="KeyMetricRoleTypeID" Type="Int32" />
           <Property Name="KeySiteID" Type="Int32" />
@@ -1307,6 +1309,8 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <NavigationProperty Name="DimFFInstance" Relationship="FFCube2Model.FK_MetricConfiguration_DimFFInstance" FromRole="MetricConfiguration" ToRole="DimFFInstance" />
           <NavigationProperty Name="Metric" Relationship="FFCube2Model.FK_MetricConfiguration_Metric" FromRole="MetricConfiguration" ToRole="Metric" />
           <NavigationProperty Name="MetricRoleType" Relationship="FFCube2Model.FK_MetricConfiguration_MetricRoleType" FromRole="MetricConfiguration" ToRole="MetricRoleType" />
+          <Property Name="MetricManager" Type="String" Nullable="true" />
+          <Property Name="MetricOwner" Type="String" Nullable="true" />
         </EntityType>
         <Association Name="FK_MetricConfiguration_DimBusinessPartner">
           <End Type="FFCube2Model.DimBusinessPartner" Role="DimBusinessPartner" Multiplicity="0..1">
@@ -1821,6 +1825,8 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <EntitySetMapping Name="MetricConfigurations">
             <EntityTypeMapping TypeName="FFCube2Model.MetricConfiguration">
               <MappingFragment StoreEntitySet="MetricConfiguration">
+                <ScalarProperty Name="MetricOwner" ColumnName="MetricOwner" />
+                <ScalarProperty Name="MetricManager" ColumnName="MetricManager" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="MetricOwnerValidationStatus" ColumnName="MetricOwnerValidationStatus" />
                 <ScalarProperty Name="MetricManagerValidationStatus" ColumnName="MetricManagerValidationStatus" />

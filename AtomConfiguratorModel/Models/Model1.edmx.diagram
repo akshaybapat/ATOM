@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="86a7909adfca46ecafcab9ddb898ca8e" Name="Diagram1" ZoomLevel="96">
+      <Diagram DiagramId="86a7909adfca46ecafcab9ddb898ca8e" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="FFCube2Model.DimBucket" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FFCube2Model.DimBuilding" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="FFCube2Model.DimBusinessPartner" Width="1.75" PointX="18.875" PointY="3.125" IsExpanded="true" />

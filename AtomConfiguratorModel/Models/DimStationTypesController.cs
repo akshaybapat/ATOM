@@ -59,6 +59,30 @@ namespace AtomConfiguratorModel.Models
             }
 
 
+            if (bucketstationtypes.nonbucketedstationtypes != null)
+            {
+
+
+                foreach (string stationtype in bucketstationtypes.nonbucketedstationtypes)
+                {
+                    System.Diagnostics.Debug.Write(stationtype + '\n');
+
+                    var stnTypeRow = db.DimStationTypes.Where(x => x.StationTypeName.Equals(stationtype)).First();
+
+                    if(stnTypeRow.KeyBucket.HasValue)
+                    stnTypeRow.KeyBucket = null;
+
+                    db.SaveChanges();
+
+                    System.Diagnostics.Debug.Write("Non Bucketed List Saved" + '\n');
+
+                  
+
+                }
+
+
+            }
+
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }

@@ -6,72 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PagedList;
 
 namespace AtomConfiguratorModel.Models
 {
     public class MetricConfigurationsController : Controller
     {
         private FFCube2Entities db = new FFCube2Entities();
-       
-
 
         // GET: MetricConfigurations
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index()
         {
-
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
             var metricConfigurations = db.MetricConfigurations.Include(m => m.DimBusinessPartner).Include(m => m.DimFacility).Include(m => m.DimFFInstance).Include(m => m.Metric).Include(m => m.MetricRoleType);
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-
-                metricConfigurations = metricConfigurations.Where(s => s.Metric.MetricName.ToUpper().Contains(searchString.ToUpper()) || s.MetricRoleType.RoleType.ToUpper().Contains(searchString.ToUpper()) || s.DimBusinessPartner.BusinessPartnerName.ToUpper().Contains(searchString.ToUpper()) || s.DimFacility.SiteName.ToUpper().Contains(searchString.ToUpper()) || s.DimFFInstance.DatabaseName.ToUpper().Contains(searchString.ToUpper()) || s.Goal.ToUpper().Contains(searchString.ToUpper()) || s.Status.ToUpper().Contains(searchString.ToUpper()) || s.Red.ToUpper().Contains(searchString.ToUpper()) || s.Green.ToUpper().Contains(searchString.ToUpper()));
-            }
-            switch (sortOrder)
-            {
-                case "Metric": metricConfigurations = metricConfigurations.OrderBy(s => s.Metric.MetricName); break;
-                case "Metric_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.Metric.MetricName); break;
-                case "MetricRoleType": metricConfigurations = metricConfigurations.OrderBy(s => s.MetricRoleType.RoleType); break;
-                case "MetricRoleType_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.MetricRoleType.RoleType); break;
-                case "DimBusinessPartner": metricConfigurations = metricConfigurations.OrderBy(s => s.DimBusinessPartner.BusinessPartnerName); break;
-                case "DimBusinessPartner_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.DimBusinessPartner.BusinessPartnerName); break;
-                case "DimFacility": metricConfigurations = metricConfigurations.OrderBy(s => s.DimFacility.SiteName); break;
-                case "DimFacility_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.DimFacility.SiteName); break;
-                case "DimFFInstance": metricConfigurations = metricConfigurations.OrderBy(s => s.DimFFInstance.DatabaseName); break;
-                case "DimFFInstance_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.DimFFInstance.DatabaseName); break;
-                case "Goal": metricConfigurations = metricConfigurations.OrderBy(s => s.Goal); break;
-                case "Goal_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.Goal); break;
-                case "Status": metricConfigurations = metricConfigurations.OrderBy(s => s.Status); break;
-                case "Status_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.Status); break;
-                case "Red": metricConfigurations = metricConfigurations.OrderBy(s => s.Red); break;
-                case "Red_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.Red); break;
-                case "Green": metricConfigurations = metricConfigurations.OrderBy(s => s.Green); break;
-                case "Green_Desc": metricConfigurations = metricConfigurations.OrderByDescending(s => s.Green); break;
-
-                default:
-                    metricConfigurations = metricConfigurations.OrderBy(s => s.Metric.MetricName);
-                    break;
-            }
-
-
-            //return View(dimffinstances.ToList());
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(metricConfigurations.ToPagedList(pageNumber, pageSize));
-            //return View(db.MetricConfigurations.ToList());
-
+            return View(metricConfigurations.ToList());
         }
 
         // GET: MetricConfigurations/Details/5
@@ -104,8 +50,8 @@ namespace AtomConfiguratorModel.Models
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,KeyMetricID,KeyMetricRoleTypeID,KeySiteID,KeyBusinessPartnerID,KeyFFInstanceID,Goal,Red,Green,Alert,Alert_MasterDataChange,Alert_SystemErrors,MetricManagerValidationStatus,MetricOwnerValidationStatus,Status")] MetricConfiguration metricConfiguration)
+        
+        public ActionResult Create([Bind(Include = "id,KeyMetricID,KeyMetricRoleTypeID,KeySiteID,KeyBusinessPartnerID,KeyFFInstanceID,Goal,Red,Green,Alert,Alert_MasterDataChange,Alert_SystemErrors,MetricManagerValidationStatus,MetricOwnerValidationStatus,Status,MetricManager,MetricOwner")] MetricConfiguration metricConfiguration)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +93,7 @@ namespace AtomConfiguratorModel.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,KeyMetricID,KeyMetricRoleTypeID,KeySiteID,KeyBusinessPartnerID,KeyFFInstanceID,Goal,Red,Green,Alert,Alert_MasterDataChange,Alert_SystemErrors,MetricManagerValidationStatus,MetricOwnerValidationStatus,Status")] MetricConfiguration metricConfiguration)
+        public ActionResult Edit([Bind(Include = "id,KeyMetricID,KeyMetricRoleTypeID,KeySiteID,KeyBusinessPartnerID,KeyFFInstanceID,Goal,Red,Green,Alert,Alert_MasterDataChange,Alert_SystemErrors,MetricManagerValidationStatus,MetricOwnerValidationStatus,Status,MetricManager,MetricOwner")] MetricConfiguration metricConfiguration)
         {
             if (ModelState.IsValid)
             {

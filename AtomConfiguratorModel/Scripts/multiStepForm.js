@@ -18,12 +18,13 @@ $(".next").click(function () {
         //activate next step on progressbar using the index of next_fs
         $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
+    /*
         switch (next_fs.index()) {
             case 0: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Site Selection"); break;
             case 1: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Building Selection"); break;
             case 2: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Station Bucket Selection"); break;
 
-        }
+        } */
 
         //show the next fieldset
         next_fs.show();
@@ -65,6 +66,7 @@ $(".previous").click(function(){
 
 	$("#progressbar li").eq($("fieldset").index(previous_fs)).addClass("active");
 
+    /*
 	switch (current_fs.index()) {
 	    case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Site Selection"); break;
 	    case 1: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Building Selection"); break;
@@ -77,7 +79,7 @@ $(".previous").click(function(){
 	    case 1: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Building Selection"); break;
 	    case 2: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Station Bucket Selection"); break;
 
-	}
+	} */
 
 
     /*
@@ -116,3 +118,38 @@ $(".previous").click(function(){
 $(".submit").click(function(){
 	return false;
 })
+
+
+$(".next .ffmenu").click(function () {
+
+    current_fs = $(this).parent();
+    previous_fs = $(this).parent().prev();
+
+    switch (current_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Site Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Building Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Station Bucket Selection"); break;
+
+    }
+
+    switch (previous_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Site Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Building Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Station Bucket Selection"); break;
+
+    }
+
+});
+
+$(".previous .ffmenu").click(function () {
+
+    current_fs = $(this).parent();
+    previous_fs = $(this).parent().prev();
+
+    switch (next_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Site Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Building Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Station Bucket Selection"); break;
+
+    }
+});

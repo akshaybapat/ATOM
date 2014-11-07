@@ -135,6 +135,8 @@ namespace AtomConfiguratorModel.Models
 
                     if (bucketfilter != null) querystationtypes = querystationtypes.Where(x => x.DimBucket.BucketName.Equals(bucketfilter)).OrderBy(x => x.Sequence);
 
+                    else querystationtypes = querystationtypes.Where(x => x.KeyBucket == null);
+
                     var liststationtypes = querystationtypes.ToList();
 
                     IEnumerable<DimStationType> stationtypes = liststationtypes.Select(x => new DimStationType { StationTypeName = x.StationTypeName, id = x.id });

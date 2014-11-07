@@ -1,0 +1,185 @@
+﻿@*@model IEnumerable<AtomConfiguratorModel.Models.MetricConfiguration>*@
+@model PagedList.IPagedList<AtomConfiguratorModel.Models.MetricConfiguration>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="form-crud list-medium">
+    <h2>Metric Configurations</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        <a style="color:#00ff21" href="@Url.Action("Create")">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="sr-only">Create</span>
+        </a>
+    </p>
+
+
+    @using (Html.BeginForm(Html.BeginForm("Index", "MetricConfigurations", FormMethod.Get)))
+    {
+
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter Keyword", style = " border: 3px solid #ccc; border-radius: 25px; padding-left: 1em; padding-right: 1em; text-align:center; font-color:#ccc;" }) <br /><br />
+        <input id="search" class="btn btn-success" type="submit" value="Filter" style="float:none;" />
+        <input id="reset" type="button" class="btn btn-primary " value="Reset" style="float:none;" onclick="location.href='@Url.Action("Index")' " />
+
+
+    }
+
+
+
+
+    <table class="responsive table-condensed table-bordered">
+        <tr>
+            <th>
+                <br />
+                @Html.DisplayNameFor(model => model.First().Metric.MetricName)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Metric_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Metric", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MetricRoleType.RoleType)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "MetricRoleType_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "MetricRoleType", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+            </th>
+            <th>
+                <br />
+                @Html.DisplayNameFor(model => model.First().DimFacility.SiteName)
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimFacility_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimFacility", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DimBusinessPartner.BusinessPartnerName)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimBusinessPartner_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimBusinessPartner", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DimFFInstance.DatabaseName)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimFFInstance_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "DimFFInstance", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+            </th>
+
+            <th>
+                <br />
+                @Html.DisplayNameFor(model => model.First().Status)
+                <br />
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Status_Desc", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+                    <span class="sr-only">Descending</span>
+                </a>
+
+                <a style="float: none;" href="@Url.Action("Index", new { sortOrder = "Status", currentFilter = ViewBag.CurrentFilter })">
+                    <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                    <span class="sr-only">Ascending</span>
+                </a>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Metric.MetricName)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MetricRoleType.RoleType)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DimFacility.SiteName)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DimBusinessPartner.BusinessPartnerName)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DimFFInstance.DatabaseName)
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+
+                </td>
+                <td style="font-size:12px;min-width:200px">
+
+                    <a href="@Url.Action("Edit", new { id = item.id })">
+                        <i style="color:#5500ff" class="glyphicon glyphicon-pencil"></i>
+                        Edit
+                        <span class="sr-only">Edit</span>
+                    </a>
+
+                    |
+                    <a href="@Url.Action("Details", new { id = item.id })">
+                        <i style="color:#ff9000" class="glyphicon glyphicon-fullscreen"></i>
+                        Details
+                        <span class="sr-only">Details</span>
+
+
+                    </a>|
+                    <a href="@Url.Action("Delete", new { id = item.id })">
+                        <i style="color:#ff0000" class="glyphicon glyphicon-trash"></i>
+                        Delete
+                        <span class="sr-only">Delete</span>
+                    </a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+
+</div>

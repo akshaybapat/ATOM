@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DimMetricConfigurations\" />
     <Folder Include="Views\DimStationTypes\" />
   </ItemGroup>
   <ItemGroup>
@@ -508,13 +509,19 @@
     <Content Include="Views\Metrics\Details.cshtml" />
     <Content Include="Views\Metrics\Edit.cshtml" />
     <Content Include="Views\Metrics\Index.cshtml" />
+    <Content Include="Views\MetricConfigurations1\Create.cshtml" />
+    <Content Include="Views\MetricConfigurations1\Delete.cshtml" />
+    <Content Include="Views\MetricConfigurations1\Details.cshtml" />
+    <Content Include="Views\MetricConfigurations1\Edit.cshtml" />
+    <Content Include="Views\MetricConfigurations1\Index.cshtml" />
+    <Content Include="Views\FFSite\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\MetricConfigurations1\Create - Copy.cshtml" />
     <Content Include="Views\MetricConfigurations\Create.cshtml" />
     <Content Include="Views\MetricConfigurations\Delete.cshtml" />
     <Content Include="Views\MetricConfigurations\Details.cshtml" />
     <Content Include="Views\MetricConfigurations\Edit.cshtml" />
     <Content Include="Views\MetricConfigurations\Index.cshtml" />
-    <Content Include="Views\FFSite\Index.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
