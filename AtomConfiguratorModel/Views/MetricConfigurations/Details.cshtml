@@ -6,7 +6,7 @@
 
 <h2>Details</h2>
 
-<div>
+<div class="form-crud">
     <h4>MetricConfiguration</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -59,6 +59,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.MetricManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetricManager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetricOwner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetricOwner)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.MetricManagerValidationStatus)
         </dt>
 
@@ -80,22 +96,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MetricManager)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MetricManager)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MetricOwner)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MetricOwner)
         </dd>
 
         <dt>
@@ -139,8 +139,14 @@
         </dd>
 
     </dl>
+
+
+    <div class="form-actions no-color">
+        <input type="button" class="btn btn-info " value="Edit" onclick="location.href='@Url.Action("Edit", new { id = Model.id })'" />
+    </div>
+    <br />
+
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

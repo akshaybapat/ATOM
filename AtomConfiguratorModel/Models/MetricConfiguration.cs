@@ -26,11 +26,11 @@ namespace AtomConfiguratorModel.Models
         public string Alert { get; set; }
         public string Alert_MasterDataChange { get; set; }
         public string Alert_SystemErrors { get; set; }
+        public string MetricManager { get; set; }
+        public string MetricOwner { get; set; }
         public string MetricManagerValidationStatus { get; set; }
         public string MetricOwnerValidationStatus { get; set; }
         public string Status { get; set; }
-        public string MetricManager { get; set; }
-        public string MetricOwner { get; set; }
     
         public virtual DimBusinessPartner DimBusinessPartner { get; set; }
         public virtual DimFacility DimFacility { get; set; }

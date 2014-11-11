@@ -65,7 +65,7 @@ warning 6002: The table/view 'FFCube2.dbo.DataPollingExecutionTime' does not hav
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CountryName" Type="varchar" MaxLength="255" />
           <Property Name="KeyRegion" Type="int" />
           <Property Name="IsActive" Type="int" />
@@ -266,7 +266,7 @@ warning 6002: The table/view 'FFCube2.dbo.FactffDefect' does not have a primary 
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="KeyMetricID" Type="int" />
           <Property Name="KeyMetricRoleTypeID" Type="int" />
           <Property Name="KeySiteID" Type="int" />
@@ -414,6 +414,48 @@ warning 6002: The table/view 'FFCube2.dbo.SpeedMeasure' does not have a primary 
             </Principal>
             <Dependent Role="DimBusinessUnit">
               <PropertyRef Name="KeyCostCenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_DimBusinessPartner">
+          <End Role="DimBusinessPartner" Type="Self.DimBusinessPartner" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MetricConfiguration" Type="Self.MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBusinessPartner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyBusinessPartnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_DimFacility">
+          <End Role="DimFacility" Type="Self.DimFacility" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MetricConfiguration" Type="Self.MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFacility">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeySiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetricConfiguration_DimFFInstance">
+          <End Role="DimFFInstance" Type="Self.DimFFInstance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MetricConfiguration" Type="Self.MetricConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFFInstance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MetricConfiguration">
+              <PropertyRef Name="KeyFFInstanceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -587,6 +629,18 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
             <End Role="DimCostCenter" EntitySet="DimCostCenter" />
             <End Role="DimBusinessUnit" EntitySet="DimBusinessUnit" />
           </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_DimBusinessPartner" Association="Self.FK_MetricConfiguration_DimBusinessPartner">
+            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartner" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_DimFacility" Association="Self.FK_MetricConfiguration_DimFacility">
+            <End Role="DimFacility" EntitySet="DimFacility" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetricConfiguration_DimFFInstance" Association="Self.FK_MetricConfiguration_DimFFInstance">
+            <End Role="DimFFInstance" EntitySet="DimFFInstance" />
+            <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
+          </AssociationSet>
           <AssociationSet Name="FK_MetricConfiguration_Metric" Association="Self.FK_MetricConfiguration_Metric">
             <End Role="Metric" EntitySet="Metric" />
             <End Role="MetricConfiguration" EntitySet="MetricConfiguration" />
@@ -638,12 +692,12 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="BusinessPartnerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="BPCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DimProductLines" Relationship="Self.FK_BusinessPartner" FromRole="DimBusinessPartner" ToRole="DimProductLine" />
-          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimBusinessPartner" FromRole="DimBusinessPartner" ToRole="MetricConfiguration" />
           <Property Name="KeySite" Type="Int32" />
           <Property Name="IsActive" Type="Int32" />
           <Property Name="KeyBuilding" Type="Int32" Nullable="true" />
           <NavigationProperty Name="DimBuilding" Relationship="FFCube2Model.FK_BusinessPartner_DimBuilding" FromRole="DimBusinessPartner" ToRole="DimBuilding" />
           <NavigationProperty Name="DimFacility" Relationship="FFCube2Model.FK_BusinessPartner_DimFacility" FromRole="DimBusinessPartner" ToRole="DimFacility" />
+          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimBusinessPartner" FromRole="DimBusinessPartner" ToRole="MetricConfiguration" />
         </EntityType>
         <EntityType Name="DimBusinessUnit">
           <Key>
@@ -697,9 +751,9 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="KeyCountry" Type="Int32" />
           <NavigationProperty Name="DimBuildings" Relationship="Self.FK_DimBuilding_DimFacility" FromRole="DimFacility" ToRole="DimBuilding" />
           <NavigationProperty Name="DimCountry" Relationship="Self.FK_Country" FromRole="DimFacility" ToRole="DimCountry" />
-          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimFacility" FromRole="DimFacility" ToRole="MetricConfiguration" />
           <NavigationProperty Name="DimBusinessPartners" Relationship="FFCube2Model.FK_BusinessPartner_DimFacility" FromRole="DimFacility" ToRole="DimBusinessPartner" />
           <Property Name="IsActive" Type="Int32" />
+          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimFacility" FromRole="DimFacility" ToRole="MetricConfiguration" />
         </EntityType>
         <EntityType Name="DimFFInstance">
           <Key>
@@ -726,8 +780,8 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="BaanCoNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DimProductNumbers" Relationship="Self.FK_FFInstance" FromRole="DimFFInstance" ToRole="DimProductNumber" />
           <NavigationProperty Name="DimModule" Relationship="Self.FK_Module" FromRole="DimFFInstance" ToRole="DimModule" />
-          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimFFInstance" FromRole="DimFFInstance" ToRole="MetricConfiguration" />
           <NavigationProperty Name="DimStationTypes" Relationship="FFCube2Model.FK_DimStationType_DimFFInstance" FromRole="DimFFInstance" ToRole="DimStationType" />
+          <NavigationProperty Name="MetricConfigurations" Relationship="FFCube2Model.FK_MetricConfiguration_DimFFInstance" FromRole="DimFFInstance" ToRole="MetricConfiguration" />
         </EntityType>
         <EntityType Name="DimFinancialCompany">
           <Key>
@@ -1219,6 +1273,18 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <EntitySet Name="Metrics" EntityType="FFCube2Model.Metric" />
           <EntitySet Name="MetricRoleTypes" EntityType="FFCube2Model.MetricRoleType" />
           <EntitySet Name="Users" EntityType="FFCube2Model.User" />
+          <AssociationSet Name="FK_DimStationType_DimFFInstance" Association="FFCube2Model.FK_DimStationType_DimFFInstance">
+            <End Role="DimFFInstance" EntitySet="DimFFInstances" />
+            <End Role="DimStationType" EntitySet="DimStationTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessPartner_DimBuilding" Association="FFCube2Model.FK_BusinessPartner_DimBuilding">
+            <End Role="DimBuilding" EntitySet="DimBuildings" />
+            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessPartner_DimFacility" Association="FFCube2Model.FK_BusinessPartner_DimFacility">
+            <End Role="DimFacility" EntitySet="DimFacilities" />
+            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartners" />
+          </AssociationSet>
           <EntitySet Name="MetricConfigurations" EntityType="FFCube2Model.MetricConfiguration" />
           <AssociationSet Name="FK_MetricConfiguration_DimBusinessPartner" Association="FFCube2Model.FK_MetricConfiguration_DimBusinessPartner">
             <End Role="DimBusinessPartner" EntitySet="DimBusinessPartners" />
@@ -1239,18 +1305,6 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <AssociationSet Name="FK_MetricConfiguration_MetricRoleType" Association="FFCube2Model.FK_MetricConfiguration_MetricRoleType">
             <End Role="MetricRoleType" EntitySet="MetricRoleTypes" />
             <End Role="MetricConfiguration" EntitySet="MetricConfigurations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DimStationType_DimFFInstance" Association="FFCube2Model.FK_DimStationType_DimFFInstance">
-            <End Role="DimFFInstance" EntitySet="DimFFInstances" />
-            <End Role="DimStationType" EntitySet="DimStationTypes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BusinessPartner_DimBuilding" Association="FFCube2Model.FK_BusinessPartner_DimBuilding">
-            <End Role="DimBuilding" EntitySet="DimBuildings" />
-            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartners" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BusinessPartner_DimFacility" Association="FFCube2Model.FK_BusinessPartner_DimFacility">
-            <End Role="DimFacility" EntitySet="DimFacilities" />
-            <End Role="DimBusinessPartner" EntitySet="DimBusinessPartners" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Metric">
@@ -1285,11 +1339,49 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <Association Name="FK_DimStationType_DimFFInstance">
+          <End Type="FFCube2Model.DimFFInstance" Role="DimFFInstance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FFCube2Model.DimStationType" Role="DimStationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFFInstance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimStationType">
+              <PropertyRef Name="FFInstanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessPartner_DimBuilding">
+          <End Type="FFCube2Model.DimBuilding" Role="DimBuilding" Multiplicity="0..1" />
+          <End Type="FFCube2Model.DimBusinessPartner" Role="DimBusinessPartner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimBuilding">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimBusinessPartner">
+              <PropertyRef Name="KeyBuilding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessPartner_DimFacility">
+          <End Type="FFCube2Model.DimFacility" Role="DimFacility" Multiplicity="0..1" />
+          <End Type="FFCube2Model.DimBusinessPartner" Role="DimBusinessPartner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimFacility">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DimBusinessPartner">
+              <PropertyRef Name="KeySite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="MetricConfiguration">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ConcurrencyMode="None" />
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="KeyMetricID" Type="Int32" />
           <Property Name="KeyMetricRoleTypeID" Type="Int32" />
           <Property Name="KeySiteID" Type="Int32" />
@@ -1301,6 +1393,8 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <Property Name="Alert" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Alert_MasterDataChange" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Alert_SystemErrors" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetricManager" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetricOwner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MetricManagerValidationStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MetricOwnerValidationStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1309,8 +1403,6 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <NavigationProperty Name="DimFFInstance" Relationship="FFCube2Model.FK_MetricConfiguration_DimFFInstance" FromRole="MetricConfiguration" ToRole="DimFFInstance" />
           <NavigationProperty Name="Metric" Relationship="FFCube2Model.FK_MetricConfiguration_Metric" FromRole="MetricConfiguration" ToRole="Metric" />
           <NavigationProperty Name="MetricRoleType" Relationship="FFCube2Model.FK_MetricConfiguration_MetricRoleType" FromRole="MetricConfiguration" ToRole="MetricRoleType" />
-          <Property Name="MetricManager" Type="String" Nullable="true" />
-          <Property Name="MetricOwner" Type="String" Nullable="true" />
         </EntityType>
         <Association Name="FK_MetricConfiguration_DimBusinessPartner">
           <End Type="FFCube2Model.DimBusinessPartner" Role="DimBusinessPartner" Multiplicity="0..1">
@@ -1379,44 +1471,6 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
             </Principal>
             <Dependent Role="MetricConfiguration">
               <PropertyRef Name="KeyMetricRoleTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DimStationType_DimFFInstance">
-          <End Type="FFCube2Model.DimFFInstance" Role="DimFFInstance" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="FFCube2Model.DimStationType" Role="DimStationType" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DimFFInstance">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DimStationType">
-              <PropertyRef Name="FFInstanceID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BusinessPartner_DimBuilding">
-          <End Type="FFCube2Model.DimBuilding" Role="DimBuilding" Multiplicity="0..1" />
-          <End Type="FFCube2Model.DimBusinessPartner" Role="DimBusinessPartner" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DimBuilding">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DimBusinessPartner">
-              <PropertyRef Name="KeyBuilding" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BusinessPartner_DimFacility">
-          <End Type="FFCube2Model.DimFacility" Role="DimFacility" Multiplicity="0..1" />
-          <End Type="FFCube2Model.DimBusinessPartner" Role="DimBusinessPartner" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DimFacility">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DimBusinessPartner">
-              <PropertyRef Name="KeySite" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1825,11 +1879,11 @@ FROM [dbo].[SpeedMeasure] AS [SpeedMeasure]</DefiningQuery>
           <EntitySetMapping Name="MetricConfigurations">
             <EntityTypeMapping TypeName="FFCube2Model.MetricConfiguration">
               <MappingFragment StoreEntitySet="MetricConfiguration">
-                <ScalarProperty Name="MetricOwner" ColumnName="MetricOwner" />
-                <ScalarProperty Name="MetricManager" ColumnName="MetricManager" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="MetricOwnerValidationStatus" ColumnName="MetricOwnerValidationStatus" />
                 <ScalarProperty Name="MetricManagerValidationStatus" ColumnName="MetricManagerValidationStatus" />
+                <ScalarProperty Name="MetricOwner" ColumnName="MetricOwner" />
+                <ScalarProperty Name="MetricManager" ColumnName="MetricManager" />
                 <ScalarProperty Name="Alert_SystemErrors" ColumnName="Alert_SystemErrors" />
                 <ScalarProperty Name="Alert_MasterDataChange" ColumnName="Alert_MasterDataChange" />
                 <ScalarProperty Name="Alert" ColumnName="Alert" />

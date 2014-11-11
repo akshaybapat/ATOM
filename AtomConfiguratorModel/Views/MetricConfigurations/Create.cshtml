@@ -36,7 +36,7 @@
             <div class="form-group">
 
                 <div>
-                    @Html.DropDownList("KeySiteID", "ALL")
+                    @Html.DropDownList("KeySiteID", String.Empty)
                     @Html.ValidationMessageFor(model => model.KeySiteID)
                 </div>
             </div>
@@ -57,7 +57,7 @@
             <div class="form-group">
 
                 <div>
-                    @Html.DropDownList("KeyBusinessPartnerID", "ALL")
+                    @Html.DropDownList("KeyBusinessPartnerID", String.Empty)
                     @Html.ValidationMessageFor(model => model.KeyBusinessPartnerID)
                 </div>
             </div>

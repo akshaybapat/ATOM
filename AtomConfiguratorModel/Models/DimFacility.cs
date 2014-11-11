@@ -17,8 +17,8 @@ namespace AtomConfiguratorModel.Models
         public DimFacility()
         {
             this.DimBuildings = new HashSet<DimBuilding>();
-            this.MetricConfigurations = new HashSet<MetricConfiguration>();
             this.DimBusinessPartners = new HashSet<DimBusinessPartner>();
+            this.MetricConfigurations = new HashSet<MetricConfiguration>();
         }
     
         public int id { get; set; }
@@ -28,7 +28,7 @@ namespace AtomConfiguratorModel.Models
     
         public virtual ICollection<DimBuilding> DimBuildings { get; set; }
         public virtual DimCountry DimCountry { get; set; }
-        public virtual ICollection<MetricConfiguration> MetricConfigurations { get; set; }
         public virtual ICollection<DimBusinessPartner> DimBusinessPartners { get; set; }
+        public virtual ICollection<MetricConfiguration> MetricConfigurations { get; set; }
     }
 }
