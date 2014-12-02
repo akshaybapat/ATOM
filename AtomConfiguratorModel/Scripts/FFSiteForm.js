@@ -505,7 +505,77 @@ $('#SearchBox').on("keyup paste", function () {
     });
 
 
+    $('#RoleDropDown').change(function () {
 
+        var roledata = $('#RoleDropDown option:selected').text();
+        console.log(roledata);
+
+        $("#progressbar li").eq(0).html("Role Selection <br/> { " + roledata + " }");
+
+        var result = '';
+
+        $.getJSON('/FFSite/GetDropDownData', { typeofData: "FacilityList" }, function (data) {
+            var items = '<option selected="true" style="display:none; text-align:center;">Select Site</option>';
+            $.each(data, function (i, facility) {
+                items += "<option value='" + facility.id + "'>" + facility.SiteName + "</option>";
+                result += '<li><div id="selectedFacilityName" style="border-radius:15px;">' + facility.SiteName + '</div><div id="selectedFacilityID" style="display:none;">' + facility.id + '</div></li>';
+            });
+
+           
+            $('#rolesiteDropdown').html(items);
+
+        });
+
+        if (roledata === 'Site Administrator')
+        {
+            $('#rolesiteDropdown').bind('change', function () {
+
+                $("#progressbar li").eq(1).html("Master Data Selection <br/> { Site : " + $('#rolesiteDropdown option:selected').text() + " }");
+
+            });
+
+            $('#metricselect').hide();
+
+        }
+        else
+        {
+            var result = '';
+
+            $('#metricselect').hide();
+
+        $.getJSON('/FFSite/GetDropDownData', { typeofData: "MetricList" }, function (data) {
+            var items = '<option selected="true" style="display:none; text-align:center;">Select Metric</option>';
+            $.each(data, function (i, metric) {
+                console.log(metric);
+
+                items += "<option value='" + metric.id + "'>" + metric.MetricName + "</option>";
+
+                result += '<li><div id="selectedMetricName" style="border-radius:15px;">' + metric.MetricName + '</div><div id="selectedMetricID" style="display:none;">' + metric.id + '</div></li>';
+            });
+
+            var metr = '<option selected="true" style="display:none; text-align:center;">Select Metric</option><option>FPY</option><option>RTY</option>'
+
+            $('#rolemetricDropdown').html(metr);
+
+            $('#rolesiteDropdown').bind('change', function () {
+
+                $("#progressbar li").eq(1).html("Master Data Selection <br/> { Site : " + $('#rolesiteDropdown option:selected').text() + " }");
+
+                $('#metricselect').show();
+
+                $('#rolemetricDropdown').bind('change', function () {
+
+                    $("#progressbar li").eq(1).html("Master Data Selection <br/> { Site : " + $('#rolesiteDropdown option:selected').text() + " } <br/> { Metric : " + $('#rolemetricDropdown option:selected').text() + " }");
+
+                });
+
+            });
+
+        });
+
+        }
+
+    });
 
 $("#stationtypesresultset, #bucketedstationtypesresultset").sortable({
     connectWith: ".simple_with_animation"
@@ -513,5 +583,9 @@ $("#stationtypesresultset, #bucketedstationtypesresultset").sortable({
 
 
 $("#availablecustomersresultset, #assignedcustomersresultset").sortable({
+    connectWith: ".simple_with_animation"
+});
+
+$("#availablemasterdataelements, #assignedmasterdataelements").sortable({
     connectWith: ".simple_with_animation"
 });

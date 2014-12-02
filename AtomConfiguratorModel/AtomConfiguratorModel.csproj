@@ -190,6 +190,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoleRequestModel.cs" />
     <Compile Include="Models\RolesEnum.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\DataPollingExecutionTime.cs">
@@ -522,6 +523,7 @@
     <Content Include="Views\MetricConfigurations\Details.cshtml" />
     <Content Include="Views\MetricConfigurations\Edit.cshtml" />
     <Content Include="Views\MetricConfigurations\Index.cshtml" />
+    <Content Include="Views\Home\RoleWizard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -54,9 +54,15 @@ namespace AtomConfiguratorModel.Models
 
                 case "FacilityList":
 
-                     var queryfacilities = db.DimFacilities.Where(x => x.DimCountry.CountryName.Equals(filter)).ToList();
+                    var queryfacilities = db.DimFacilities.AsQueryable();
 
-                     IEnumerable<DimFacility> facilities = queryfacilities.Select(x => new DimFacility { SiteName = x.SiteName, id = x.id });
+                    if(filter !=null )
+
+                     queryfacilities = db.DimFacilities.Where(x => x.DimCountry.CountryName.Equals(filter));
+
+                    var listfacilities = queryfacilities.ToList();
+
+                    IEnumerable<DimFacility> facilities = listfacilities.Select(x => new DimFacility { SiteName = x.SiteName, id = x.id });
 
                      return Json(facilities, JsonRequestBehavior.AllowGet);
 
@@ -168,6 +174,14 @@ namespace AtomConfiguratorModel.Models
                     IEnumerable<DimBusinessPartner> customers = querycustomers.Select(x => new DimBusinessPartner { BPCode = x.BPCode, id = x.id });
 
                     return Json(customers, JsonRequestBehavior.AllowGet);
+
+                case "MetricList":
+
+                    var querymetrics = db.Metrics.AsQueryable();
+
+                    IEnumerable<Metric> metrics = querymetrics.Select(x => new Metric { MetricName = x.MetricName , id = x.id });
+
+                    return Json(new SelectList(querymetrics.ToList()), JsonRequestBehavior.AllowGet);
 
                                        
                 default:

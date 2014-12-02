@@ -26,6 +26,11 @@ namespace AtomConfiguratorModel.Controllers
             return View();
         }
 
+        public ActionResult RoleWizard()
+        {
+            return View();
+        }
+
         public ActionResult DimNavigation()
         {
             return View();

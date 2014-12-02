@@ -66,6 +66,9 @@ $(".previous").click(function(){
 
 	$("#progressbar li").eq($("fieldset").index(previous_fs)).addClass("active");
 
+	console.log(current_fs.index());
+	console.log(previous_fs.index())
+
     /*
 	switch (current_fs.index()) {
 	    case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Site Selection"); break;
@@ -119,13 +122,18 @@ $(".submit").click(function(){
 	return false;
 })
 
-
+/*
 $(".next .ffmenu").click(function () {
 
     current_fs = $(this).parent();
     previous_fs = $(this).parent().prev();
 
-    switch (current_fs.index()) {
+    console.log(current_fs);
+
+    console.log(previous_fs);
+
+
+    switch (previous_fs) {
         case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Site Selection"); break;
         case 1: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Building Selection"); break;
         case 2: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Station Bucket Selection"); break;
@@ -140,16 +148,72 @@ $(".next .ffmenu").click(function () {
     }
 
 });
+*/
 
-$(".previous .ffmenu").click(function () {
+$(".previous-ffmenu").click(function () {
 
     current_fs = $(this).parent();
     previous_fs = $(this).parent().prev();
 
-    switch (next_fs.index()) {
-        case 0: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Site Selection"); break;
-        case 1: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Building Selection"); break;
-        case 2: $("#progressbar li").eq($("fieldset").index(next_fs)).text("Station Bucket Selection"); break;
+    switch (previous_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Site Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Building Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Station Bucket Selection"); break;
+
+    }
+
+    switch (current_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Site Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Building Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Station Bucket Selection"); break;
+
+    }
+
+});
+
+/*
+$(".next .rolemenu").click(function () {
+
+    current_fs = $(this).parent();
+    previous_fs = $(this).parent().prev();
+
+    console.log(current_fs.index());
+
+    switch (current_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Role Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Master Data Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Confirmation"); break;
+
+    }
+
+    switch (previous_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Role Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Master Data Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Confirmation"); break;
+
+    }
+
+});
+
+*/
+
+$(".previous-rolemenu").click(function () {
+
+    current_fs = $(this).parent();
+    previous_fs = $(this).parent().prev();
+
+    /*
+    switch (previous_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Role Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Master Data Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(previous_fs)).text("Confirmation"); break;
+
+    }*/
+
+    switch (current_fs.index()) {
+        case 0: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Role Selection"); break;
+        case 1: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Master Data Selection"); break;
+        case 2: $("#progressbar li").eq($("fieldset").index(current_fs)).text("Confirmation"); break;
 
     }
 });

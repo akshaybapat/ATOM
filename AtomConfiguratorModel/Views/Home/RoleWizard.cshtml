@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "RoleWizard";
+}
+
+<h2>RoleWizard</h2>
+
+<form id="msform" method="post">
+    <!-- progressbar -->
+    <ul id="progressbar" style="min-width:650px;">
+        <li class="active" style="color:black; width: 33.33%;">Role Selection</li>
+        <li style="color:black ;width: 33.33%;">Master Data Selection</li>
+        <li style="color:black ; width: 33.33%;">Confirmation</li>
+
+    </ul>
+    <!-- fieldsets -->
+    <div>
+        <fieldset style="margin:0 10%; min-width:600px;">
+
+            <h3>Select the Role you wish to request</h3>
+
+
+            <div class="form-group">
+
+                <div>
+                    <select id="RoleDropDown">
+                        <option selected="true" style="display:none; text-align:center;">Select Role</option>
+                        <option id="SITE_ADMIN" value="SITE_ADMINISTRATOR">Site Administrator</option>
+                        <option id="METRIC_OWN" value="METRIC_OWNER">Metric Owner</option>
+                        <option id="METRIC_MGR" value="METRIC_MANAGER">Metric Manager</option>
+                        <option id="METRIC_CONS" value="METRIC_CONSUMER">Metric Consumer</option>
+                    </select>
+     
+                </div>
+            </div>
+
+            <input id="ToMasterDataSelection" type="button" name="next" class="next rolemenu action-button" value="Next" />
+
+        </fieldset>
+
+        <fieldset style="margin:0 10%; min-width:600px;">
+            <h3> Select the Master Data you wish to associate with the role </h3>
+   
+            <div id="siteselect" class="form-group">
+
+                <h3> <b> Site </b> </h3>
+                <select id="rolesiteDropdown"></select>
+
+            </div>
+
+            <div id="metricselect" class="form-group">
+                <h3><b>Metric </b></h3>
+                <select id="rolemetricDropdown"></select>
+
+            </div>
+
+
+                <div id="bigblue" class="modal"><!-- Place at bottom of page --></div>
+
+            <input id="PreviousButton" type="button" name="previous" class="previous previous-rolemenu action-button" value="Previous" style="background-color: #217dbb">
+
+            <input id="Next-ToConfirmation" type="button" name="next" class="next rolemenu action-button" value="Submit" />
+
+</fieldset>
+
+
+        <fieldset style="margin:0 10%; min-width:600px;">
+
+            <h3>Confirmation</h3>
+
+            <p>Your request is being processed. You shall recieve an email conformation when your request has been completely approved by all relevant stakeholders. 
+            Kindly try to login on receipt of the acknowledgement.</p>
+
+            <div id="wait" class="modal"><!-- Place at bottom of page --></div>
+
+            <input id="rolewizard" type="button" class="action-button" value="Start Over" style="background-color: #217dbb" onclick="location.href='@Url.Action("RoleWizard")'" />
+
+            <input id="login" type="button" class="action-button" value="Login" onclick="location.href='@Url.Action("Login")'" />
+
+        </fieldset>
+
+    </div>
+</form>
+
+
+
+
