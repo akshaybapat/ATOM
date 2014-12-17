@@ -17,7 +17,7 @@
     <div>
         <fieldset style="margin:0 10%; min-width:600px;">
 
-            <h3>Select the Role you wish to request</h3>
+            <h3>Select your role in the organization</h3>
 
 
             <div class="form-group">
@@ -25,10 +25,13 @@
                 <div>
                     <select id="RoleDropDown">
                         <option selected="true" style="display:none; text-align:center;">Select Role</option>
-                        <option id="SITE_ADMIN" value="SITE_ADMINISTRATOR">Site Administrator</option>
-                        <option id="METRIC_OWN" value="METRIC_OWNER">Metric Owner</option>
-                        <option id="METRIC_MGR" value="METRIC_MANAGER">Metric Manager</option>
-                        <option id="METRIC_CONS" value="METRIC_CONSUMER">Metric Consumer</option>
+                        <option id="SITE_OPERATOR" value="SITE_OPERATOR">Site Operator</option>
+                        <option id="SITE_CUSTOMER_PROGRAM_OPERATOR" value="SITE_CUSTOMER_PROGRAM_OPERATOR"> Site Customer Program Owner</option>
+                        <option id="SITE_MANAGER" value="SITE_MANAGER">Site Manager</option>
+                        <option id="REGIONAL_MANAGER" value="REGIONAL_MANAGER">Regional Manager</option>
+                        <option id="CORPORATE_EXECUTIVE" value="CORPORATE_EXECUTIVE">Corporate Executive</option>
+                        <option id="GAM" value="GAM">Global Account Manager</option>
+                        <option id="CUSTOMER" value="CUSTOMER">Customer</option>
                     </select>
      
                 </div>
@@ -40,6 +43,12 @@
 
         <fieldset style="margin:0 10%; min-width:600px;">
             <h3> Select the Master Data you wish to associate with the role </h3>
+
+            <div id="metricselect" class="form-group">
+                <h3><b>Data View </b></h3>
+                <select id="roletypeDropdown"></select>
+
+            </div>
    
             <div id="siteselect" class="form-group">
 
@@ -48,9 +57,10 @@
 
             </div>
 
-            <div id="metricselect" class="form-group">
-                <h3><b>Metric </b></h3>
-                <select id="rolemetricDropdown"></select>
+            <div id="customerselect" class="form-group">
+
+                <h3> <b> Customer </b> </h3>
+                <select id="rolecustomerDropdown"></select>
 
             </div>
 

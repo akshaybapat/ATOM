@@ -175,6 +175,14 @@ namespace AtomConfiguratorModel.Models
 
                     return Json(customers, JsonRequestBehavior.AllowGet);
 
+                case "PartnersList":
+
+                    var querypartners = db.DimBusinessPartners.AsEnumerable();
+
+                    IEnumerable<DimBusinessPartner> partners = querypartners.Select(x => new DimBusinessPartner { BPCode = x.BPCode, id = x.id });
+
+                    return Json(partners, JsonRequestBehavior.AllowGet);
+
                 case "MetricList":
 
                     var querymetrics = db.Metrics.AsQueryable();
